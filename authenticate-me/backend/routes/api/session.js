@@ -1,4 +1,4 @@
-// backend/routes/api/session.js --------phase 3-------
+// backend/routes/api/session.js --------phase 3/4-------
 const express = require('express')
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
@@ -6,7 +6,7 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-//start phase 4
+//start phase 5
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -21,7 +21,7 @@ const validateLogin = [
     .withMessage('Please provide a password.'),
   handleValidationErrors
 ];
-//end phase 4
+//end phase 5
 //------------------ Log in------------------
 router.post(
   '/',
@@ -48,7 +48,7 @@ router.post(
 );
 
 
-// ----------------Log out------------------
+// ----------------Log out------------------phase 4
 router.delete(
   '/',
   (_req, res) => {
@@ -57,7 +57,7 @@ router.delete(
   }
 );
 
-// -------------Restore session user----------------
+// -------------Restore session user----------------phase 4
 router.get(
   '/',
   restoreUser,
