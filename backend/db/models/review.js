@@ -29,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         // references: { model: "Spots" },
       },
+       userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        // references: { model: "Users" },
+      },
       review: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,11 +41,7 @@ module.exports = (sequelize, DataTypes) => {
           len:[4]
         }
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        // references: { model: "Users" },
-      },
+
     },
     {
       sequelize,
