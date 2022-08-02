@@ -27,20 +27,21 @@ check('address')
     .withMessage('Country is required'),
     check('lat')
     .isDecimal()
-    .custom((value)=>{
-        if(value <0){
-            throw new Error("Latitude is not valid")
-        }
-    })
+    // .custom((value)=>{
+    //     if(value <0){
+    //         throw new Error("Latitude is not valid")
+    //     }
+    // }
+    // )
     .withMessage('Latitude is not valid'),
-    // check('lng')
-    // .isDecimal()
+    check('lng')
+    .isDecimal()
     // .custom((value)=>{
     //     if(value < -180 || value > 180 ){
     //         throw new Error("Longitude is not valid")
     //     }
     // })
-    // .withMessage('Longitude is not valid'),
+    .withMessage('Longitude is not valid'),
     check('name')
     .exists({ checkFalsy: true })
     .isLength({ max: 50 })
