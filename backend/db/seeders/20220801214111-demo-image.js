@@ -10,8 +10,8 @@ module.exports = {
       "Images",
       [
         {
-          url: "will be added",
-          previewImage: false,
+          url: "https://a0.muscache.com/im/pictures/619ab404-7a6c-4425-a79c-9459b1c00b1b.jpg?im_w=720",
+          previewImage: true,
           spotId: 1,
           reviewId: 1,
           userId: 1,
