@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // User.hasMany(models.Booking,{foreignKey:'userId'})
-      User.belongsToMany(models.Spot, { through: models.Bookings });
+      User.belongsToMany(models.Spot, { through: models.Booking });
       User.hasMany(models.Spot, { foreignKey: "ownerId" });
 
       User.hasMany(models.Image, { foreignKey: "userId" });
@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     }
     //------------------------PHASE 3----------------------
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id,firstName,lastName,username,email } = this; // context will be the User instance
+      return { id,firstName,lastName,username,email };
     }
 
     validatePassword(password) {
@@ -44,9 +44,11 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope("currentUser").findByPk(user.id);
       }
     }
-    static async signup({ username, email, password }) {
+    static async signup({firstName,lastName,username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
+        firstName,
+        lastName,
         username,
         email,
         hashedPassword,
@@ -60,17 +62,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(30),
         unique: true,
         allowNull: false,
-        validate: {
-          len: [3, 3],
-        },
+        // validate: {
+        //   len: [3, 3],
+        // },
       },
       lastName: {
         type: DataTypes.STRING(30),
         unique: true,
         allowNull: false,
-        validate: {
-          len: [3, 3],
-        },
+        // validate: {
+        //   len: [3, 3],
+        // },
       },
       username: {
         type: DataTypes.STRING,

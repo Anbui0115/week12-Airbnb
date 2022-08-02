@@ -11,6 +11,15 @@ const router = express.Router();
 // ------------Validate Sign up----------
 
 const validateSignup = [
+
+   check('firstName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 3 })
+    .withMessage('Please provide a firstName with at least 3 characters.'),
+    check('lastName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 3 })
+    .withMessage('Please provide a lastName with at least 3 characters.'),
   check('email')
     .exists({ checkFalsy: true })
     .isEmail()
@@ -29,14 +38,14 @@ const validateSignup = [
     .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
-// ------------Sign up------------------phase 4
+// ------------Sign up------------------phase 4-------------
 // Sign up
 router.post(
   '/',
   validateSignup,
   async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    const { firstName,lastName,email, password, username } = req.body;
+    const user = await User.signup({ firstName,lastName,email, username, password });
 
     await setTokenCookie(res, user);
 
