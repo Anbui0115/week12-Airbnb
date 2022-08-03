@@ -57,9 +57,7 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:  */
-      await queryInterface.bulkDelete('Users', {
-        username:{[Op.in]:['user1','user2','user3','user4','user5']}
-      });
+      await queryInterface.bulkDelete('Users');
 
   }
 };

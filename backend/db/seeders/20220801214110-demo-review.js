@@ -50,9 +50,7 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:*/
-      await queryInterface.bulkDelete("Reviews", null, {
-        spotId: { [Op.in]: [1,2,3,4,5] },
-      });
+      await queryInterface.bulkDelete("Reviews");
 
   }
 };
