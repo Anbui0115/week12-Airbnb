@@ -65,18 +65,14 @@ const imageFormatter = (imgObj) => {
   };
 };
 //---------Spot found helper ------need to see how to use it
-const foundSpot = function (spot, next) {
-  if (!spot) {
-    const err = new Error("Spot couldn't be found");
-    err.status = 404;
-    err.message = "Spot couldn't be found";
-  }
-<<<<<<< HEAD
-return true
-=======
-  return true;
->>>>>>> main
-};
+// const foundSpot = function (spot, next) {
+//   if (!spot) {
+//     const err = new Error("Spot couldn't be found");
+//     err.status = 404;
+//     err.message = "Spot couldn't be found";
+//   }
+// return true
+// };
 
 //------------------CREATE AN IMAGE FOR A SPOT-----------
 
