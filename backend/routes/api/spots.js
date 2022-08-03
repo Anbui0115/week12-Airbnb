@@ -160,11 +160,8 @@ router.get("/current", async (req, res) => {
 
 //------------EDIT A SPOT----------
 router.put("/:spotId", requireAuth, async (req, res) => {
-<<<<<<< HEAD
+
   const spotId  = req.params.spotId;
-=======
-  const spotId = req.params.spotId;
->>>>>>> main
   const {
     address,
     city,
@@ -236,11 +233,8 @@ router.put("/:spotId", requireAuth, async (req, res) => {
 router.delete("/:spotId", requireAuth, async (req, res) => {
   const { spotId } = req.params;
   const currentSpot = await Spot.findByPk(spotId);
-<<<<<<< HEAD
-console.log('current spot',currentSpot)
-=======
-  console.log("current spot", currentSpot);
->>>>>>> main
+
+// console.log('current spot',currentSpot)
   if (!currentSpot) {
     res.status(404);
     return res.json({
@@ -288,15 +282,13 @@ router.get("/:spotId", async (req, res, next) => {
   });
   if (!currentSpot) {
     res.json({
-<<<<<<< HEAD
-      "message": "Spot couldn't be found",
-      "statusCode": 404
-    })
-=======
+
+      // "message": "Spot couldn't be found",
+      // "statusCode": 404
       message: "Spot couldn't be found",
       statusCode: 404,
-    });
->>>>>>> main
+    })
+
   }
   const countReview = await Spot.findByPk(req.params.spotId, {
     include: {
