@@ -55,6 +55,14 @@ const validateSpot = [
   handleValidationErrors,
 ];
 
+const validateReview = [
+  check("review")
+    .exists({ checkFalsy: true })
+    .withMessage("Review is required"),
+  check("stars").exists({ checkFalsy: true }).withMessage("Rating is required"),
+  handleValidationErrors,
+];
+
 //---------Format image output helper ------
 
 const imageFormatter = (imgObj) => {
@@ -73,7 +81,40 @@ const imageFormatter = (imgObj) => {
 //   }
 // return true
 // };
-
+//-------------CREATE A REVIEW FOR A SPOT------------
+router.post(
+  "/:spotId/reviews",
+  requireAuth,
+  validateReview,
+  async (req, res, next) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+    if (!spot) {
+      const err = new Error("Spot couldn't be found");
+      err.errors = [`Spot with ID ${req.params.spotId} does not exist`];
+      return next(err);
+    }
+    const totalReviews = await Review.findAll({
+      where: {
+        [Op.and]: [{ userId: req.user.id }, { spotId: req.params.spotId }],
+      },
+    });
+    if (totalReviews.length >= 1) {
+      const err = new Error("User already has a review for this spot");
+      err.status = 403;
+      err.errors = [
+        `Current User already made a review for this spot with ID ${req.params.spotId}`,
+      ];
+    }
+    const newReview = await Review.create({
+      userId: req.user.id,
+      spotId: req.params.spotId,
+      review: req.body.review,
+      stars: req.body.stars
+    });
+    res.status(201);
+    res.json(newReview);
+  }
+);
 //------------------CREATE AN IMAGE FOR A SPOT-----------
 
 router.post("/:spotId/images", requireAuth, async (req, res) => {
@@ -156,8 +197,7 @@ router.get("/current", async (req, res) => {
 
 //------------EDIT A SPOT----------
 router.put("/:spotId", requireAuth, async (req, res) => {
-
-  const spotId  = req.params.spotId;
+  const spotId = req.params.spotId;
   const {
     address,
     city,
@@ -230,7 +270,7 @@ router.delete("/:spotId", requireAuth, async (req, res) => {
   const { spotId } = req.params;
   const currentSpot = await Spot.findByPk(spotId);
 
-// console.log('current spot',currentSpot)
+  // console.log('current spot',currentSpot)
   if (!currentSpot) {
     res.status(404);
     return res.json({
@@ -278,13 +318,11 @@ router.get("/:spotId", async (req, res, next) => {
   });
   if (!currentSpot) {
     res.json({
-
       // "message": "Spot couldn't be found",
       // "statusCode": 404
       message: "Spot couldn't be found",
       statusCode: 404,
-    })
-
+    });
   }
   const countReview = await Spot.findByPk(req.params.spotId, {
     include: {
