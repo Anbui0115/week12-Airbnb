@@ -56,11 +56,15 @@ check('address')
 ]
 
 router.get('/',async (req,res)=>{
-    const reviewCount = await Review.count();
-console.log(reviewCount,"this is review count")
+//     const reviewCount = await Review.count();
+// console.log(reviewCount,"this is review count")
 
-const Spots = await Spot.findAll({
-attributes:{include:[[Sequelize.literal('url'),"previewImage"], [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]]},
+const spots = await Spot.findAll({
+attributes:{
+    include:[
+    [Sequelize.literal('url'),"previewImage"],
+    // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+]},
     include:[
 {
     model:Image ,
@@ -68,15 +72,40 @@ attributes:{include:[[Sequelize.literal('url'),"previewImage"], [Sequelize.fn('A
         previewImage:true
     },
          attributes:[],
-    },{
-     model:Review,
-     attributes:[]
-    }
+    },
+    // {
+    //  model:Review,
+    //  attributes:[]
+    // }
     ]
 })
+for(let i =0; i < spots.length;i++){
+    let spot = spots[i];
+let count = await Review.count({
+    where:{
+        spotId : spot.dataValues.id
+    }
+})
+let total = await Review.sum('stars',{
+    where:{spotId: spot.dataValues.id}
+})
+spot.dataValues.avgRating = (total/count)
+}
+
+// Spots.forEach(spot =>{
+//     spot.avgRating= await Review.findAll({
+//         attributes:{
+//             include:[
+//                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+//             ]
+//         }
+//     })
+//     console.log('--------',spot)
+// })
+
 res.status(200)
-Spots.previewImage= 'url example.com'
-res.json({Spots})
+// Spots.previewImage= 'url example.com'
+return res.json({spots})
 })
 
 router.post('/',requireAuth,validateSpot,async(req,res) =>{

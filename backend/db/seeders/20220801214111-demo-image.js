@@ -17,8 +17,8 @@ module.exports = {
           userId: 1,
         },
         {
-          url: "willbeadded",
-          previewImage: false,
+          url: "willbeaded",
+          previewImage: true,
           spotId: 2,
           reviewId: 2,
           userId: 2,
