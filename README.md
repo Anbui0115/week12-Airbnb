@@ -474,7 +474,8 @@ Create and return a new image for a spot specified by id.
     ```json
     {
       "id": 1,
-      "imageableId": 1,
+      "imageableId": 1,//"imageableId" property should simply have a value of that record's foreign key.
+      //that property is not one that comes from the DB but one you create for your response.  The value of that property should be the foreign key integer of that image, either the reviewId or spotId, whichever is relevant.
       "url": "image url",
     }
     ```
