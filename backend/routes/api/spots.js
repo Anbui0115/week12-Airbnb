@@ -67,108 +67,6 @@ const imageFormatter = (imgObj) => {
   };
 };
 
-//-------------GET ALL SPOTS-----------------
-router.get("/", async (req, res) => {
-  //     const reviewCount = await Review.count();
-  // console.log(reviewCount,"this is review count")
-
-  //   const allSpots = await Spot.findAll({
-  //     attributes: {
-  //       include: [
-  //         [Sequelize.literal("url"), "previewImage"],
-  //         // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-  //       ],
-  //     },
-  //     include: [
-  //       {
-  //         model: Image,
-  //         where: {
-  //           previewImage: true,
-  //         },
-  //         attributes: [],
-  //       },
-  //       // {
-  //       //  model:Review,
-  //       //  attributes:[]
-  //       // }
-  //     ],
-  //   });
-  //   for (let i = 0; i < allSpots.length; i++) {
-  //     let spot = allSpots[i];
-  //     let count = await Review.count({
-  //       where: {
-  //         spotId: spot.dataValues.id,
-  //       },
-  //     });
-  //     let total = await Review.sum("stars", {
-  //       where: { spotId: spot.dataValues.id },
-  //     });
-  //     spot.dataValues.avgRating = total / count;
-  //   }
-
-  //   // Spots.forEach(spot =>{
-  //   //     spot.avgRating= await Review.findAll({
-  //   //         attributes:{
-  //   //             include:[
-  //   //                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-  //   //             ]
-  //   //         }
-  //   //     })
-  //   //     console.log('--------',spot)
-  //   // })
-
-  //   res.status(200);
-  //   // Spots.previewImage= 'url example.com'
-  //   return res.json({ allSpots });
-  const allSpots = await Spot.findAll();
-  for (let spot of allSpots) {
-    console.log("spotId``````", spot.id);
-    const spotReview = await spot.getReviews({
-      attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
-    });
-    // console.log('spotReview',spotReview)
-    let avgRating = spotReview[0].dataValues.avgRating;
-    // console.log('avgRating',avgRating)
-    spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
-
-    const previewImage = await Image.findOne({
-      where: {
-        [Op.and]: {
-          spotId: spot.id,
-          previewImage: true,
-        },
-      },
-    });
-    // console.log("previewImage", previewImage);
-    if (previewImage) {
-      spot.dataValues.previewImage = previewImage.dataValues.url;
-    }
-  }
-  res.status(200);
-  res.json({ Spots: allSpots });
-  return;
-});
-
-//------------------CREATE NEW SPOT---------------
-router.post("/", requireAuth, validateSpot, async (req, res) => {
-  let { address, city, state, country, lat, lng, name, description, price } =
-    req.body;
-  const newSpot = await Spot.create({
-    ownerId: req.user.id,
-    address,
-    city,
-    state,
-    country,
-    lat,
-    lng,
-    name,
-    description,
-    price,
-  });
-  res.status(201);
-  res.json(newSpot);
-});
-
 //------------------CREATE AN IMAGE FOR A SPOT-----------
 
 router.post("/:spotId/images", requireAuth, async (req, res) => {
@@ -296,5 +194,109 @@ router.get("/:spotId", async (req, res) => {
   res.json({ Spots: allSpots });
   return;
 });
+
+
+//-------------GET ALL SPOTS-----------------
+router.get("/", async (req, res) => {
+  //     const reviewCount = await Review.count();
+  // console.log(reviewCount,"this is review count")
+
+  //   const allSpots = await Spot.findAll({
+  //     attributes: {
+  //       include: [
+  //         [Sequelize.literal("url"), "previewImage"],
+  //         // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+  //       ],
+  //     },
+  //     include: [
+  //       {
+  //         model: Image,
+  //         where: {
+  //           previewImage: true,
+  //         },
+  //         attributes: [],
+  //       },
+  //       // {
+  //       //  model:Review,
+  //       //  attributes:[]
+  //       // }
+  //     ],
+  //   });
+  //   for (let i = 0; i < allSpots.length; i++) {
+  //     let spot = allSpots[i];
+  //     let count = await Review.count({
+  //       where: {
+  //         spotId: spot.dataValues.id,
+  //       },
+  //     });
+  //     let total = await Review.sum("stars", {
+  //       where: { spotId: spot.dataValues.id },
+  //     });
+  //     spot.dataValues.avgRating = total / count;
+  //   }
+
+  //   // Spots.forEach(spot =>{
+  //   //     spot.avgRating= await Review.findAll({
+  //   //         attributes:{
+  //   //             include:[
+  //   //                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+  //   //             ]
+  //   //         }
+  //   //     })
+  //   //     console.log('--------',spot)
+  //   // })
+
+  //   res.status(200);
+  //   // Spots.previewImage= 'url example.com'
+  //   return res.json({ allSpots });
+  const allSpots = await Spot.findAll();
+  for (let spot of allSpots) {
+    console.log("spotId``````", spot.id);
+    const spotReview = await spot.getReviews({
+      attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
+    });
+    // console.log('spotReview',spotReview)
+    let avgRating = spotReview[0].dataValues.avgRating;
+    // console.log('avgRating',avgRating)
+    spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
+
+    const previewImage = await Image.findOne({
+      where: {
+        [Op.and]: {
+          spotId: spot.id,
+          previewImage: true,
+        },
+      },
+    });
+    // console.log("previewImage", previewImage);
+    if (previewImage) {
+      spot.dataValues.previewImage = previewImage.dataValues.url;
+    }
+  }
+  res.status(200);
+  res.json({ Spots: allSpots });
+  return;
+});
+
+//------------------CREATE NEW SPOT---------------
+router.post("/", requireAuth, validateSpot, async (req, res) => {
+  let { address, city, state, country, lat, lng, name, description, price } =
+    req.body;
+  const newSpot = await Spot.create({
+    ownerId: req.user.id,
+    address,
+    city,
+    state,
+    country,
+    lat,
+    lng,
+    name,
+    description,
+    price,
+  });
+  res.status(201);
+  res.json(newSpot);
+});
+
 
 module.exports = router;
