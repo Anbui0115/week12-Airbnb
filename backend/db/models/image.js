@@ -26,12 +26,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       spotId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         // references: { model: "Spots" },
       },
       reviewId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         // references: { model: "Reviews" },
       },
       userId: {

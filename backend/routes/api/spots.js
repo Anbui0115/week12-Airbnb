@@ -1,17 +1,21 @@
 const express = require("express");
-
 const {
   setTokenCookie,
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { User, Spot, Image, Review } = require("../../db/models");
+const { User, Spot, Image, Review, Booking } = require("../../db/models");
 const { Op } = require("sequelize");
 const router = express.Router();
 const { Sequelize } = require("sequelize");
 //start phase 5
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+
+// const {
+//   sequelize,
+// } = require("../../db/models");
+const image = require("../../db/models/image");
 
 const validateSpot = [
   check("address")
@@ -52,59 +56,97 @@ const validateSpot = [
     .withMessage("Price per day is required"),
   handleValidationErrors,
 ];
+
+//---------Format image output
+
+const imageFormatter = (imgObj) => {
+  const formattedImg = {
+    id: imgObj.id,
+    imageableId: imgObj.spotId,
+    url: imgObj.url,
+  };
+};
+
 //-------------GET ALL SPOTS-----------------
 router.get("/", async (req, res) => {
   //     const reviewCount = await Review.count();
   // console.log(reviewCount,"this is review count")
 
-  const spots = await Spot.findAll({
-    attributes: {
-      include: [
-        [Sequelize.literal("url"), "previewImage"],
-        // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-      ],
-    },
-    include: [
-      {
-        model: Image,
-        where: {
+  //   const allSpots = await Spot.findAll({
+  //     attributes: {
+  //       include: [
+  //         [Sequelize.literal("url"), "previewImage"],
+  //         // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+  //       ],
+  //     },
+  //     include: [
+  //       {
+  //         model: Image,
+  //         where: {
+  //           previewImage: true,
+  //         },
+  //         attributes: [],
+  //       },
+  //       // {
+  //       //  model:Review,
+  //       //  attributes:[]
+  //       // }
+  //     ],
+  //   });
+  //   for (let i = 0; i < allSpots.length; i++) {
+  //     let spot = allSpots[i];
+  //     let count = await Review.count({
+  //       where: {
+  //         spotId: spot.dataValues.id,
+  //       },
+  //     });
+  //     let total = await Review.sum("stars", {
+  //       where: { spotId: spot.dataValues.id },
+  //     });
+  //     spot.dataValues.avgRating = total / count;
+  //   }
+
+  //   // Spots.forEach(spot =>{
+  //   //     spot.avgRating= await Review.findAll({
+  //   //         attributes:{
+  //   //             include:[
+  //   //                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+  //   //             ]
+  //   //         }
+  //   //     })
+  //   //     console.log('--------',spot)
+  //   // })
+
+  //   res.status(200);
+  //   // Spots.previewImage= 'url example.com'
+  //   return res.json({ allSpots });
+  const allSpots = await Spot.findAll();
+  for (let spot of allSpots) {
+    console.log("spotId``````", spot.id);
+    const spotReview = await spot.getReviews({
+      attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
+    });
+    // console.log('spotReview',spotReview)
+    let avgRating = spotReview[0].dataValues.avgRating;
+    // console.log('avgRating',avgRating)
+    spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
+
+    const previewImage = await Image.findOne({
+      where: {
+        [Op.and]: {
+          spotId: spot.id,
           previewImage: true,
         },
-        attributes: [],
-      },
-      // {
-      //  model:Review,
-      //  attributes:[]
-      // }
-    ],
-  });
-  for (let i = 0; i < spots.length; i++) {
-    let spot = spots[i];
-    let count = await Review.count({
-      where: {
-        spotId: spot.dataValues.id,
       },
     });
-    let total = await Review.sum("stars", {
-      where: { spotId: spot.dataValues.id },
-    });
-    spot.dataValues.avgRating = total / count;
+    // console.log("previewImage", previewImage);
+    if (previewImage) {
+      spot.dataValues.previewImage = previewImage.dataValues.url;
+    }
   }
-
-  // Spots.forEach(spot =>{
-  //     spot.avgRating= await Review.findAll({
-  //         attributes:{
-  //             include:[
-  //                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-  //             ]
-  //         }
-  //     })
-  //     console.log('--------',spot)
-  // })
-
   res.status(200);
-  // Spots.previewImage= 'url example.com'
-  return res.json({ spots });
+  res.json({ Spots: allSpots });
+  return;
 });
 
 //------------------CREATE NEW SPOT---------------
@@ -124,7 +166,7 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
     price,
   });
   res.status(201);
-  res.json({ newSpot });
+  res.json(newSpot);
 });
 
 //------------------CREATE AN IMAGE FOR A SPOT-----------
@@ -143,17 +185,116 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
   const userId = req.user.id; //???? need authorization
   // const user = await User.scope('currentUser').findByPk(id);
   // console.log('USER__________',userId)
-  let onwerId = spot.ownerId;
+  let ownerId = spot.ownerId;
   // console.log('~~~~~~~~~~~',onwerId)
-  if (onwerId !== userId) {
+  if (ownerId !== userId) {
     throw new Error("You don't have permission");
   }
+  const checkImg = await Image.findOne({
+    where: {
+      spotId: req.params.spotId,
+    },
+  });
+  let previewImage = true;
+  if (checkImg) {
+    previewImage = false;
+  }
+  const newImg = await Image.create({
+    spotId: req.params.spotId,
+    url: url,
+    previewImage: previewImage,
+    userId: userId,
+  });
   res.status(200);
   res.json({
-    id: req.params.spotId,
-    imageableId: req.params.spotId,
-    url: url,
+    id: newImg.id,
+    imageableId: newImg.spotId,
+    url: newImg.url,
   });
+});
+//--------------Get all Spots owned by the Current User---
+
+router.get("/current", async (req, res) => {
+  const currentUser = req.user.id;
+  const allSpots = await Spot.findAll({
+    where: {
+      ownerId: currentUser,
+    },
+  });
+  for (let spot of allSpots) {
+    // console.log("spotId``````", spot.id);
+    const spotReview = await spot.getReviews({
+      attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
+    });
+    // console.log('spotReview',spotReview)
+    let avgRating = spotReview[0].dataValues.avgRating;
+    // console.log('avgRating',avgRating)
+    spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
+
+    const previewImage = await Image.findOne({
+      where: {
+        [Op.and]: {
+          spotId: spot.id,
+          previewImage: true,
+        },
+      },
+    });
+    // console.log("previewImage", previewImage);
+    if (previewImage) {
+      spot.dataValues.previewImage = previewImage.dataValues.url;
+    }
+  }
+  res.status(200);
+  res.json({ Spots: allSpots });
+  return;
+});
+//----------------Get details of a Spot from an id-------
+
+router.get("/:spotId", async (req, res) => {
+  const currentSpot = await Spot.findByPk(req.params.spotId, {
+    attributes: {
+      include: [
+        [Sequelize.literal("User"), "Owner"],
+        // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+      ],
+    },
+    include: [
+      {
+        model: Image,
+        attributes: ["id"],
+      },
+      {
+        model: User,
+        attributes: ["id"],
+      },
+    ],
+  });
+
+  // console.log("spotId``````", spot.id);
+  const spotReview = await spot.getReviews({
+    attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
+  });
+  // console.log('spotReview',spotReview)
+  let avgRating = spotReview[0].dataValues.avgRating;
+  // console.log('avgRating',avgRating)
+  spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
+
+  const previewImage = await Image.findOne({
+    where: {
+      [Op.and]: {
+        spotId: spot.id,
+        previewImage: true,
+      },
+    },
+  });
+  // console.log("previewImage", previewImage);
+  if (previewImage) {
+    spot.dataValues.previewImage = previewImage.dataValues.url;
+  }
+
+  res.status(200);
+  res.json({ Spots: allSpots });
+  return;
 });
 
 module.exports = router;
