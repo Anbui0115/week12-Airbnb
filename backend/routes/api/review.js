@@ -1,0 +1,71 @@
+const express = require("express");
+const {
+  setTokenCookie,
+  restoreUser,
+  requireAuth,
+  authenticate,
+} = require("../../utils/auth");
+const { User, Spot, Image, Review, Booking } = require("../../db/models");
+const { Op } = require("sequelize");
+const router = express.Router();
+const { Sequelize } = require("sequelize");
+//start phase 5
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
+
+const validateReview = [
+  check("review")
+    .exists({ checkFalsy: true })
+    .withMessage("Review is required"),
+  check("stars").exists({ checkFalsy: true }).withMessage("Rating is required"),
+  handleValidationErrors,
+];
+
+router.post(
+  "/:reviewId/images",
+  requireAuth,
+  restoreUser,
+  async (req, res, next) => {
+    const reviewId = req.params.reviewId;
+    // console.log('reviewId```````````````````````',reviewId)
+    const review = await Review.findByPk(reviewId);
+    // console.log("review--------", review);
+    if (!review) {
+      res.status(404);
+      res.json({
+        message: "Review couldn't be found",
+        statusCode: 404,
+      });
+    }
+    const totalImages = await Image.findAll({
+      where: {
+        spotId: review.spotId,
+      },
+    });
+    if (totalImages.length >= 10) {
+      res.status(403);
+      res.json({
+        message: "Maximum number of images for this resource was reached",
+        statusCode: 403,
+      });
+    }
+    let previewImage = false;
+    if (req.body.previewImage) {
+      previewImage = req.body.previewImage;
+    }
+    const newImg = await Image.create({
+      url: req.body.url,
+      previewImage: previewImage,
+      spotId: review.spotId,
+      reviewId: reviewId,
+      userId: req.user.id,
+    });
+    res.json({
+      id: newImg.id,
+    //   previewImage,// previewImage:true (based on the req.body)
+      imageableId: newImg.reviewId,
+      url: newImg.url,
+    });
+  }
+);
+module.exports = router;
