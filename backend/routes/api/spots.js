@@ -54,7 +54,7 @@ check('address')
     .withMessage('Price per day is required'),
   handleValidationErrors
 ]
-
+//-------------GET ALL SPOTS-----------------
 router.get('/',async (req,res)=>{
 //     const reviewCount = await Review.count();
 // console.log(reviewCount,"this is review count")
@@ -108,6 +108,7 @@ res.status(200)
 return res.json({spots})
 })
 
+//------------------CREATE NEW SPOT---------------
 router.post('/',requireAuth,validateSpot,async(req,res) =>{
 let {address,city,state,country,lat,lng,name,description,price}=req.body;
 const newSpot = await Spot.create({
@@ -117,4 +118,32 @@ const newSpot = await Spot.create({
 res.status(201)
 res.json({newSpot})
 })
+
+//------------------CREATE AN IMAGE FOR A SPOT-----------
+
+router.post('/:spotId/images',requireAuth,async(req,res)=>{
+const spot = await Spot.findByPk(req.params.spotId)
+const {url} = req.body;
+// console.log('--------',spot)
+if(!spot){
+    res.status(404);
+    res.json({
+        "message": "Spot couldn't be found",
+      "statusCode": 404
+    })
+}
+const userId = req.user.id //???? need authorization
+// const user = await User.scope('currentUser').findByPk(id);
+// console.log('USER__________',userId)
+let onwerId = spot.ownerId
+// console.log('~~~~~~~~~~~',onwerId)
+if(onwerId !== userId){throw new Error("You don't have permission")};
+res.status(200)
+res.json("I don't know what Im doing")
+})
+
+
+
+
+
 module.exports=router;
