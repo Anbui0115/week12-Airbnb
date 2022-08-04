@@ -282,7 +282,7 @@ router.put("/:spotId", requireAuth, async (req, res) => {
 });
 
 //---------------DELETE A SPOT---------------
-router.delete("/:spotId", requireAuth, async (req, res) => {
+router.delete("/:spotId", requireAuth, restoreUser, async (req, res) => {
   const { spotId } = req.params;
   const currentSpot = await Spot.findByPk(spotId);
 
@@ -293,13 +293,14 @@ router.delete("/:spotId", requireAuth, async (req, res) => {
       message: "Spot couldn't be found",
       statusCode: 404,
     });
-  } else {
+  }
+  // if (currentSpot.ownerId === req.user.id) {
     await currentSpot.destroy();
     res.json({
       message: "Successfully deleted",
       statusCode: 200,
     });
-  }
+  // }
 });
 //----------------Get details of a Spot from an id-------
 
