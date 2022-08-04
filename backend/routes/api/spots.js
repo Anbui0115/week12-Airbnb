@@ -109,7 +109,7 @@ router.post(
       userId: req.user.id,
       spotId: req.params.spotId,
       review: req.body.review,
-      stars: req.body.stars
+      stars: req.body.stars,
     });
     res.status(201);
     res.json(newReview);
@@ -471,4 +471,33 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
   res.json(newSpot);
 });
 
+//------------- Get all Reviews by a Spot's id------
+router.get("/:spotId/reviews", restoreUser, async (req, res, next) => {
+  const spotId = req.params.spotId;
+  const spot = await Spot.findByPk(spotId);
+  if (!spot) {
+    return res.json({
+      message: "Spot couldn't be found",
+      statusCode: 404,
+    });
+  }
+  const reviews = await Review.findAll({
+    where: {
+      spotId: spotId,
+    },
+    include: [
+      { model: User, attributes: ["id", "firstName", "lastName"] },
+      { model: Image, attributes: ["id", ["spotId", "imageableId"], "url"] },
+    ],
+  });
+  const images = await Image.findAll({
+    where: {
+      spotId: spotId,
+    },
+  });
+  // for (let review of reviews) {
+  //   review.Images = images;
+  // }
+  res.json({Reviews:reviews});
+});
 module.exports = router;

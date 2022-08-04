@@ -91,4 +91,10 @@ router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
   }
   res.json({ Reviews: currentReviews });
 });
+
+
+//------------- Get all Reviews by a Spot's id------
+router.get(":spotId/reviews",restoreUser,async(req,res,next)=>{
+const spot= await Spot.findByPk(req.params.spotId)
+});
 module.exports = router;
