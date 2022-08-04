@@ -63,6 +63,22 @@ const validateReview = [
   handleValidationErrors,
 ];
 
+const validateBooking = [
+  check("startDate")
+    .exists({ checkFalsy: true })
+    .isDate()
+    .notEmpty()
+    .withMessage(
+      "startDate cannot be empty. Cannot be greater than endDate. Format is YYYY-MM-DD"
+    ),
+  check("endDate")
+    .exists({ checkFalsy: true })
+    .isDate()
+    .notEmpty()
+    .withMessage("endDate cannot be empty. Format is YYYY-MM-DD"),
+  handleValidationErrors,
+];
+
 //---------Format image output helper ------
 
 const imageFormatter = (imgObj) => {
@@ -500,5 +516,56 @@ router.get("/:spotId/reviews", restoreUser, async (req, res, next) => {
   // }
   res.json({ Reviews: reviews });
 });
+
+//------------Create a Booking from a Spot based on the Spot's id---
+router.post(
+  "/:spotId/bookings",
+  requireAuth,
+  restoreUser,
+  validateBooking,
+  async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+      res.status(404);
+      return res.json({
+        message: "Spot couldn't be found",
+        statusCode: 404,
+      });
+    }
+    const bookings = await Booking.findAll({
+      where: {
+        spotId: spotId,
+        [Op.and]: [
+          {
+            startDate: { [Op.lte]: req.body.startDate },
+          },
+          {
+            endDate: { [Op.gte]: req.body.endDate },
+          },
+        ],
+      },
+    });
+    if (bookings.length >= 1) {
+      res.status(403);
+      return res.json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        statusCode: 403,
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking",
+        },
+      });
+    }
+    const newBooking = await Booking.create({
+      spotId: spotId,
+      userId: req.user.id,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      // updatedAt: new Date(),
+    });
+    res.json(newBooking);
+  }
+);
 
 module.exports = router;

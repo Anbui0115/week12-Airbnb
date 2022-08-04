@@ -50,6 +50,7 @@ const validateSpot = [
 ];
 
 
+//-------------------Get all of the Current User's Bookings--------
 
 
 
