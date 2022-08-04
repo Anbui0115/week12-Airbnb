@@ -5,6 +5,7 @@ const usersRouter = require("./users.js");
 const spotsRouter = require("./spots.js");
 const reviewRouter = require("./review.js");
 const bookingRouter = require("./booking.js");
+const imageRouter = require("./image.js");
 const { restoreUser } = require("../../utils/auth.js");
 
 // Connect restoreUser middleware to the API router
@@ -18,7 +19,7 @@ router.use("/users", usersRouter);
 router.use("/spots", spotsRouter);
 router.use("/bookings", bookingRouter);
 router.use("/reviews", reviewRouter);
-
+router.use("/images", imageRouter);
 
 router.post("/test", function (req, res) {
   res.json({ requestBody: req.body });

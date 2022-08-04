@@ -153,5 +153,30 @@ router.put(
     res.json(booking);
   }
 );
+//-----------Delete a Booking-----------
+router.delete(
+  "/:bookingId",
+  requireAuth,
+  restoreUser,
+  async (req, res, next) => {
+    let booking = await Booking.findByPk(req.params.bookingId);
+
+    if (!booking) {
+      res.status = 404;
+      return res.json({
+        message: "Booking couldn't be found",
+        statusCode: 404,
+      });
+    }
+
+    await booking.destroy();
+    await booking.save();
+
+    res.json({
+      message: "Successfully deleted.",
+      statuscode: 200,
+    });
+  }
+);
 
 module.exports = router;
