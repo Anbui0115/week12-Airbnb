@@ -92,9 +92,27 @@ router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
   res.json({ Reviews: currentReviews });
 });
 
-
-//------------- Get all Reviews by a Spot's id------
-router.get(":spotId/reviews",restoreUser,async(req,res,next)=>{
-const spot= await Spot.findByPk(req.params.spotId)
-});
+//------------- Edit a Review------
+router.put(
+  "/:reviewId",
+  restoreUser,
+  requireAuth,
+  validateReview,
+  async (req, res, next) => {
+    const { review, stars } = req.body;
+    const thisReview = await Review.findByPk(req.params.reviewId);
+    if (!thisReview) {
+      return res.json({
+        message: "Review couldn't be found",
+        statusCode: 404,
+      });
+    }
+    const updateReview = await thisReview.update({
+      review,
+      stars,
+      updatedAt: new Date(),
+    });
+    res.json(updateReview);
+  }
+);
 module.exports = router;
