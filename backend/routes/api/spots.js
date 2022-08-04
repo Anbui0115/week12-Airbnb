@@ -295,11 +295,11 @@ router.delete("/:spotId", requireAuth, restoreUser, async (req, res) => {
     });
   }
   // if (currentSpot.ownerId === req.user.id) {
-    await currentSpot.destroy();
-    res.json({
-      message: "Successfully deleted",
-      statusCode: 200,
-    });
+  await currentSpot.destroy();
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200,
+  });
   // }
 });
 //----------------Get details of a Spot from an id-------
@@ -526,6 +526,9 @@ router.post(
   validateBooking,
   async (req, res, next) => {
     const spotId = req.params.spotId;
+    const userId = req.user.id;
+    console.log("spotId~~~~~~~~~~~~~~~~~~~", spotId); //3
+    console.log("userId------------------", userId); //1
     const spot = await Spot.findByPk(spotId);
     if (!spot) {
       res.status(404);
@@ -560,11 +563,12 @@ router.post(
     }
     const newBooking = await Booking.create({
       spotId: spotId,
-      userId: req.user.id,
+      userId: userId,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       // updatedAt: new Date(),
     });
+    // await newBooking.save();
     res.json(newBooking);
   }
 );
