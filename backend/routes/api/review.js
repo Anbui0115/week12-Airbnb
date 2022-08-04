@@ -62,10 +62,33 @@ router.post(
     });
     res.json({
       id: newImg.id,
-    //   previewImage,// previewImage:true (based on the req.body)
+      //   previewImage,// previewImage:true (based on the req.body)
       imageableId: newImg.reviewId,
       url: newImg.url,
     });
   }
 );
+//------------------Get all Reviews of the Current User----
+router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
+  const currentReviews = await Review.findAll({
+    where: {
+      userId: req.user.id,
+    },
+  });
+  for (let i = 0; i < currentReviews.length; i++) {
+    let review = currentReviews[i];
+    console.log("review``````````````````", review);
+    let spot = await review.getSpot();
+    let images = await review.getImages({
+      attributes: ["id", ["reviewId", "imageableId"], "url"],
+    });
+    let owner = await review.getUser({
+      attributes: ["id", "firstName", "lastName"],
+    });
+    review.dataValues.Spot = spot.toJSON();
+    review.dataValues.Images = images;
+    review.dataValues.User = owner.toJSON();
+  }
+  res.json({ Reviews: currentReviews });
+});
 module.exports = router;
