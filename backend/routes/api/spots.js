@@ -498,6 +498,7 @@ router.get("/:spotId/reviews", restoreUser, async (req, res, next) => {
   // for (let review of reviews) {
   //   review.Images = images;
   // }
-  res.json({Reviews:reviews});
+  res.json({ Reviews: reviews });
 });
+
 module.exports = router;
