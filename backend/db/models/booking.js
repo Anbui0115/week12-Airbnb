@@ -30,18 +30,20 @@ module.exports = (sequelize, DataTypes) => {
       startDate: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isDate: true, // only allow date strings
-          isAfter: "2022-01-08",
-        },
+        // validate: {
+        //   isDate: true, // only allow date strings
+        //   // isAfter: "2022-01-08",
+        //   isAfter: new Date(),
+        // },
       },
       endDate: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isDate: true, // only allow date strings
-          isAfter: "2022-01-08",
-        },
+        // validate: {
+        //   isDate: true, // only allow date strings
+        //   // isAfter: "2022-01-08",
+        //   isAfter: new Date(),
+        // },
       },
     },
     {

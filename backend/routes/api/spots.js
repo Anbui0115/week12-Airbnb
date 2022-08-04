@@ -527,8 +527,8 @@ router.post(
   async (req, res, next) => {
     const spotId = parseInt(req.params.spotId);
     const userId = parseInt(req.user.id);
-    console.log("spotId~~~~~~~~~~~~~~~~~~~", spotId); //3
-    console.log("userId------------------", userId); //1
+    // console.log("spotId~~~~~~~~~~~~~~~~~~~", spotId); //3
+    // console.log("userId------------------", userId); //1
     const spot = await Spot.findByPk(spotId);
     if (!spot) {
       res.status(404);
@@ -568,10 +568,38 @@ router.post(
       endDate: req.body.endDate,
       // updatedAt: new Date(),
     });
-    console.log('newbooking``````````````',newBooking)
+    // console.log('newbooking``````````````',newBooking)
     // await newBooking.save();
     res.json(newBooking);
   }
 );
 
+//--------Get all Bookings for a Spot based on the Spot's id---
+router.get(
+  "/:spotId/bookings",
+  requireAuth,
+  restoreUser,
+  async (req, res, next) => {
+    const spotId = req.params.spotId;
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+      res.status(404);
+      return res.json({
+        message: "Spot couldn't be found",
+        statusCode: 404,
+      });
+    }
+    // if(spot.ownerId === req.user.id){
+    const bookings = await Booking.findAll({
+      include: { model: User, attributes: ["id", "firstName", "lastName"] },
+      where: {
+        spotId: spotId,
+      },
+    });
+    // }else {
+    //   const
+    // }
+    res.json({ bookings });
+  }
+);
 module.exports = router;
