@@ -525,8 +525,8 @@ router.post(
   restoreUser,
   validateBooking,
   async (req, res, next) => {
-    const spotId = req.params.spotId;
-    const userId = req.user.id;
+    const spotId = parseInt(req.params.spotId);
+    const userId = parseInt(req.user.id);
     console.log("spotId~~~~~~~~~~~~~~~~~~~", spotId); //3
     console.log("userId------------------", userId); //1
     const spot = await Spot.findByPk(spotId);
@@ -568,6 +568,7 @@ router.post(
       endDate: req.body.endDate,
       // updatedAt: new Date(),
     });
+    console.log('newbooking``````````````',newBooking)
     // await newBooking.save();
     res.json(newBooking);
   }
