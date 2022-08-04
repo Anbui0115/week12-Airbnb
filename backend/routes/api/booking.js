@@ -30,12 +30,8 @@ const validateSpot = [
   check("country")
     .exists({ checkFalsy: true })
     .withMessage("Country is required"),
-  check("lat")
-    .isDecimal()
-    .withMessage("Latitude is not valid"),
-  check("lng")
-    .isDecimal()
-    .withMessage("Longitude is not valid"),
+  check("lat").isDecimal().withMessage("Latitude is not valid"),
+  check("lng").isDecimal().withMessage("Longitude is not valid"),
   check("name")
     .exists({ checkFalsy: true })
     .isLength({ max: 50 })
@@ -49,14 +45,43 @@ const validateSpot = [
   handleValidationErrors,
 ];
 
-
-//-------------------Get all of the Current User's Bookings--------
-
-
-
-
-
-
-
+//--------Get all of the Current User's Bookings--------
+router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
+  const userId = req.user.id;
+  console.log("userId------------", userId);
+  const bookings = await Booking.findAll({
+    where: {
+      userId: userId,
+    },
+    include: {
+      model: Spot,
+      attributes: [
+        "id",
+        "ownerId",
+        "address",
+        "city",
+        "state",
+        "country",
+        "lat",
+        "lng",
+        "name",
+        "price",
+        // "previewImage",
+      ],
+    },
+  });
+  const img = await Image.findOne({
+    where: userId,
+  });
+  console.log("-----------img", img);
+  const result = [];
+  for (let booking of bookings) {
+    console.log("this is booking ````", booking);
+    booking = booking.toJSON();
+    booking.Spot.previewImage = img.dataValues.url;
+    result.push(booking);
+  }
+  res.json({ Bookings: result });
+});
 
 module.exports = router;
