@@ -302,26 +302,95 @@ router.delete("/:spotId", requireAuth, restoreUser, async (req, res) => {
   });
   // }
 });
+
+
 //----------------Get details of a Spot from an id-------
 
+// router.get("/:spotId", async (req, res, next) => {
+//   const currentSpot = await Spot.findByPk(req.params.spotId, {
+//     // attributes: {
+//     //   include: [
+//     //     // [Sequelize.literal("User"), "Owner"],
+//     //     [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
+//     //   ],
+//     // },
+//     include: [
+//       // {
+//       //   model: Review,
+//       //   attributes: {
+//       //     include: [
+//       //       [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
+//       //       [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
+//       //     ],
+//       //   },
+//       // },
+//       {
+//         model: Image,
+//         attributes: ["id", ["spotId", "imageableId"], "url"],
+//       },
+//       {
+//         model: User,
+//         as: "Owner",
+//         attributes: ["id", "firstName", "lastName"],
+//       },
+//     ],
+//   });
+//   if (!currentSpot) {
+//     res.json({
+
+//       message: "Spot couldn't be found",
+//       statusCode: 404,
+//     });
+//   }
+//   const countReview = await Spot.findByPk(req.params.spotId, {
+//     include: {
+//       model: Review,
+//       attributes: [],
+//     },
+//     attributes: {
+//       include: [
+//         [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
+//         [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
+//       ],
+//     },
+//     raw: true,
+//   });
+//   let currentSpotJSON = currentSpot.toJSON();
+//   currentSpotJSON.numReviews = countReview.numReviews;
+//   currentSpotJSON.avgStarRating = countReview.avgStarRating;
+//   res.json(currentSpotJSON);
+
+//   // console.log("spotId``````", spot.id);
+//   // const spotReview = await spot.getReviews({
+//   //   attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
+//   // });
+//   // // console.log('spotReview',spotReview)
+//   // let avgRating = spotReview[0].dataValues.avgRating;
+//   // // console.log('avgRating',avgRating)
+//   // spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
+
+//   // const previewImage = await Image.findOne({
+//   //   where: {
+//   //     [Op.and]: {
+//   //       spotId: spot.id,
+//   //       previewImage: true,
+//   //     },
+//   //   },
+//   // });
+//   // // console.log("previewImage", previewImage);
+//   // if (previewImage) {
+//   //   spot.dataValues.previewImage = previewImage.dataValues.url;
+//   // }
+
+//   // res.status(200);
+//   // res.json({ Spots: allSpots });
+//   // return;
+// });
+
 router.get("/:spotId", async (req, res, next) => {
-  const currentSpot = await Spot.findByPk(req.params.spotId, {
-    // attributes: {
-    //   include: [
-    //     // [Sequelize.literal("User"), "Owner"],
-    //     [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-    //   ],
-    // },
+  const id = req.params.spotId;
+  let spotDeets = await Spot.findByPk(id, {
     include: [
-      // {
-      //   model: Review,
-      //   attributes: {
-      //     include: [
-      //       [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
-      //       [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
-      //     ],
-      //   },
-      // },
       {
         model: Image,
         attributes: ["id", ["spotId", "imageableId"], "url"],
@@ -333,57 +402,27 @@ router.get("/:spotId", async (req, res, next) => {
       },
     ],
   });
-  if (!currentSpot) {
-    res.json({
-      // "message": "Spot couldn't be found",
-      // "statusCode": 404
-      message: "Spot couldn't be found",
-      statusCode: 404,
-    });
+  if (!spotDeets) {
+    const err = new Error("Spot couldn't be found");
+    err.status = 404;
+    return next(err);
   }
-  const countReview = await Spot.findByPk(req.params.spotId, {
+
+  const numDeets = await Spot.findByPk(id, {
     include: {
       model: Review,
       attributes: [],
     },
-    attributes: {
-      include: [
-        [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
-        [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
-      ],
-    },
+    attributes: [
+      [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
+      [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
+    ],
     raw: true,
   });
-  let currentSpotJSON = currentSpot.toJSON();
-  currentSpotJSON.numReviews = countReview.numReviews;
-  currentSpotJSON.avgStarRating = countReview.avgStarRating;
-  res.json(currentSpotJSON);
-
-  // console.log("spotId``````", spot.id);
-  // const spotReview = await spot.getReviews({
-  //   attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
-  // });
-  // // console.log('spotReview',spotReview)
-  // let avgRating = spotReview[0].dataValues.avgRating;
-  // // console.log('avgRating',avgRating)
-  // spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
-
-  // const previewImage = await Image.findOne({
-  //   where: {
-  //     [Op.and]: {
-  //       spotId: spot.id,
-  //       previewImage: true,
-  //     },
-  //   },
-  // });
-  // // console.log("previewImage", previewImage);
-  // if (previewImage) {
-  //   spot.dataValues.previewImage = previewImage.dataValues.url;
-  // }
-
-  // res.status(200);
-  // res.json({ Spots: allSpots });
-  // return;
+  let detailout = spotDeets.toJSON();
+  detailout.numReviews = numDeets.numReviews;
+  detailout.avgStarRating = numDeets.avgStarRating;
+  res.json(detailout);
 });
 
 //-------------GET ALL SPOTS-----------------
