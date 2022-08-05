@@ -78,17 +78,51 @@ const validateBooking = [
     .withMessage("endDate cannot be empty. Format is YYYY-MM-DD"),
   handleValidationErrors,
 ];
+const validateQuery = [
+  check("page")
+    .isInt({ min: 0 }, { max: 10 })
+    .optional()
+    .withMessage("Page must be greater than or equal to 0"),
+  check("size")
+    .isInt({ min: 0 }, { max: 20 })
+    .optional()
+    .withMessage("Size must be greater than or equal to 0"),
+  check("minLat")
+    .isDecimal()
+    .optional()
+    .withMessage("Minimum latitude is invalid"),
+  check("maxLat")
+    .isDecimal()
+    .optional()
+    .withMessage("Maximum latitude is invalid"),
+  check("minLng")
+    .isDecimal()
+    .optional()
+    .withMessage("Minimum longitude is invalid"),
+  check("maxLng")
+    .isDecimal()
+    .optional()
+    .withMessage("Maximum longitude is invalid"),
+  check("minPrice")
+    .isDecimal({ min: 0 })
+    .optional()
+    .withMessage("Minimum price must be greater than or equal to 0"),
+  check("maxPrice")
+    .isDecimal({ min: 0 })
+    .optional()
+    .withMessage("Maximum price must be greater than or equal to 0"),
+];
 
 //---------Format image output helper ------
 
-const imageFormatter = (imgObj) => {
-  const formattedImg = {
-    id: imgObj.id,
-    imageableId: imgObj.spotId,
-    url: imgObj.url,
-  };
-};
-//---------Spot found helper ------need to see how to use it
+// const imageFormatter = (imgObj) => {
+//   const formattedImg = {
+//     id: imgObj.id,
+//     imageableId: imgObj.spotId,
+//     url: imgObj.url,
+//   };
+// };
+//---------Spot found helper ------need to see how to use it?
 // const foundSpot = function (spot, next) {
 //   if (!spot) {
 //     const err = new Error("Spot couldn't be found");
@@ -144,7 +178,7 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
       statusCode: 404,
     });
   }
-  const userId = req.user.id; //???? need authorization
+  const userId = req.user.id; // need authorization??
   // const user = await User.scope('currentUser').findByPk(id);
   // console.log('USER__________',userId)
   let ownerId = spot.ownerId;
@@ -212,7 +246,7 @@ router.get("/current", async (req, res) => {
 });
 
 //------------EDIT A SPOT----------
-router.put("/:spotId", requireAuth, async (req, res) => {
+router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
   const spotId = req.params.spotId;
   const {
     address,
@@ -235,38 +269,38 @@ router.put("/:spotId", requireAuth, async (req, res) => {
     });
   }
 
-  const error = {
-    message: "Validation Error",
-    statusCode: 400,
-    errors: {},
-  };
+  // const error = {
+  //   message: "Validation Error",
+  //   statusCode: 400,
+  //   errors: {},
+  // };
 
-  if (!address) error.errors.address = "Street address is required";
-  if (!city) error.errors.city = "City is required";
-  if (!state) error.errors.state = "State is required";
-  if (!country) error.errors.country = "Country is required";
-  if (!lat) error.errors.lat = "Latitude is not valid";
-  if (!lng) error.errors.lng = "Longitude is not valid";
-  if (!name) error.errors.name = "Name must be less than 50 characters";
-  if (!description) error.errors.description = "Description is required";
-  if (!price) error.errors.price = "Price per day is required";
+  // if (!address) error.errors.address = "Street address is required";
+  // if (!city) error.errors.city = "City is required";
+  // if (!state) error.errors.state = "State is required";
+  // if (!country) error.errors.country = "Country is required";
+  // if (!lat) error.errors.lat = "Latitude is not valid";
+  // if (!lng) error.errors.lng = "Longitude is not valid";
+  // if (!name) error.errors.name = "Name must be less than 50 characters";
+  // if (!description) error.errors.description = "Description is required";
+  // if (!price) error.errors.price = "Price per day is required";
 
-  if (
-    !address ||
-    !city ||
-    !state ||
-    !country ||
-    !lat ||
-    !lng ||
-    !name ||
-    !description ||
-    !price
-  ) {
-    res.statusCode = 400;
-    return res.json(error);
-  }
+  // if (
+  //   !address ||
+  //   !city ||
+  //   !state ||
+  //   !country ||
+  //   !lat ||
+  //   !lng ||
+  //   !name ||
+  //   !description ||
+  //   !price
+  // ) {
+  //   res.statusCode = 400;
+  //   return res.json(error);
+  // }
 
-  await spot.update({
+  const editedSpot = await spot.update({
     address,
     city,
     state,
@@ -278,7 +312,7 @@ router.put("/:spotId", requireAuth, async (req, res) => {
     price,
     previewImage,
   });
-  res.json(spot);
+  res.json(editedSpot);
 });
 
 //---------------DELETE A SPOT---------------
@@ -345,11 +379,71 @@ router.get("/:spotId", async (req, res, next) => {
   //Number(avgRating).toFixed(1); //round to 1 decimal
 });
 
-//-------------GET ALL SPOTS-----------------
-router.get("/", async (req, res) => {
-  const allSpots = await Spot.findAll();
+//-------------GET ALL SPOTS--------------NOW ADD QUERY AND PAGINATION
+router.get("/", validateQuery, async (req, res, next) => {
+  const { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } =
+    req.query;
+  let pagination = { options: [] };
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  if (Number.isNaN(page)) {
+    page = 1;
+  }
+  if (Number.isNaN(size)) {
+    size = 20;
+  }
+
+  pagination.limit = size;
+  pagination.offset = size * (page - 1);
+
+  //push in options arr
+  if (minLat) {
+    pagination.options.push({
+      lat: { [Op.gte]: Number(minLat) },
+    });
+  }
+
+  if (maxLat) {
+    pagination.options.push({
+      lat: { [Op.lte]: Number(maxLat) },
+    });
+  }
+
+  if (minLng) {
+    pagination.options.push({
+      lng: { [Op.gte]: Number(minLng) },
+    });
+  }
+
+  if (maxLng) {
+    pagination.options.push({
+      lat: { [Op.lte]: Number(maxLng) },
+    });
+  }
+
+  if (minPrice) {
+    pagination.options.push({
+      price: { [Op.gte]: Number(minPrice) }
+    });
+  }
+
+  if (maxPrice) {
+    pagination.options.push({
+      price: { [Op.lte]: Number(maxPrice) },
+    });
+  }
+
+  const allSpots = await Spot.findAll({
+    where: {
+      [Op.and]: pagination.options,
+    },
+    limit: pagination.limit,
+    offset: pagination.offset,
+  });
   for (let spot of allSpots) {
-    console.log("spotId``````", spot.id);
+    // console.log("spotId``````", spot.id);
     const spotReview = await spot.getReviews({
       attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
     });
@@ -372,7 +466,12 @@ router.get("/", async (req, res) => {
     }
   }
   res.status(200);
-  res.json({ Spots: allSpots });
+  // res.json({ Spots: allSpots });
+  res.json({
+    page,
+    size,
+    allSpots
+  })
   return;
 });
 
