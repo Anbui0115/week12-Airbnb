@@ -133,9 +133,12 @@ router.put(
         statusCode: 403,
       });
     }
-    if (req.body.endDate < req.body.startDate) {
+    let { startDate, endDate } = req.body;
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    if (endDate <= startDate) {
       res.status(400);
-      res.json({
+      return res.json({
         message: "Validation error",
         statusCode: 400,
         errors: {
@@ -166,6 +169,15 @@ router.delete(
       return res.json({
         message: "Booking couldn't be found",
         statusCode: 404,
+      });
+    }
+    let today = new Date();
+    let { startDate, endDate } = booking;
+    if (today >= startDate && today <= endDate) {
+      res.status(403);
+      return res.json({
+        message: "Bookings that have been started can't be deleted",
+        statusCode: 403,
       });
     }
 
