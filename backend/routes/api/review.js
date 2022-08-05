@@ -124,6 +124,7 @@ router.delete(
   async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId);
     if (!review) {
+      res.status(404);
       return res.json({
         message: "Review couldn't be found",
         statusCode: 404,
