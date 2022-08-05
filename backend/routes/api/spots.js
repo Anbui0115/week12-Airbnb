@@ -303,14 +303,11 @@ router.delete("/:spotId", requireAuth, restoreUser, async (req, res) => {
   // }
 });
 
-
 //----------------Get details of a Spot from an id-------
 
 router.get("/:spotId", async (req, res, next) => {
   const currentSpot = await Spot.findByPk(req.params.spotId, {
-
     include: [
-
       {
         model: Image,
         attributes: ["id", ["spotId", "imageableId"], "url"],
@@ -324,7 +321,6 @@ router.get("/:spotId", async (req, res, next) => {
   });
   if (!currentSpot) {
     res.json({
-
       message: "Spot couldn't be found",
       statusCode: 404,
     });
@@ -336,19 +332,18 @@ router.get("/:spotId", async (req, res, next) => {
     },
     attributes: [
       [Sequelize.fn("COUNT", Sequelize.col("review")), "numReviews"],
-        [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
+      [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
     ],
     raw: true,
   });
   let currentSpotJSON = currentSpot.toJSON();
   currentSpotJSON.numReviews = countReview.numReviews;
-  // currentSpotJSON.avgStarRating = Number(countReview.avgStarRating).toFixed(1);
-   currentSpotJSON.avgStarRating = countReview.avgStarRating;
+  const rating = countReview.avgStarRating;
+  currentSpotJSON.avgStarRating = Number(rating).toFixed(1);
   res.json(currentSpotJSON);
 
   //Number(avgRating).toFixed(1); //round to 1 decimal
-
-})
+});
 
 //-------------GET ALL SPOTS-----------------
 router.get("/", async (req, res) => {
