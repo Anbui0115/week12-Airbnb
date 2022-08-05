@@ -352,57 +352,6 @@ router.get("/:spotId", async (req, res, next) => {
 
 //-------------GET ALL SPOTS-----------------
 router.get("/", async (req, res) => {
-  //     const reviewCount = await Review.count();
-  // console.log(reviewCount,"this is review count")
-
-  //   const allSpots = await Spot.findAll({
-  //     attributes: {
-  //       include: [
-  //         [Sequelize.literal("url"), "previewImage"],
-  //         // [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-  //       ],
-  //     },
-  //     include: [
-  //       {
-  //         model: Image,
-  //         where: {
-  //           previewImage: true,
-  //         },
-  //         attributes: [],
-  //       },
-  //       // {
-  //       //  model:Review,
-  //       //  attributes:[]
-  //       // }
-  //     ],
-  //   });
-  //   for (let i = 0; i < allSpots.length; i++) {
-  //     let spot = allSpots[i];
-  //     let count = await Review.count({
-  //       where: {
-  //         spotId: spot.dataValues.id,
-  //       },
-  //     });
-  //     let total = await Review.sum("stars", {
-  //       where: { spotId: spot.dataValues.id },
-  //     });
-  //     spot.dataValues.avgRating = total / count;
-  //   }
-
-  //   // Spots.forEach(spot =>{
-  //   //     spot.avgRating= await Review.findAll({
-  //   //         attributes:{
-  //   //             include:[
-  //   //                 [Sequelize.fn('AVG', Sequelize.col('stars')), "avgRating"]
-  //   //             ]
-  //   //         }
-  //   //     })
-  //   //     console.log('--------',spot)
-  //   // })
-
-  //   res.status(200);
-  //   // Spots.previewImage= 'url example.com'
-  //   return res.json({ allSpots });
   const allSpots = await Spot.findAll();
   for (let spot of allSpots) {
     console.log("spotId``````", spot.id);
