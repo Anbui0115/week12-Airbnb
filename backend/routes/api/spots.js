@@ -55,11 +55,22 @@ const validateSpot = [
   handleValidationErrors,
 ];
 
+// {
+//       "message": "Validation error",
+//       "statusCode": 400,
+//       "errors": {
+//         "review": "Review text is required",
+//         "stars": "Stars must be an integer from 1 to 5",
+//       }
+//     }
+
 const validateReview = [
   check("review")
     .exists({ checkFalsy: true })
-    .withMessage("Review is required"),
-  check("stars").exists({ checkFalsy: true }).withMessage("Rating is required"),
+    .withMessage("Review text is required"),
+  check("stars")
+    .exists({ checkFalsy: true })
+    .withMessage("Stars must be an integer from 1 to 5"),
   handleValidationErrors,
 ];
 
@@ -135,13 +146,24 @@ const validateQuery = [
 router.post(
   "/:spotId/reviews",
   requireAuth,
-  validateReview,
+  // validateReview,
   async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId);
     if (!spot) {
-      const err = new Error("Spot couldn't be found");
-      err.errors = [`Spot with ID ${req.params.spotId} does not exist`];
-      return next(err);
+      res.status(404);
+      return res.json({ message: "Spot couldn't be found", statusCode: 404 });
+    }
+
+    if (!req.body.review || !req.body.stars) {
+      res.status(400);
+      return res.json({
+        message: "Validation error",
+        statusCode: 400,
+        errors: {
+          review: "Review text is required",
+          stars: "Stars must be an integer from 1 to 5",
+        },
+      });
     }
     const totalReviews = await Review.findAll({
       where: {
@@ -149,11 +171,11 @@ router.post(
       },
     });
     if (totalReviews.length >= 1) {
-      const err = new Error("User already has a review for this spot");
-      err.status = 403;
-      err.errors = [
-        `Current User already made a review for this spot with ID ${req.params.spotId}`,
-      ];
+      res.status(403);
+      return res.json({
+        message: "User already has a review for this spot",
+        statusCode: 403,
+      });
     }
     const newReview = await Review.create({
       userId: req.user.id,
@@ -381,7 +403,7 @@ router.get("/:spotId", async (req, res, next) => {
 
 //-------------GET ALL SPOTS--------------NOW ADD QUERY AND PAGINATION
 router.get("/", validateQuery, async (req, res, next) => {
-  const { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } =
+  let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } =
     req.query;
   let pagination = { options: [] };
 
@@ -425,7 +447,7 @@ router.get("/", validateQuery, async (req, res, next) => {
 
   if (minPrice) {
     pagination.options.push({
-      price: { [Op.gte]: Number(minPrice) }
+      price: { [Op.gte]: Number(minPrice) },
     });
   }
 
@@ -468,10 +490,10 @@ router.get("/", validateQuery, async (req, res, next) => {
   res.status(200);
   // res.json({ Spots: allSpots });
   res.json({
+    Spots: allSpots,
     page,
     size,
-    allSpots
-  })
+  });
   return;
 });
 
