@@ -13,8 +13,8 @@ const setUser = (user) => {
 const removeUser = () => {
   return {
     type: REMOVE_USER,
-    // payload: user,
-    // need userId ?
+    // dont' need userId ?
+    //is it bc we have session user?
   };
 };
 
