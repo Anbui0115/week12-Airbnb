@@ -46,7 +46,7 @@ router.post(
   async (req, res) => {
     const { firstName,lastName,email, password, username } = req.body;
     const user = await User.signup({ firstName,lastName,email, username, password });
-
+    //should I check if(user exist){ do below }?
     await setTokenCookie(res, user);
 
     return res.json(user);
