@@ -4,9 +4,8 @@ const bcrypt = require('bcryptjs')
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
-     * Add seed commands here.
-     *
-     * Example:*/
+     * Add seed commands here.*/
+  
      await queryInterface.bulkInsert(
        "Users",
        [
