@@ -68,7 +68,7 @@ const validateBooking = [
 //--------Get all of the Current User's Bookings--------
 router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
   const userId = req.user.id;
-  console.log("userId------------", userId);
+  // console.log("userId------------", userId);
   const bookings = await Booking.findAll({
     where: {
       userId: userId,
@@ -93,10 +93,10 @@ router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
   const img = await Image.findOne({
     where: userId,
   });
-  console.log("-----------img", img);
+  // console.log("-----------img", img);
   const result = [];
   for (let booking of bookings) {
-    console.log("this is booking ````", booking);
+    // console.log("this is booking ````", booking);
     booking = booking.toJSON();
     booking.Spot.previewImage = img.dataValues.url;
     result.push(booking);

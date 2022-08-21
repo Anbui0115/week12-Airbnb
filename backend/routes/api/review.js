@@ -77,7 +77,7 @@ router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
   });
   for (let i = 0; i < currentReviews.length; i++) {
     let review = currentReviews[i];
-    console.log("review``````````````````", review);
+    // console.log("review``````````````````", review);
     let spot = await review.getSpot();
     let images = await review.getImages({
       attributes: ["id", ["reviewId", "imageableId"], "url"],
