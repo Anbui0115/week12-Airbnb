@@ -6,6 +6,7 @@ const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   spots: spotsReducer,
+  // reviews:reviewReducer
 });
 
 let enhancer;
