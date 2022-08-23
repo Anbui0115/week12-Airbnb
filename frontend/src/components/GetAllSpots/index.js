@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 
 function GetAllSpots() {
-  const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
+  // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
   const dispatch = useDispatch();
   const allSpots = useSelector((state) => state.spots);
@@ -20,22 +20,26 @@ function GetAllSpots() {
     //         const data = await res.json();
     //         if (data && data.errors) setErrors(data.errors);
     //       }
-    dispatch(getAllSpotsThunk()).then(setIsLoaded(true));
+    console.log("useEffect isrunning !!!")
+    dispatch(getAllSpotsThunk());
+    // .then(setIsLoaded(true));
   }, [dispatch]);
 
   return (
-        allSpotsArray&& isLoaded && (
-      <>
-        <div>GET ALL SPOTS</div>
-        <div>
-          <ul>
-            {allSpotsArray.map((spot) => (
-              <li key={spot.id}>{spot.name}</li>
-            ))}
-          </ul>
-        </div>
-      </>
-    )
+    <>
+      {allSpotsArray && (
+        <>
+          <div>GET ALL SPOTS</div>
+          <div>
+            <ul>
+              {allSpotsArray.map((spot) => (
+                <li key={spot.id}>{spot.name}</li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
+    </>
   );
 }
 export default GetAllSpots;

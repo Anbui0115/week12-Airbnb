@@ -10,10 +10,10 @@ const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
 // const DELETE_A_SPOT = "/spots/spotId/delete";
 
 //action creators
-const getAllSpots = (spot /* data.Spots */) => {
+const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
   return {
     type: GET_ALL_SPOTS,
-    spot,
+    spotsArr,
   };
 };
 
@@ -59,7 +59,7 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     console.log("response inside get all spots thunk", response);
-    const data = await response.json();
+    const data = await response.json();//Spots:[{},{}]
     console.log("data inside get all spots thunk", data);
     dispatch(getAllSpots(data.Spots));
     return data;
@@ -81,14 +81,15 @@ export const spotDetailsThunk = (spotId) => async (dispatch) => {
   }
 };
 //reducer
-const initialState = { spots: null };
+// const initialState = { spots: null };
+const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case GET_ALL_SPOTS: {
       //normalize data-turn convert arr to obj to get O(1) search time
-      action.spot.forEach((spot) => {
+      action.spotsArr.forEach((spot) => {//spot is an obj
         newState[spot.id] = spot;
       });
       console.log("newState inside get all spots reducer", newState);
@@ -97,10 +98,8 @@ const spotsReducer = (state = initialState, action) => {
     case GET_DETAILS_OF_A_SPOT: {
       newState = { ...state };
       //adding more details into this spot
-      newState[action.spot.id] = Object.assign(
-        newState[action.spot.id],
-        action.spot
-      );
+      // newState[action.spot.id] = Object.assign(newState[action.spot.id],action.spot);
+      newState[action.spot.id] = action.spot;
       console.log("newState inside get spot details reducer", newState);
       return newState;
     }
