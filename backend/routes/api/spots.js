@@ -375,6 +375,7 @@ router.get("/:spotId", async (req, res, next) => {
       },
     ],
   });
+  console.log("THIS IS CURRENT SPOT in BACKEND", currentSpot);
   if (!currentSpot) {
     res.json({
       message: "Spot couldn't be found",

@@ -10,10 +10,10 @@ const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
 // const DELETE_A_SPOT = "/spots/spotId/delete";
 
 //action creators
-const getAllSpots = (payload /* data.Spots */) => {
+const getAllSpots = (spot /* data.Spots */) => {
   return {
     type: GET_ALL_SPOTS,
-    payload,
+    spot,
   };
 };
 
@@ -23,10 +23,10 @@ const getAllSpots = (payload /* data.Spots */) => {
 //     payload,
 //   };
 // };
-const getDetailsOfASpot = (payload) => {
+const getDetailsOfASpot = (spot) => {
   return {
     type: GET_DETAILS_OF_A_SPOT,
-    payload,
+    spot,
   };
 };
 // const createASpot = (payload) => {
@@ -68,6 +68,18 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   }
 };
 
+export const spotDetailsThunk = (spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}`);
+  if (response.ok) {
+    console.log("response inside get spot details thunk", response);
+    const data = await response.json();
+    console.log("data inside get spot details thunk", data);
+    dispatch(getDetailsOfASpot(data.Spots));
+    return data;
+  } else {
+    return response;
+  }
+};
 //reducer
 const initialState = { spots: null };
 
@@ -76,12 +88,28 @@ const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SPOTS: {
       //normalize data-turn convert arr to obj to get O(1) search time
-      action.payload.forEach((spot) => {
+      action.spot.forEach((spot) => {
         newState[spot.id] = spot;
       });
       console.log("newState inside get all spots reducer", newState);
       return newState;
     }
+    case GET_DETAILS_OF_A_SPOT: {
+      newState = { ...state };
+      //adding more details into this spot
+      newState[action.spot.id] = Object.assign(
+        newState[action.spot.id],
+        action.spot
+      );
+      console.log("newState inside get spot details reducer", newState);
+      return newState;
+    }
+    // case DELETE_A_SPOT: {
+    //   newState = { ...state };
+    //   //adding more details into this spot
+    //   delete newState[????]
+    //   return newState;
+    // }
     default:
       return state;
   }
