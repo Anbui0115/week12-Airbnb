@@ -23,10 +23,10 @@ const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
 //     payload,
 //   };
 // };
-const getDetailsOfASpot = (spot) => {
+const getDetailsOfASpot = (payload) => {
   return {
     type: GET_DETAILS_OF_A_SPOT,
-    spot,
+    payload,
   };
 };
 // const createASpot = (payload) => {
@@ -74,7 +74,7 @@ export const spotDetailsThunk = (spotId) => async (dispatch) => {
     console.log("response inside get spot details thunk", response);
     const data = await response.json();
     console.log("data inside get spot details thunk", data);
-    dispatch(getDetailsOfASpot(data.Spots));
+    dispatch(getDetailsOfASpot(data));
     return data;
   } else {
     return response;
@@ -99,8 +99,11 @@ const spotsReducer = (state = initialState, action) => {
     case GET_DETAILS_OF_A_SPOT: {
       newState = { ...state };
       //adding more details into this spot
-      // newState[action.spot.id] = Object.assign(newState[action.spot.id],action.spot);
-      newState[action.spot.id] = action.spot;
+      // newState[action.payload.id] = Object.assign(newState[action..id],action.spot);
+      newState[action.payload.id] = {
+        ...newState[action.payload.id],
+        ...action.payload,
+      };
       //need tp include more info later
       console.log("newState inside get spot details reducer", newState);
       return newState;
