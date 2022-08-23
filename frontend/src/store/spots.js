@@ -59,9 +59,9 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     console.log("response inside get all spots thunk", response);
-    const data = await response.json();//Spots:[{},{}]
+    const data = await response.json(); //Spots:[{},{}]
     console.log("data inside get all spots thunk", data);
-    dispatch(getAllSpots(data.Spots));
+    dispatch(getAllSpots(data.Spots)); //[{},{},{}]
     return data;
   } else {
     return response;
@@ -89,7 +89,8 @@ const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SPOTS: {
       //normalize data-turn convert arr to obj to get O(1) search time
-      action.spotsArr.forEach((spot) => {//spot is an obj
+      action.spotsArr.forEach((spot) => {
+        //spot is an obj
         newState[spot.id] = spot;
       });
       console.log("newState inside get all spots reducer", newState);
@@ -100,6 +101,7 @@ const spotsReducer = (state = initialState, action) => {
       //adding more details into this spot
       // newState[action.spot.id] = Object.assign(newState[action.spot.id],action.spot);
       newState[action.spot.id] = action.spot;
+      //need tp include more info later
       console.log("newState inside get spot details reducer", newState);
       return newState;
     }

@@ -4,14 +4,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
-
+import { NavLink } from "react-router-dom";
 function GetAllSpots() {
   // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
   const dispatch = useDispatch();
-  const allSpots = useSelector((state) => state.spots);
-  const allSpotsArray = Object.values(allSpots);
-  console.log("this is allSpots inside GetAllSpots component", allSpots);
+  const allSpotsObj = useSelector((state) => state.spots); //{null}---{}
+  const allSpotsArray = Object.values(allSpotsObj); //[null]---[]
+  console.log("this is allSpots inside GetAllSpots component", allSpotsObj);
   console.log("allSpotArray------------", allSpotsArray);
 
   useEffect(() => {
@@ -20,20 +20,22 @@ function GetAllSpots() {
     //         const data = await res.json();
     //         if (data && data.errors) setErrors(data.errors);
     //       }
-    console.log("useEffect isrunning !!!")
+    console.log("useEffect isrunning !!!");
     dispatch(getAllSpotsThunk());
     // .then(setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
-      {allSpotsArray && (
+      {allSpotsArray && ( //[]
         <>
           <div>GET ALL SPOTS</div>
           <div>
             <ul>
               {allSpotsArray.map((spot) => (
-                <li key={spot.id}>{spot.name}</li>
+                <NavLink to={`${spot.id}`} key={`spot${spot.id}`}>
+                  <li>{spot.name}</li>
+                </NavLink>
               ))}
             </ul>
           </div>

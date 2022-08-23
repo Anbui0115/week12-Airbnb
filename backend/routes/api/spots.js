@@ -491,7 +491,7 @@ router.get("/", validateQuery, async (req, res, next) => {
   res.status(200);
   // res.json({ Spots: allSpots });
   res.json({
-    Spots: allSpots,
+    Spots: allSpots,//allSpots is an array
     page,
     size,
   });
