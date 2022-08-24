@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { getAllSpotsThunk } from "../../store/spots";
 import { spotDetailsThunk } from "../../store/spots";
-
+import EditSpotForm from "../EditASpot";
 function GetSpotDetails() {
+  const history = useHistory();
   const dispatch = useDispatch();
   let { spotId } = useParams();
   console.log("spotId------", spotId, typeof spotId); //1--string
@@ -27,7 +28,10 @@ function GetSpotDetails() {
   if (!spot) {
     return <h1>no SPOTS</h1>;
   }
-
+  const onClickEdit = (e) => {
+    e.preventDefault();
+    history.push(`/spots/${spotId}/edit`);
+  };
   return (
     <>
       <h2>Spot Details:</h2>
@@ -35,6 +39,8 @@ function GetSpotDetails() {
       <p>{spot.address}</p>
       <p>{spot.description}</p>
       <p>{spot.price}</p>
+
+      <button onClick={onClickEdit}>Edit</button>
     </>
   );
 }

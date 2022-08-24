@@ -1,6 +1,6 @@
 // frontend/src/App.js
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
@@ -12,6 +12,8 @@ import EditASpot from "./components/EditASpot";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  // const spots = useSelector((state) => state.spots);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);

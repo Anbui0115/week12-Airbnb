@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createASpotThunk } from "../../store/spots";
 import { getAllSpotsThunk } from "../../store/spots";
 // import { useHistory } from "react-router-dom";
@@ -18,7 +19,7 @@ function CreateSpotForm() {
   //errors
   const [validationErrors, setValidationErrors] = useState([]);
   // const [imageUrl, setImageUrl] = useState("");
-  // const history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getAllSpotsThunk());
@@ -55,7 +56,7 @@ function CreateSpotForm() {
     // imageUrl,
   ]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     let spotInfo = {
       address,
@@ -71,9 +72,10 @@ function CreateSpotForm() {
     };
     console.log("spotInfo inside Form", spotInfo);
     setValidationErrors([]);
-    dispatch(createASpotThunk(spotInfo));
+    const data = await dispatch(createASpotThunk(spotInfo));
+
     //need to redirect to the newly created spot
-    // history.push('/spots')
+    history.push(`/spots/${data.id}`);
   };
   return (
     <form onSubmit={onSubmit}>

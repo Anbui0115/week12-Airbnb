@@ -122,14 +122,12 @@ export const createASpotThunk = (userInput) => async (dispatch) => {
     return response; //handle errors HERE?
   }
 };
-export const editASpotThunk = (userInput, spotId) => async (dispatch) => {
-  console.log("userInput in thunk edit a spot", userInput);
-  const { address, city, state, country, lat, lng, name, description, price } =
-    userInput;
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+export const editASpotThunk =
+  ({ userInput, spotId }) =>
+  async (dispatch) => {
+    console.log("userInput in thunk edit a spot", userInput);
+    console.log("spotId~~~~", spotId);
+    const {
       address,
       city,
       state,
@@ -139,21 +137,35 @@ export const editASpotThunk = (userInput, spotId) => async (dispatch) => {
       name,
       description,
       price,
-    }),
-  });
-  if (response.ok) {
-    console.log("response inside create a spot thunk", response);
-    const data = await response.json();
-    console.log("data inside get all spots thunk", data);
-    dispatch(editASpot(data));
-    // dispatch(getSpotByIdThunk(data));
-    return data;
-    //might want to redirect to newly created SPOT
-  } else {
-    console.log("response is not okay!!!!---------");
-    return response; //handle errors HERE?
-  }
-};
+    } = userInput;
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+      }),
+    });
+    if (response.ok) {
+      console.log("response inside create a spot thunk", response);
+      const data = await response.json();
+      console.log("data inside get all spots thunk", data);
+      dispatch(editASpot(data));
+      // dispatch(getSpotByIdThunk(data));
+      return data;
+      //might want to redirect to newly created SPOT
+    } else {
+      console.log("response is not okay!!!!---------");
+      return response; //handle errors HERE?
+    }
+  };
 //reducer
 // const initialState = { spots: null };
 const initialState = {};
