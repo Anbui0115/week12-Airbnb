@@ -1,12 +1,13 @@
+// import { post } from "../../../backend/routes/api/spots";
 import { csrfFetch } from "./csrf";
 
 //type
 const GET_ALL_SPOTS = "/spots/all-spots";
 // const GET_SPOTS_OWNED_BY_USER = "/spots/user-spots";
 const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
-// const CREATE_A_SPOT = "spot/create";
+const CREATE_A_SPOT = "spot/create";
 // const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
-// const EDIT_A_SPOT = "/spots/spotId/edit";
+const EDIT_A_SPOT = "/spots/spotId/edit";
 // const DELETE_A_SPOT = "/spots/spotId/delete";
 
 //action creators
@@ -29,24 +30,24 @@ const getDetailsOfASpot = (payload) => {
     payload,
   };
 };
-// const createASpot = (payload) => {
-//   return {
-//     type: CREATE_A_SPOT,
-//     payload,
-//   };
-// };
+const createASpot = (payload) => {
+  return {
+    type: CREATE_A_SPOT,
+    payload,
+  };
+};
 // const addImgToASpot = (payload) => {
 //   return {
 //     type: ADD_IMG_TO_A_SPOT,
 //     payload,
 //   };
 // };
-// const editASpot = (payload) => {
-//   return {
-//     type: EDIT_A_SPOT,
-//     payload,
-//   };
-// };
+const editASpot = (payload) => {
+  return {
+    type: EDIT_A_SPOT,
+    payload,
+  };
+};
 // const deleteASpot = (payload) => {
 //   return {
 //     type: DELETE_A_SPOT,
@@ -80,6 +81,79 @@ export const spotDetailsThunk = (spotId) => async (dispatch) => {
     return response;
   }
 };
+export const getSpotByIdThunk = (spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}`);
+  console.log("response inside get Spot by Id Thunk", response);
+  if (response.ok) {
+    const data = await response.json();
+    console.log("data inside getSpot by id thunk", data);
+    dispatch(getDetailsOfASpot(data));
+  }
+};
+export const createASpotThunk = (userInput) => async (dispatch) => {
+  console.log("userInput in thunk create a spot", userInput);
+  const { address, city, state, country, lat, lng, name, description, price } =
+    userInput;
+  const response = await csrfFetch("/api/spots", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      address,
+      city,
+      state,
+      country,
+      lat,
+      lng,
+      name,
+      description,
+      price,
+    }),
+  });
+  if (response.ok) {
+    console.log("response inside create a spot thunk", response);
+    const data = await response.json();
+    console.log("data inside get all spots thunk", data);
+    dispatch(createASpot(data));
+    // dispatch(getSpotByIdThunk(data));
+    return data;
+    //might want to redirect to newly created SPOT
+  } else {
+    console.log("response is not okay!!!!---------");
+    return response; //handle errors HERE?
+  }
+};
+export const editASpotThunk = (userInput) => async (dispatch) => {
+  console.log("userInput in thunk edit a spot", userInput);
+  const { address, city, state, country, lat, lng, name, description, price } =
+    userInput;
+  const response = await csrfFetch("/api/spots", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      address,
+      city,
+      state,
+      country,
+      lat,
+      lng,
+      name,
+      description,
+      price,
+    }),
+  });
+  if (response.ok) {
+    console.log("response inside create a spot thunk", response);
+    const data = await response.json();
+    console.log("data inside get all spots thunk", data);
+    dispatch(editASpot(data));
+    // dispatch(getSpotByIdThunk(data));
+    return data;
+    //might want to redirect to newly created SPOT
+  } else {
+    console.log("response is not okay!!!!---------");
+    return response; //handle errors HERE?
+  }
+};
 //reducer
 // const initialState = { spots: null };
 const initialState = {};
@@ -108,14 +182,21 @@ const spotsReducer = (state = initialState, action) => {
       console.log("newState inside get spot details reducer", newState);
       return newState;
     }
-    // case DELETE_A_SPOT: {
-    //   newState = { ...state };
-    //   //adding more details into this spot
-    //   delete newState[????]
-    //   return newState;
-    // }
+    case CREATE_A_SPOT: {
+      newState = { ...state };
+      newState[action.payload.id] = action.payload;
+      console.log("newState inside create a spot  reducer", newState);
+      return newState;
+    }
+    case EDIT_A_SPOT: {
+      newState = { ...state };
+      newState[action.payload.id] = action.payload;
+      console.log("newState inside edit a spot  reducer", newState);
+      return newState;
+    }
     default:
       return state;
   }
 };
+
 export default spotsReducer;
