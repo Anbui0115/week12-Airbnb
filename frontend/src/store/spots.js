@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 
 //type
 const GET_ALL_SPOTS = "/spots/all-spots";
-// const GET_SPOTS_OWNED_BY_USER = "/spots/user-spots";
+const GET_SPOTS_OWNED_BY_USER = "/spots/user-spots";
 const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
 const CREATE_A_SPOT = "spot/create";
 // const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
@@ -18,12 +18,12 @@ const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
   };
 };
 
-// const getSpotsOwnedByUser = (payload) => {
-//   return {
-//     type: GET_SPOTS_OWNED_BY_USER,
-//     payload,
-//   };
-// };
+const getSpotsOwnedByUser = (payload) => {
+  return {
+    type: GET_SPOTS_OWNED_BY_USER,
+    payload,
+  };
+};
 const getDetailsOfASpot = (payload) => {
   return {
     type: GET_DETAILS_OF_A_SPOT,
@@ -63,6 +63,19 @@ export const getAllSpotsThunk = () => async (dispatch) => {
     const data = await response.json(); //Spots:[{},{}]
     console.log("data inside get all spots thunk", data);
     dispatch(getAllSpots(data.Spots)); //[{},{},{}]
+    return data;
+  } else {
+    return response;
+  }
+};
+
+export const getSpotByOwnerThunk = () => async (dispatch) => {
+  const response = await csrfFetch("/api/spots/current");
+  if (response.ok) {
+    console.log("response inside get all spots thunk", response);
+    const data = await response.json(); //Spots:[{},{}]
+    console.log("data inside get all spots thunk", data);
+    dispatch(getSpotsOwnedByUser(data.Spots)); //[{},{},{}]
     return data;
   } else {
     return response;
@@ -205,6 +218,13 @@ const spotsReducer = (state = initialState, action) => {
       newState[action.payload.id] = action.payload;
       console.log("newState inside edit a spot  reducer", newState);
       return newState;
+    }
+    case GET_SPOTS_OWNED_BY_USER: {
+      action.payload.forEach((spot) => {
+        newState[spot.id] = spot;
+      });
+      console.log('newState inside get spot by owner reducer',newState)
+      return newState
     }
     default:
       return state;

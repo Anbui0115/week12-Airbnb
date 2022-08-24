@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createASpotThunk } from "../../store/spots";
 import { getAllSpotsThunk } from "../../store/spots";
 import { editASpotThunk } from "../../store/spots";
 import { getSpotByIdThunk } from "../../store/spots";
@@ -17,16 +16,15 @@ function EditSpotForm() {
   }
   console.log("this SPot exist now", thisSpot);
   const [isLoaded, setIsLoaded] = useState(false);
-  //   condition ? exprIfTrue : exprIfFalse
-  const [address, setAddress] = useState(thisSpot.address || "");
-  const [city, setCity] = useState(thisSpot.city || "");
-  const [state, setState] = useState(thisSpot.state || "");
-  const [country, setCountry] = useState(thisSpot.country || "");
-  const [lat, setLat] = useState(thisSpot.lat || "");
-  const [lng, setLng] = useState(thisSpot.lng || "");
-  const [name, setName] = useState(thisSpot.name || "");
-  const [description, setDescription] = useState(thisSpot.description || "");
-  const [price, setPrice] = useState(thisSpot.price || "");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
   //errors
   const [validationErrors, setValidationErrors] = useState([]);
   // const [imageUrl, setImageUrl] = useState("");
@@ -44,13 +42,24 @@ function EditSpotForm() {
       setDescription(thisSpot.description);
       setPrice(thisSpot.price);
     }
-  }, [address, city, state, country, lat, lng, name, description, price]);
+  }, [
+    address,
+    city,
+    state,
+    country,
+    lat,
+    lng,
+    name,
+    description,
+    price,
+    thisSpot,
+  ]);
 
   useEffect(() => {
     dispatch(getAllSpotsThunk())
       .then(dispatch(getSpotByIdThunk(spotId)))
       .then(setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   useEffect(() => {
     let errors = [];
@@ -105,7 +114,7 @@ function EditSpotForm() {
     history.push(`/spots/${data.id}`);
   };
   return (
-    { isLoaded } && (
+    { isLoaded } && { thisSpot } && (
       <form onSubmit={onSubmit}>
         <h1>Form</h1>
         <ul>
