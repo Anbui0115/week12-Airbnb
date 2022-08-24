@@ -122,11 +122,11 @@ export const createASpotThunk = (userInput) => async (dispatch) => {
     return response; //handle errors HERE?
   }
 };
-export const editASpotThunk = (userInput) => async (dispatch) => {
+export const editASpotThunk = (userInput, spotId) => async (dispatch) => {
   console.log("userInput in thunk edit a spot", userInput);
   const { address, city, state, country, lat, lng, name, description, price } =
     userInput;
-  const response = await csrfFetch("/api/spots", {
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
