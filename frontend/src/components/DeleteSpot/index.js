@@ -1,6 +1,6 @@
-import {deleteASpotThunk} from '../../store/spots'
+// import {deleteASpotThunk} from '../../store/spots'
 
-function DeleteASpot() {
+// function DeleteASpot() {
 
-}
-export default DeleteASpot;
+// }
+// export default DeleteASpot;

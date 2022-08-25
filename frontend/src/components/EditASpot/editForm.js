@@ -9,56 +9,56 @@ function EditSpotForm() {
   const spots = useSelector((state) => state.spots);
   const { spotId } = useParams();
   console.log("this is spots props", spots);
-  const thisSpot = spots[Number(spotId)];
+  const spot = spots[Number(spotId)];
   const dispatch = useDispatch();
-  if (!thisSpot) {
-    console.log("this Spot is undefined");
+  if (!spot) {
+    console.log("spotis undefined");
   }
-  console.log("this SPot exist now", thisSpot);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  console.log("spot exist now", spot);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [state, setState] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [lat, setLat] = useState("");
+  // const [lng, setLng] = useState("");
+  // const [name, setName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [price, setPrice] = useState("");
+
+  const [address, setAddress] = useState(spot?.address);
+  const [city, setCity] = useState(spot?.city);
+  const [state, setState] = useState(spot?.state);
+  const [country, setCountry] = useState(spot?.country);
+  const [lat, setLat] = useState(spot?.lat);
+  const [lng, setLng] = useState(spot?.lng);
+  const [name, setName] = useState(spot?.name);
+  const [description, setDescription] = useState(spot?.description);
+  const [price, setPrice] = useState(spot?.price);
+
   //errors
   const [validationErrors, setValidationErrors] = useState([]);
   // const [imageUrl, setImageUrl] = useState("");
   const history = useHistory();
 
-  useEffect(() => {
-    if (thisSpot) {
-      setAddress(thisSpot.address);
-      setCity(thisSpot.city);
-      setState(thisSpot.state);
-      setCountry(thisSpot.country);
-      setLat(thisSpot.lat);
-      setLng(thisSpot.lng);
-      setName(thisSpot.name);
-      setDescription(thisSpot.description);
-      setPrice(thisSpot.price);
-    }
-  }, [
-    address,
-    city,
-    state,
-    country,
-    lat,
-    lng,
-    name,
-    description,
-    price,
-    thisSpot,
-  ]);
+  // useEffect(() => {
+  //   if (spot) {
+  //     setAddress(spot.address);
+  //     setCity(spot.city);
+  //     setState(spot.state);
+  //     setCountry(spot.country);
+  //     setLat(spot.lat);
+  //     setLng(spot.lng);
+  //     setName(spot.name);
+  //     setDescription(spot.description);
+  //     setPrice(spot.price);
+  //   }
+  // }, [spot]);
 
   useEffect(() => {
     dispatch(getAllSpotsThunk())
       .then(dispatch(getSpotByIdThunk(spotId)))
-      .then(setIsLoaded(true));
+      // .then(setIsLoaded(true));
   }, [dispatch, spotId]);
 
   useEffect(() => {
@@ -114,7 +114,8 @@ function EditSpotForm() {
     history.push(`/spots/${data.id}`);
   };
   return (
-    { isLoaded } && { thisSpot } && (
+    // { isLoaded } &&
+    { spot } && (
       <form onSubmit={onSubmit}>
         <h1>Form</h1>
         <ul>
