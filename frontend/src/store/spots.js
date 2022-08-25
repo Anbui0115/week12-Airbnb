@@ -8,7 +8,7 @@ const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
 const CREATE_A_SPOT = "spot/create";
 // const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
 const EDIT_A_SPOT = "/spots/spotId/edit";
-// const DELETE_A_SPOT = "/spots/spotId/delete";
+const DELETE_A_SPOT = "/spots/spotId/delete";
 
 //action creators
 const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
@@ -48,12 +48,12 @@ const editASpot = (payload) => {
     payload,
   };
 };
-// const deleteASpot = (payload) => {
-//   return {
-//     type: DELETE_A_SPOT,
-//     payload,
-//   };
-// };
+const deleteASpot = (payload) => {
+  return {
+    type: DELETE_A_SPOT,
+    payload,
+  };
+};
 
 //thunks
 export const getAllSpotsThunk = () => async (dispatch) => {
@@ -179,6 +179,20 @@ export const editASpotThunk =
       return response; //handle errors HERE?
     }
   };
+
+export const deleteASpotThunk = (spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: "DELETE",
+  }); ///
+  console.log("response inside delete a Spot Thunk", response);
+  if (response.ok) {
+    const data = await response.json();
+    console.log("data inside delete a spot thunk", data);
+    dispatch(deleteASpot(data));
+    // dispatch(deleteASpot(spotId));
+    return data;
+  }
+};
 //reducer
 // const initialState = { spots: null };
 const initialState = {};
@@ -223,8 +237,13 @@ const spotsReducer = (state = initialState, action) => {
       action.payload.forEach((spot) => {
         newState[spot.id] = spot;
       });
-      console.log('newState inside get spot by owner reducer',newState)
-      return newState
+      console.log("newState inside get spot by owner reducer", newState);
+      return newState;
+    }
+    case DELETE_A_SPOT: {
+      newState = { ...state };
+      delete newState[action.payload];
+      return newState;
     }
     default:
       return state;

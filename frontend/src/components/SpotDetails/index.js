@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { getAllSpotsThunk } from "../../store/spots";
-import { spotDetailsThunk } from "../../store/spots";
-import EditSpotForm from "../EditASpot";
+import { deleteASpotThunk, spotDetailsThunk } from "../../store/spots";
+// import EditSpotForm from "../EditASpot";
 function GetSpotDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -32,6 +32,11 @@ function GetSpotDetails() {
     e.preventDefault();
     history.push(`/spots/${spotId}/edit`);
   };
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteASpotThunk(spotId));
+    history.push(`/spots`);
+  };
   return (
     <>
       <h2>Spot Details:</h2>
@@ -41,6 +46,7 @@ function GetSpotDetails() {
       <p>{spot.price}</p>
 
       <button onClick={onClickEdit}>Edit</button>
+      <button onClick={onClickDelete}>Delete</button>
     </>
   );
 }
