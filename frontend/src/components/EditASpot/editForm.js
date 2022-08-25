@@ -74,7 +74,7 @@ function EditSpotForm() {
     if (lng === "") errors.push("Longitude is not valid");
     if (name === "")
       errors.push("Name is required and must be less than 50 characters");
-    if (name.length > 50) errors.push("Name must be less than 50 characters");
+    if (name?.length > 50) errors.push("Name must be less than 50 characters");
     if (description === "") errors.push("Description is required");
     if (price === "") errors.push("Price per day is required");
     // if (imageUrl === "") errors.push("Image URL is required");

@@ -2,16 +2,16 @@ import { csrfFetch } from "./csrf";
 
 //Types:
 //get all
-const LOAD_REVIEWS = "reviews/getReviews";
+const GET_REVIEWS_CURRENT_USER = "reviews/getReviews";
+const GET_REVIEWS_OF_SPOT = "reviews/readReview";
 const CREATE_REVIEW = "reviews/createReview";
-const READ_REVIEW = "reviews/readReview";
 const UPDATE_REVIEW = "reviews/updateReview";
 const DELETE_REVIEW = "reviews/deleteReview";
 
 //ActionCreators:
 const actionLoadReviews = (reviews) => {
   return {
-    type: LOAD_REVIEWS,
+    type: GET_REVIEWS_CURRENT_USER,
     reviews,
   };
 };
@@ -24,7 +24,7 @@ const actionCreateReview = () => {
 
 const actionReadReview = (reviews) => {
   return {
-    type: READ_REVIEW,
+    type: GET_REVIEWS_OF_SPOT,
     reviews,
   };
 };
@@ -108,7 +108,7 @@ const initialState = {};
 //reducer
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_REVIEWS: {
+    case GET_REVIEWS_CURRENT_USER: {
       const allReviews = {};
       action.reviews.forEach((review) => {
         allReviews[review.id] = review;
@@ -120,7 +120,7 @@ const reviewsReducer = (state = initialState, action) => {
       newState[action.spot.id] = action.spot;
       return newState;
     }
-    case READ_REVIEW: {
+    case GET_REVIEWS_OF_SPOT: {
       const newState = { ...state };
       newState[action.spotById.id] = action.spotById;
       return newState;

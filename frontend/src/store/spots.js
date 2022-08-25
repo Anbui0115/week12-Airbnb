@@ -188,8 +188,8 @@ export const deleteASpotThunk = (spotId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     console.log("data inside delete a spot thunk", data);
+    // dispatch(deleteASpot(data));
     dispatch(deleteASpot(data));
-    // dispatch(deleteASpot(spotId));
     return data;
   }
 };
