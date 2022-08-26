@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/spots">
+          <Route exact path="/">
             <GetAllSpots />
           </Route>
           <Route exact path="/spots/new">

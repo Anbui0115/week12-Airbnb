@@ -1,7 +1,7 @@
 // import * as sessionActions from "../../store/session";
 // import { Redirect } from "react-router-dom";
 // import { getRounds } from "bcryptjs";
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
@@ -31,13 +31,21 @@ function GetAllSpots() {
         <>
           <div>GET ALL SPOTS</div>
           <div>
-            <ul>
+            <div>
               {allSpotsArray.map((spot) => (
-                <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
-                  <li>{spot.name}</li>
+                <NavLink to={`/spots/${spot.id}`}>
+                  <div>
+                    <img src={spot.previewImage} width="250" height="250" />
+                    <br />
+                    {spot.name}
+                    <br />
+                    {spot.description}
+                    <br />
+                    &#9733; {spot.avgRating}
+                  </div>
                 </NavLink>
               ))}
-            </ul>
+            </div>
           </div>
         </>
       )}
