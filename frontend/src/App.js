@@ -10,7 +10,11 @@ import GetSpotDetails from "./components/SpotDetails";
 import CreateASpot from "./components/CreateSpot";
 import EditASpot from "./components/EditASpot";
 import SpotsByOwner from "./components/SpotByOwner";
-import DeleteASpot from './components/DeleteSpot'
+// import DeleteASpot from './components/DeleteSpot'
+import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
+import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
+import CreateReview from "./components/CreateReview";
+// import CreateSpotForm from "./components/CreateSpot/createSpotForm";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -46,6 +50,15 @@ function App() {
           {/* <Route exact path="/spots/:spotId/delete">
             <DeleteASpot/>
           </Route> */}
+          <Route exact path="/reviews/current">
+            <GetReviewsCurrentUser />
+          </Route>
+          <Route exact path="/spots/:spotId/reviews">
+            <GetReviewsBySpotId />
+          </Route>
+          <Route exact path="/spots/:spotId/create-review">
+            <CreateReview />
+          </Route>
         </Switch>
       )}
     </>

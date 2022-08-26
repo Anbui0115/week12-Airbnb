@@ -16,17 +16,17 @@ const getReviewsCurrentUser = (reviews) => {
   };
 };
 
-const getReviewsOfSpot = (reviews) => {
+const getReviewsOfSpot = (payload) => {
   return {
     type: GET_REVIEWS_OF_SPOT,
-    reviews,
+    payload,
   };
 };
 
 const createReview = (userInput) => {
   return {
     type: CREATE_REVIEW,
-    payload,
+    // payload,
   };
 };
 
@@ -41,11 +41,13 @@ const deleteReview = (reviewId) => {
 //fetchReviews
 
 export const getReviewsCurrentUserThunk = () => async (dispatch) => {
-  const response = await csrfFetch("/api/reviews");
+  const response = await csrfFetch("/api/reviews/current");
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(getReviewsCurrentUser(data));
+    console.log("data in get current user reviews thunk", data);
+    dispatch(getReviewsCurrentUser(data.Reviews));
+    return data;
   }
 };
 
@@ -54,12 +56,18 @@ export const getReviewsBySpotId = (spotId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    // dispatch(getReviewsOfSpot(data.Reviews));
     dispatch(getReviewsOfSpot(data.Reviews));
+
+    console.log("data inside get reviews by spot id", data);
+    return data;
+  } else {
+    return response;
   }
 };
 
-export const createAReview = (userInput) => async (dispatch) => {
-  const response = await csrfFetch("/api/reviews", {
+export const createAReview = (userInput, spotId) => async (dispatch) => {
+  const response = await csrfFetch(` /api/spots/${spotId}/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,8 +76,10 @@ export const createAReview = (userInput) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const review = await response.json();
-    dispatch(createReview(review));
+    const data = await response.json();
+    console.log("data in my create a review thunk", data);
+    dispatch(createReview(data));
+    return data;
   }
 };
 
@@ -81,6 +91,7 @@ export const deleteAReview = (reviewId) => async (dispatch) => {
   if (response.ok) {
     dispatch(deleteReview(reviewId));
   }
+  return response;
 };
 
 //initialState
@@ -88,23 +99,28 @@ const initialState = {};
 
 //reducer
 const reviewsReducer = (state = initialState, action) => {
+  let newState = {};
   switch (action.type) {
     case GET_REVIEWS_CURRENT_USER: {
-      const allReviews = {};
       action.reviews.forEach((review) => {
-        allReviews[review.id] = review;
+        newState[review.id] = review;
       });
-      return allReviews;
+      return newState;
     }
     case CREATE_REVIEW: {
       const newState = { ...state };
-      newState[action.spot.id] = action.spot;
+      newState[action.review.id] = action.review;
       return newState;
     }
     case GET_REVIEWS_OF_SPOT: {
-      const newState = { ...state };
-      newState[action.spotById.id] = action.spotById;
+      action.payload.forEach((review) => {
+        newState[review.id] = review;
+      });
       return newState;
+      //  newState[action.payload.id] = {
+      //    ...newState[action.payload.id],
+      //    ...action.payload,
+      //  };
     }
     case EDIT_REVIEW: {
       const newState = { ...state };
@@ -113,7 +129,7 @@ const reviewsReducer = (state = initialState, action) => {
     }
     case DELETE_REVIEW: {
       const newState = { ...state };
-      delete newState[action.spotId];
+      delete newState[action.reviewId];
       return newState;
     }
     default:

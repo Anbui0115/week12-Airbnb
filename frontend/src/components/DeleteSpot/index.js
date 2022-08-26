@@ -1,4 +1,4 @@
-// import {deleteASpotThunk} from '../../store/spots'
+
 
 // function DeleteASpot() {
 
