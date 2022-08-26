@@ -42,7 +42,7 @@ function CreateSpotForm() {
     if (name.length > 50) errors.push("Name must be less than 50 characters");
     if (description === "") errors.push("Description is required");
     if (price === "") errors.push("Price per day is required");
-    // if (imageUrl === "") errors.push("Image URL is required");
+    if (imageUrl === "") errors.push("Image URL is required");
     setValidationErrors(errors);
   }, [
     address,
@@ -176,7 +176,7 @@ function CreateSpotForm() {
           required
         />
       </label>
-      {/* <label>
+      <label>
         Image URL
         <input
           type="text"
@@ -185,7 +185,7 @@ function CreateSpotForm() {
           onChange={(e) => setImageUrl(e.target.value)}
           required
         />
-      </label> */}
+      </label>
       <button type="submit" disabled={validationErrors.length > 0}>
         Submit
       </button>

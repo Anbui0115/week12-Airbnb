@@ -103,6 +103,19 @@ export const getSpotByIdThunk = (spotId) => async (dispatch) => {
     dispatch(getDetailsOfASpot(data));
   }
 };
+
+export const addImgThunk = (url, spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(url),
+  });
+  if (response.ok) {
+  }
+};
 export const createASpotThunk = (userInput) => async (dispatch) => {
   console.log("userInput in thunk create a spot", userInput);
   const { address, city, state, country, lat, lng, name, description, price } =
