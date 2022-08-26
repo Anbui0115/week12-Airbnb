@@ -46,34 +46,34 @@ function CreateReviewForm() {
   };
   return (
     { hasSubmitted } && (
+      <form onSubmit={handleSubmit}>
+        <h2>Write a Review</h2>
+        <div>
+          <ul>
+            {validationErrors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <h2>Write a Review</h2>
-          <div>
-            <ul>
-              {validationErrors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
-          </div>
-
-          <input
-            type="number"
-            min="1"
-            max="5"
-            placeholder="Stars"
-            required
-            value={stars}
-            onChange={(e) => setStars(e.target.value)}
-          />
-          <textarea
-            id="review"
-            onChange={(e) => setReview(e.target.value)}
-            value={review}
-            placeholder="Write your review here"
-          ></textarea>
-          <button disabled={validationErrors.length > 0}>Submit</button>
-        </form>
+        <input
+          type="number"
+          min="1"
+          max="5"
+          placeholder="Stars"
+          required
+          value={stars}
+          onChange={(e) => setStars(e.target.value)}
+        />
+        <textarea
+          id="review"
+          onChange={(e) => setReview(e.target.value)}
+          value={review}
+          placeholder="Write your review here"
+        ></textarea>
+        <button disabled={validationErrors.length > 0}>Submit</button>
+      
+      </form>
     )
   );
 }

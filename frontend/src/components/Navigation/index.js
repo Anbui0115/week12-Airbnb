@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -19,7 +19,11 @@ function Navigation({ isLoaded }) {
       </>
     );
   }
-
+  const history = useHistory();
+  const goToCreateASpot = (e) => {
+    e.preventDefault();
+    history.push("/spots/new");
+  };
   return (
     <>
       <div className="airbnb_logo">
@@ -37,7 +41,11 @@ function Navigation({ isLoaded }) {
           <input type="text" placeholder="Hawaii?" />
         </form>
       </div>
+
       <div className="profile_button">{isLoaded && sessionLinks}</div>
+      <button className="create_a_spot" onClick={goToCreateASpot}>
+        Become a Host
+      </button>
     </>
   );
 }

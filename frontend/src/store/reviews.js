@@ -1,5 +1,5 @@
 import { csrfFetch } from "./csrf";
-
+import { spotDetailsThunk } from "./spots";
 //Types:
 //get all
 const GET_REVIEWS_CURRENT_USER = "reviews/current";
@@ -83,13 +83,14 @@ export const createAReview = (userInput, spotId) => async (dispatch) => {
   }
 };
 
-export const deleteAReview = (reviewId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${reviewId}`, {
+export const deleteAReview = (reviewId, spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "DELETE",
   });
 
   if (response.ok) {
     dispatch(deleteReview(reviewId));
+    dispatch(spotDetailsThunk(spotId));
   }
   return response;
 };

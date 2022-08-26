@@ -16,9 +16,10 @@ function CreateSpotForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+
   //errors
   const [validationErrors, setValidationErrors] = useState([]);
-  // const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const history = useHistory();
 
   useEffect(() => {

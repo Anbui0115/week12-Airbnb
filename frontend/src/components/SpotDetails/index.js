@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteASpotThunk, spotDetailsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
+import { getReviewsBySpotId } from "../../store/reviews";
 // import EditSpotForm from "../EditASpot";
 function GetSpotDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
   let { spotId } = useParams();
-  console.log("spotId------", spotId, typeof spotId); //1--string
+  // console.log("spotId------", spotId, typeof spotId); //1--string
   spotId = Number(spotId);
   console.log("spotsId!!!!!!!", spotId);
   const spotsObj = useSelector((state) => state.spots);
@@ -26,6 +27,7 @@ function GetSpotDetails() {
 
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
+    dispatch(getReviewsBySpotId(spotId));
   }, [dispatch, spotId]);
 
   if (!spot) {
@@ -57,8 +59,15 @@ function GetSpotDetails() {
     );
   } else {
     console.log("session user error: " + sessionUser);
+  }
+  const createAReview = (e) => {
+    e.preventDefault();
+    history.push(`/spots/${spot.id}/create-review`);
   };
-
+  // const deleteYourReview(e)=>{
+  //   e.preventDefault()
+  //  dispatch(deleteAReview())
+  // }
   return (
     <>
       <h2>{spot.name}</h2>
@@ -73,6 +82,8 @@ function GetSpotDetails() {
       <p>${spot.price} per night</p>
       <div>{ownerFunctionality}</div>
       <GetReviewsBySpotId />
+      <button onClick={createAReview}>Leave a review</button>
+      {/* <button style={{visibility:`${sessionUser === review.owner ? 'visible' :`hidden`}}} onClick={deleteYourReview}>Delete your review</button> */}
     </>
   );
 }
