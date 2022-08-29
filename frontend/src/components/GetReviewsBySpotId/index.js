@@ -35,6 +35,7 @@ function GetReviewsBySpotId() {
           <li>{review.id}</li>
           <li>{review.review}</li>
           <li>{review.stars}</li>
+          <li>{sessionUser.id}</li>
           <button
             // style={{
             //   visibility: `${
@@ -42,7 +43,7 @@ function GetReviewsBySpotId() {
             //   }`,
             // }}
 
-            hidden={sessionUser.user?.id != review.userId}
+            hidden={sessionUser.id !== review.userId}
             onClick={() => deleteYourReview(review.id)}
           >
             Delete your review

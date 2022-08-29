@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
 import { getReviewsBySpotId } from "../../store/reviews";
 // import EditSpotForm from "../EditASpot";
+
 function GetSpotDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -42,12 +43,15 @@ function GetSpotDetails() {
     dispatch(deleteASpotThunk(spotId));
     history.push(`/spots`);
   };
-
-  const images = spot.Images.map((image) => (
-    <div>
-      <img src={image.url} width="250" height="250" />
-    </div>
-  ));
+  let images;
+  //need to conditionally render or else it's undefined
+  if (spot.Images) {
+    images = spot.Images.map((image) => (
+      <div>
+        <img src={image.url} width="250" height="250" />
+      </div>
+    ));
+  }
 
   let ownerFunctionality;
   if (sessionUser === spot.owner) {
@@ -69,22 +73,24 @@ function GetSpotDetails() {
   //  dispatch(deleteAReview())
   // }
   return (
-    <>
-      <h2>{spot.name}</h2>
-      <span>&#9733; {spot.avgStarRating} </span>
-      <NavLink to={`/spots/${spot.id}/reviews`}>
-        <span>{spot.numReviews} Reviews</span>
-      </NavLink>
-      <span> {spot.address}</span>
-      <br />
-      <div>{images}</div>
-      <p>{spot.description}</p>
-      <p>${spot.price} per night</p>
-      <div>{ownerFunctionality}</div>
-      <GetReviewsBySpotId />
-      <button onClick={createAReview}>Leave a review</button>
-      {/* <button style={{visibility:`${sessionUser === review.owner ? 'visible' :`hidden`}}} onClick={deleteYourReview}>Delete your review</button> */}
-    </>
+    { images } && (
+      <>
+        <h2>{spot.name}</h2>
+        <span>&#9733; {spot.avgStarRating} </span>
+        <NavLink to={`/spots/${spot.id}/reviews`}>
+          <span>{spot.numReviews} Reviews</span>
+        </NavLink>
+        <span> {spot.address}</span>
+        <br />
+        <div>{images}</div>
+        <p>{spot.description}</p>
+        <p>${spot.price} per night</p>
+        <div>{ownerFunctionality}</div>
+        <GetReviewsBySpotId />
+        <button onClick={createAReview}>Leave a review</button>
+        {/* <button style={{visibility:`${sessionUser === review.owner ? 'visible' :`hidden`}}} onClick={deleteYourReview}>Delete your review</button> */}
+      </>
+    )
   );
 }
 export default GetSpotDetails;

@@ -23,10 +23,10 @@ const getReviewsOfSpot = (payload) => {
   };
 };
 
-const createReview = (userInput) => {
+const createReview = (payload) => {
   return {
     type: CREATE_REVIEW,
-    // payload,
+    payload,
   };
 };
 
@@ -66,22 +66,25 @@ export const getReviewsBySpotId = (spotId) => async (dispatch) => {
   }
 };
 
-export const createAReview = (userInput, spotId) => async (dispatch) => {
-  const response = await csrfFetch(` /api/spots/${spotId}/reviews`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userInput),
-  });
+export const createAReview =
+  ({ userInput, spotId }) =>
+  async (dispatch) => {
+    console.log("heloooooooo spotId", spotId);
+    const response = await csrfFetch(` /api/spots/${spotId}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInput),
+    });
 
-  if (response.ok) {
-    const data = await response.json();
-    console.log("data in my create a review thunk", data);
-    dispatch(createReview(data));
-    return data;
-  }
-};
+    if (response.ok) {
+      const data = await response.json();
+      console.log("data in my create a review thunk", data);
+      dispatch(createReview(data));
+      return data;
+    }
+  };
 
 export const deleteAReview = (reviewId, spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
@@ -110,7 +113,7 @@ const reviewsReducer = (state = initialState, action) => {
     }
     case CREATE_REVIEW: {
       const newState = { ...state };
-      newState[action.review.id] = action.review;
+      newState[action.payload.id] = action.payload;
       return newState;
     }
     case GET_REVIEWS_OF_SPOT: {

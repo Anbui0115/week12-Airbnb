@@ -31,12 +31,14 @@ function CreateReviewForm() {
       return alert("Cannot Submit");
     }
 
-    const payload = {
+    const userInput = {
       spotId: Number(spotId),
       userId: Number(sessionUser.id),
       stars: Number(stars),
       review,
     };
+    console.log("STARS____________", stars, typeof stars);
+    const payload = { userInput, spotId };
     let createReview = await dispatch(createAReview(payload));
     // Added the dispatch below so that the state is updated with all the information needed for the new review
     const data = await dispatch(getReviewsBySpotId(spotId));
@@ -72,7 +74,6 @@ function CreateReviewForm() {
           placeholder="Write your review here"
         ></textarea>
         <button disabled={validationErrors.length > 0}>Submit</button>
-      
       </form>
     )
   );

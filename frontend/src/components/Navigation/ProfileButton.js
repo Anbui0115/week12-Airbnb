@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 
 function ProfileButton({ user }) {
+  console.log("user in Profile Button", user);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 

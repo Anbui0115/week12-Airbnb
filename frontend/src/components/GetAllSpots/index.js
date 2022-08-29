@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
+
+
 function GetAllSpots() {
   // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist

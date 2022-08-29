@@ -6,7 +6,7 @@ const GET_ALL_SPOTS = "/spots/all-spots";
 const GET_SPOTS_OWNED_BY_USER = "/spots/user-spots";
 const GET_DETAILS_OF_A_SPOT = "/spots/spotId";
 const CREATE_A_SPOT = "spot/create";
-// const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
+const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
 const EDIT_A_SPOT = "/spots/spotId/edit";
 const DELETE_A_SPOT = "/spots/spotId/delete";
 
@@ -36,12 +36,12 @@ const createASpot = (payload) => {
     payload,
   };
 };
-// const addImgToASpot = (payload) => {
-//   return {
-//     type: ADD_IMG_TO_A_SPOT,
-//     payload,
-//   };
-// };
+const addImgToASpot = (payload) => {
+  return {
+    type: ADD_IMG_TO_A_SPOT,
+    payload,
+  };
+};
 const editASpot = (payload) => {
   return {
     type: EDIT_A_SPOT,
@@ -114,6 +114,8 @@ export const addImgThunk = (url, spotId) => async (dispatch) => {
     body: JSON.stringify(url),
   });
   if (response.ok) {
+    const data = await response.json();
+    dispatch(addImgToASpot(spotId));
   }
 };
 export const createASpotThunk = (userInput) => async (dispatch) => {
