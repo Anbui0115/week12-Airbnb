@@ -69,7 +69,7 @@ function SpotForm() {
       price,
       // imageUrl,
     };
-    console.log("spotInfo inside Form", spotInfo);
+    // console.log("spotInfo inside Form", spotInfo);
     setValidationErrors([]);
     dispatch(createASpotThunk(spotInfo));
     //need to redirect to the newly created spot

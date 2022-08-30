@@ -6,7 +6,7 @@ function GetReviewsCurrentUser() {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => Object.values(state.reviews));
 
-  console.log("this is reviews", reviews);
+  // console.log("this is reviews", reviews);
   useEffect(() => {
     dispatch(getReviewsCurrentUserThunk());
   }, [dispatch]);

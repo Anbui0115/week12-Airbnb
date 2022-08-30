@@ -45,7 +45,7 @@ export const getReviewsCurrentUserThunk = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log("data in get current user reviews thunk", data);
+    // console.log("data in get current user reviews thunk", data);
     dispatch(getReviewsCurrentUser(data.Reviews));
     return data;
   }
@@ -59,7 +59,7 @@ export const getReviewsBySpotId = (spotId) => async (dispatch) => {
     // dispatch(getReviewsOfSpot(data.Reviews));
     dispatch(getReviewsOfSpot(data.Reviews));
 
-    console.log("data inside get reviews by spot id", data);
+    // console.log("data inside get reviews by spot id", data);
     return data;
   } else {
     return response;
@@ -69,7 +69,7 @@ export const getReviewsBySpotId = (spotId) => async (dispatch) => {
 export const createAReview =
   ({ userInput, spotId }) =>
   async (dispatch) => {
-    console.log("heloooooooo spotId", spotId);
+    // console.log("heloooooooo spotId", spotId);
     const response = await csrfFetch(` /api/spots/${spotId}/reviews`, {
       method: "POST",
       headers: {
@@ -80,7 +80,7 @@ export const createAReview =
 
     if (response.ok) {
       const data = await response.json();
-      console.log("data in my create a review thunk", data);
+      // console.log("data in my create a review thunk", data);
       dispatch(createReview(data));
       return data;
     }

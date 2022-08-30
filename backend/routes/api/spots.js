@@ -331,7 +331,7 @@ router.delete("/:spotId", requireAuth, restoreUser, async (req, res) => {
 //----------------Get details of a Spot from an id-------
 
 router.get("/:spotId", async (req, res, next) => {
-  console.log("THIS ROUTE IS RUNNING----------------")
+  // console.log("THIS ROUTE IS RUNNING----------------")
   const currentSpot = await Spot.findByPk(req.params.spotId, {
     include: [
       {
@@ -345,7 +345,7 @@ router.get("/:spotId", async (req, res, next) => {
       },
     ],
   });
-  console.log("THIS IS CURRENT SPOT in BACKEND", currentSpot);
+  // console.log("THIS IS CURRENT SPOT in BACKEND", currentSpot);
   if (!currentSpot) {
     res.json({
       message: "Spot couldn't be found",

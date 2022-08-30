@@ -7,11 +7,11 @@ import { spotDetailsThunk } from "../../store/spots";
 function GetReviewsBySpotId() {
   const dispatch = useDispatch();
   let { spotId } = useParams();
-  console.log("spotId```````", spotId, typeof spotId);
+  // console.log("spotId```````", spotId, typeof spotId);
   spotId = Number(spotId);
 
   const reviews = useSelector((state) => Object.values(state.reviews));
-  console.log("this is reviews in get reviews by spot id", reviews);
+  // console.log("this is reviews in get reviews by spot id", reviews);
   const sessionUser = useSelector((state) => state.session.user);
 
   // useEffect(() => {

@@ -4,7 +4,7 @@ import * as sessionActions from "../../store/session";
 import profileButton from "./profileButton.png";
 
 function ProfileButton({ user }) {
-  console.log("user in Profile Button", user);
+  // console.log("user in Profile Button", user);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 

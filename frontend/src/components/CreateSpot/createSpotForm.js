@@ -74,7 +74,7 @@ function CreateSpotForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("helooooooooooooo");
+    // console.log("helooooooooooooo");
     setIsSubmitted(true);
     if (validationErrors.length > 0) return;
     let spotInfo = {
@@ -89,10 +89,10 @@ function CreateSpotForm() {
       price,
       // imageUrl,
     };
-    console.log("spotInfo inside Form", spotInfo);
+    // console.log("spotInfo inside Form", spotInfo);
     setValidationErrors([]);
     const data = await dispatch(createASpotThunk(spotInfo));
-    console.log("data````````````", data);
+    // console.log("data````````````", data);
     dispatch(addImgThunk({ previewImage: true, url: imageUrl }, data.id));
 
     //need to redirect to the newly created spot

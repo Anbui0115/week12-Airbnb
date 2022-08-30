@@ -37,7 +37,7 @@ function CreateReviewForm() {
       stars: Number(stars),
       review,
     };
-    console.log("STARS____________", stars, typeof stars);
+    // console.log("STARS____________", stars, typeof stars);
     const payload = { userInput, spotId };
     let createReview = await dispatch(createAReview(payload));
     // Added the dispatch below so that the state is updated with all the information needed for the new review

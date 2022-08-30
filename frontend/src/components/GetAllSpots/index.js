@@ -13,8 +13,8 @@ function GetAllSpots() {
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots); //{null}---{}
   const allSpotsArray = Object.values(allSpotsObj); //[null]---[]
-  console.log("this is allSpots inside GetAllSpots component", allSpotsObj);
-  console.log("allSpotArray------------", allSpotsArray);
+  // console.log("this is allSpots inside GetAllSpots component", allSpotsObj);
+  // console.log("allSpotArray------------", allSpotsArray);
 
   useEffect(() => {
     //handle errors
@@ -22,7 +22,7 @@ function GetAllSpots() {
     //         const data = await res.json();
     //         if (data && data.errors) setErrors(data.errors);
     //       }
-    console.log("useEffect isrunning !!!");
+    // console.log("useEffect isrunning !!!");
     dispatch(getAllSpotsThunk());
     // .then(setIsLoaded(true));
   }, [dispatch]);

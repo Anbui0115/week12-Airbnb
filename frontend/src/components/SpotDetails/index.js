@@ -14,13 +14,13 @@ function GetSpotDetails() {
   let { spotId } = useParams();
   // console.log("spotId------", spotId, typeof spotId); //1--string
   spotId = Number(spotId);
-  console.log("spotsId!!!!!!!", spotId);
+  // console.log("spotsId!!!!!!!", spotId);
   const spotsObj = useSelector((state) => state.spots);
-  console.log("spotsArray", spotsObj);
+  // console.log("spotsArray", spotsObj);
   //   const spot = useSelector((state) => state.spots.id);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("spot~~~~~", spot);
+  // console.log("spot~~~~~", spot);
 
   //    const displaySpots = spotsArray.map((spot) => (
   //      <div key={spot.id}>{spot.name}</div>
@@ -61,9 +61,10 @@ function GetSpotDetails() {
         <button onClick={onClickDelete}>Delete</button>
       </>
     );
-  } else {
-    console.log("session user error: " + sessionUser);
   }
+  //  else {
+  //   console.log("session user error: " + sessionUser);
+  // }
   const createAReview = (e) => {
     e.preventDefault();
     history.push(`/spots/${spot.id}/create-review`);

@@ -59,9 +59,9 @@ const deleteASpot = (payload) => {
 export const getAllSpotsThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
-    console.log("response inside get all spots thunk", response);
+    // console.log("response inside get all spots thunk", response);
     const data = await response.json(); //Spots:[{},{}]
-    console.log("data inside get all spots thunk", data);
+    // console.log("data inside get all spots thunk", data);
     dispatch(getAllSpots(data.Spots)); //[{},{},{}]
     return data;
   } else {
@@ -72,9 +72,9 @@ export const getAllSpotsThunk = () => async (dispatch) => {
 export const getSpotByOwnerThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots/current");
   if (response.ok) {
-    console.log("response inside get all spots thunk", response);
+    // console.log("response inside get all spots thunk", response);
     const data = await response.json(); //Spots:[{},{}]
-    console.log("data inside get all spots thunk", data);
+    // console.log("data inside get all spots thunk", data);
     dispatch(getSpotsOwnedByUser(data.Spots)); //[{},{},{}]
     return data;
   } else {
@@ -85,9 +85,9 @@ export const getSpotByOwnerThunk = () => async (dispatch) => {
 export const spotDetailsThunk = (spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`);
   if (response.ok) {
-    console.log("response inside get spot details thunk", response);
+    // console.log("response inside get spot details thunk", response);
     const data = await response.json();
-    console.log("data inside get spot details thunk", data);
+    // console.log("data inside get spot details thunk", data);
     dispatch(getDetailsOfASpot(data));
     return data;
   } else {
@@ -96,10 +96,10 @@ export const spotDetailsThunk = (spotId) => async (dispatch) => {
 };
 export const getSpotByIdThunk = (spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`);
-  console.log("response inside get Spot by Id Thunk", response);
+  // console.log("response inside get Spot by Id Thunk", response);
   if (response.ok) {
     const data = await response.json();
-    console.log("data inside getSpot by id thunk", data);
+    // console.log("data inside getSpot by id thunk", data);
     dispatch(getDetailsOfASpot(data));
   }
 };
@@ -119,7 +119,7 @@ export const addImgThunk = (url, spotId) => async (dispatch) => {
   }
 };
 export const createASpotThunk = (userInput) => async (dispatch) => {
-  console.log("userInput in thunk create a spot", userInput);
+  // console.log("userInput in thunk create a spot", userInput);
   const { address, city, state, country, lat, lng, name, description, price } =
     userInput;
   const response = await csrfFetch("/api/spots", {
@@ -138,23 +138,24 @@ export const createASpotThunk = (userInput) => async (dispatch) => {
     }),
   });
   if (response.ok) {
-    console.log("response inside create a spot thunk", response);
+    // console.log("response inside create a spot thunk", response);
     const data = await response.json();
-    console.log("data inside get all spots thunk", data);
+    // console.log("data inside get all spots thunk", data);
     dispatch(createASpot(data));
     // dispatch(getSpotByIdThunk(data));
     return data;
     //might want to redirect to newly created SPOT
-  } else {
-    console.log("response is not okay!!!!---------");
-    return response; //handle errors HERE?
   }
+  // else {
+  //   console.log("response is not okay!!!!---------");
+  //   return response; //handle errors HERE?
+  // }
 };
 export const editASpotThunk =
   ({ userInput, spotId }) =>
   async (dispatch) => {
-    console.log("userInput in thunk edit a spot", userInput);
-    console.log("spotId~~~~", spotId);
+    // console.log("userInput in thunk edit a spot", userInput);
+    // console.log("spotId~~~~", spotId);
     const {
       address,
       city,
@@ -182,15 +183,15 @@ export const editASpotThunk =
       }),
     });
     if (response.ok) {
-      console.log("response inside create a spot thunk", response);
+      // console.log("response inside create a spot thunk", response);
       const data = await response.json();
-      console.log("data inside get all spots thunk", data);
+      // console.log("data inside get all spots thunk", data);
       dispatch(editASpot(data));
       // dispatch(getSpotByIdThunk(data));
       return data;
       //might want to redirect to newly created SPOT
     } else {
-      console.log("response is not okay!!!!---------");
+      // console.log("response is not okay!!!!---------");
       return response; //handle errors HERE?
     }
   };
@@ -199,10 +200,10 @@ export const deleteASpotThunk = (spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "DELETE",
   }); ///
-  console.log("response inside delete a Spot Thunk", response);
+  // console.log("response inside delete a Spot Thunk", response);
   if (response.ok) {
     const data = await response.json();
-    console.log("data inside delete a spot thunk", data);
+    // console.log("data inside delete a spot thunk", data);
     // dispatch(deleteASpot(data));
     dispatch(deleteASpot(data));
     return data;
@@ -221,7 +222,7 @@ const spotsReducer = (state = initialState, action) => {
         //spot is an obj
         newState[spot.id] = spot;
       });
-      console.log("newState inside get all spots reducer", newState);
+      // console.log("newState inside get all spots reducer", newState);
       return newState;
     }
     case GET_DETAILS_OF_A_SPOT: {
@@ -233,26 +234,26 @@ const spotsReducer = (state = initialState, action) => {
         ...action.payload,
       };
       //need tp include more info later
-      console.log("newState inside get spot details reducer", newState);
+      // console.log("newState inside get spot details reducer", newState);
       return newState;
     }
     case CREATE_A_SPOT: {
       newState = { ...state };
       newState[action.payload.id] = action.payload;
-      console.log("newState inside create a spot  reducer", newState);
+      // console.log("newState inside create a spot  reducer", newState);
       return newState;
     }
     case EDIT_A_SPOT: {
       newState = { ...state };
       newState[action.payload.id] = action.payload;
-      console.log("newState inside edit a spot  reducer", newState);
+      // console.log("newState inside edit a spot  reducer", newState);
       return newState;
     }
     case GET_SPOTS_OWNED_BY_USER: {
       action.payload.forEach((spot) => {
         newState[spot.id] = spot;
       });
-      console.log("newState inside get spot by owner reducer", newState);
+      // console.log("newState inside get spot by owner reducer", newState);
       return newState;
     }
     case DELETE_A_SPOT: {

@@ -8,13 +8,15 @@ import { getSpotByIdThunk } from "../../store/spots";
 function EditSpotForm() {
   const spots = useSelector((state) => state.spots);
   const { spotId } = useParams();
-  console.log("this is spots props", spots);
+  // console.log("this is spots props", spots);
   const spot = spots[Number(spotId)];
   const dispatch = useDispatch();
-  if (!spot) {
-    console.log("spotis undefined");
-  }
-  console.log("spot exist now", spot);
+  // if (!spot) {
+  //   console.log("spot is undefined");
+  // }
+
+  
+  // console.log("spot exist now", spot);
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [address, setAddress] = useState("");
   // const [city, setCity] = useState("");
@@ -105,7 +107,7 @@ function EditSpotForm() {
       price,
       // imageUrl,
     };
-    console.log("spotInfo inside Form", spotInfo);
+    // console.log("spotInfo inside Form", spotInfo);
     setValidationErrors([]);
 
     const payload = { userInput: spotInfo, spotId };

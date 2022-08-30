@@ -6,7 +6,7 @@ function SpotsByOwner() {
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots);
   const spotsArray = Object.values(spots);
-  console.log("spots for this user", spots);
+  // console.log("spots for this user", spots);
 
   useEffect(() => {
     dispatch(getSpotByOwnerThunk());
