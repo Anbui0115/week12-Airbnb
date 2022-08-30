@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
 
-
 function GetAllSpots() {
   // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
@@ -37,13 +36,27 @@ function GetAllSpots() {
               {allSpotsArray.map((spot) => (
                 <NavLink to={`/spots/${spot.id}`}>
                   <div>
-                    <img src={spot.previewImage} width="250" height="250" />
+                    <div>
+                      <img
+                        src={
+                          spot.previewImage ||
+                          "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
+                        }
+                        // width="250"
+                        // height="250"
+                        alt-={"home"}
+                      />
+                    </div>
+
+                    <div>
+                      {spot.name}
+                      {spot.description}
+                      &#9733; {spot.avgRating}
+                    </div>
+                    {/*
                     <br />
-                    {spot.name}
-                    <br />
-                    {spot.description}
-                    <br />
-                    &#9733; {spot.avgRating}
+
+                    <br /> */}
                   </div>
                 </NavLink>
               ))}
