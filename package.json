@@ -1,7 +1,6 @@
 {
   "name": "authenticate-me",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
@@ -17,5 +16,15 @@
   "license": "ISC",
   "dependencies": {
     "pg": "^8.7.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anbui0115/week12-Airbnb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Anbui0115/week12-Airbnb/issues"
+  },
+  "homepage": "https://github.com/Anbui0115/week12-Airbnb#readme",
+  "description": ""
 }
