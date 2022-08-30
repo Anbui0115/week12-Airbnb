@@ -34,7 +34,7 @@ function GetAllSpots() {
           <div>
             <div>
               {allSpotsArray.map((spot) => (
-                <NavLink to={`/spots/${spot.id}`}>
+                <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
                   <div>
                     <div>
                       <img
