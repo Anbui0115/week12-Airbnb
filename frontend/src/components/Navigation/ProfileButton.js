@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import profileButton from "./profileButton.png";
 
 function ProfileButton({ user }) {
   console.log("user in Profile Button", user);
@@ -33,6 +34,7 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
+        <img src={profileButton} alt={"profile-button"} />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

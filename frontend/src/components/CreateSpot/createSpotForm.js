@@ -43,12 +43,20 @@ function CreateSpotForm() {
     // if (price === "") errors.push("Price per day is required");
     // if (imageUrl === "") errors.push("Image URL is required");
     if (
-      !imageUrl.endsWith(".jpg") &&
-      !imageUrl.endsWith(".png") &&
-      !imageUrl.endsWith(".jpeg")
+      !imageUrl.includes(".jpg") &&
+      !imageUrl.includes(".png") &&
+      !imageUrl.includes(".jpeg")
     ) {
       errors.push("Provide a valid image");
     }
+
+    //  if (
+    //    !imageUrl.endsWith(".jpg") &&
+    //    !imageUrl.endsWith(".png") &&
+    //    !imageUrl.endsWith(".jpeg")
+    //  ) {
+    //    errors.push("Provide a valid image");
+    //  }
     setValidationErrors(errors);
   }, [
     address,
@@ -85,7 +93,7 @@ function CreateSpotForm() {
     setValidationErrors([]);
     const data = await dispatch(createASpotThunk(spotInfo));
     console.log("data````````````", data);
-    await dispatch(addImgThunk(imageUrl, data.id));
+    dispatch(addImgThunk({ previewImage: true, url: imageUrl }, data.id));
 
     //need to redirect to the newly created spot
     history.push(`/spots/${data.id}`);
