@@ -31,10 +31,17 @@ function GetAllSpots() {
       <div className="outer-body">
         {allSpotsArray && (
           <>
-            <div></div>
-            <div>
-              <div className="spots-body">
-                {allSpotsArray.map((spot) => (
+            <div className="home-outer-container">
+              <div className="home-container">
+                <div className="inner-container">
+                  <div className="spots-display">
+                    {allSpotsArray.map((spot) => (
+                      <EachSpot key={spot?.id} spot={spot} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* {allSpotsArray.map((spot) => (
                   <EachSpot key={spot?.id} spot={spot} />
                   // <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
                   //   <div>
@@ -58,7 +65,7 @@ function GetAllSpots() {
                   //     </div>
                   //   </div>
                   // </NavLink>
-                ))}
+                ))} */}
               </div>
             </div>
           </>
