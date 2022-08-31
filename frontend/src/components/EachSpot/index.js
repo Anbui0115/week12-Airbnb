@@ -23,15 +23,31 @@ function EachSpot({ spot }) {
         </div>
 
         <div className="spot-info-container">
-          <div className="info-location">
-            <span className="spot-location">
+          {/* <div className="info-location"> */}
+          {/* <span className="spot-location">
               <span className="spot-state"> {spot.state},</span>{" "}
               <span className="spot-city"> {spot.city}</span>
-            </span>
-            {/* <div className="spot-description"> {spot.description}</div> */}
-            {/* <div className="spot-state"> {spot.state}</div> */}
-            <div className="spot-rating">&#9733; {spot.avgRating}</div>
-          </div>
+            </span> */}
+          {/* <div className="spot-description"> {spot.description}</div> */}
+          {/* <div className="spot-state"> {spot.state}</div> */}
+          {/* <div className="spot-rating">&#9733; {spot.avgRating}</div> */}
+          {/* </div> */}
+
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <span className="spot-location">
+                    <span className="spot-state"> {spot.state},</span>{" "}
+                    <span className="spot-city"> {spot.city}</span>
+                  </span>
+                </td>
+                <td>
+                  <div className="spot-rating">&#9733; {spot.avgRating}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           <div className="spot-price-container">
             <span className="spot-price">${spot.price}</span>

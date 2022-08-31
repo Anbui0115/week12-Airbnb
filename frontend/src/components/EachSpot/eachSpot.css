@@ -35,8 +35,8 @@
 .spot-location {
   font-weight: bold;
   border: rgb(33, 132, 232) 2px dashed;
-  padding: 2px 2px;
-  margin-right: 100px;
+  /* padding: 2px 2px; */
+  padding-right: 100px;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -53,7 +53,7 @@
   align-items: center;
   justify-content: center;
   border: 2px orange solid;
-  padding-left: 0px;
+  padding-left: 4px;
 }
 .spot-price {
   font-weight: bold;
