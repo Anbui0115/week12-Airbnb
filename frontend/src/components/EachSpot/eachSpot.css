@@ -1,0 +1,68 @@
+.navlink-spots-container {
+  border: 2px blue dashed;
+}
+.each-spot {
+  border: 3px red solid;
+  width: 18.778em;
+}
+.spot-image-container {
+  border: 3px green dotted;
+  border-radius: 15px;
+  height: 265px;
+  align-items: stretch;
+  justify-content: center;
+  /* background-color: #efefef; */
+}
+.spot-image {
+  width: 100%;
+  height: 265px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.spot-info-container {
+  /* width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  border: 3px green solid;
+}
+.info-location {
+  white-space: nowrap;
+  display: inline-flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 3px dotted black;
+}
+.spot-location {
+  font-weight: bold;
+  border: rgb(33, 132, 232) 2px dashed;
+  padding: 2px 2px;
+  margin-right: 100px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spot-city {
+  padding: 3px 3px;
+}
+
+.spot-state {
+  padding: 3px 3px;
+}
+.spot-rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px orange solid;
+  padding-left: 0px;
+}
+.spot-price {
+  font-weight: bold;
+  /* display: flex;
+  align-items: baseline; */
+  font-weight: bold;
+  padding-right: 3px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

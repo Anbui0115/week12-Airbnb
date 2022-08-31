@@ -44,11 +44,11 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div>
           <ul className="profile-dropdown">
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <li>username: {user.username}</li>
+            <li>user email:{user.email}</li>
+            {/* <li>
               <button onClick={logout}>Log Out</button>
-            </li>
+            </li> */}
           </ul>
 
           <div onClick={() => history.push("/spots/current")}>

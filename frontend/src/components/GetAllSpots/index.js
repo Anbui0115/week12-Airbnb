@@ -4,8 +4,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
-import { NavLink } from "react-router-dom";
-
+import "./getAllSpots.css";
+import EachSpot from "../EachSpot";
 function GetAllSpots() {
   // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
@@ -28,42 +28,42 @@ function GetAllSpots() {
 
   return (
     <>
-      {allSpotsArray && ( //[]
-        <>
-          <div>GET ALL SPOTS</div>
-          <div>
+      <div className="outer-body">
+        {allSpotsArray && (
+          <>
+            <div></div>
             <div>
-              {allSpotsArray.map((spot) => (
-                <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
-                  <div>
-                    <div>
-                      <img
-                        src={
-                          spot.previewImage ||
-                          "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
-                        }
-                        // width="250"
-                        // height="250"
-                        alt-={"home"}
-                      />
-                    </div>
+              <div className="spots-body">
+                {allSpotsArray.map((spot) => (
+                  <EachSpot key={spot?.id} spot={spot} />
+                  // <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
+                  //   <div>
+                  //     <div>
+                  //       <img
+                  //         src={
+                  //           spot.previewImage ||
+                  //           "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
+                  //         }
+                  //         width="250"
+                  //         height="250"
+                  //         alt-={"home"}
+                  //       />
+                  //     </div>
 
-                    <div>
-                      {spot.name}
-                      {spot.description}
-                      &#9733; {spot.avgRating}
-                    </div>
-                    {/*
-                    <br />
-
-                    <br /> */}
-                  </div>
-                </NavLink>
-              ))}
+                  //     <div>
+                  //       <div>{spot.name}</div>
+                  //       <div> {spot.description}</div>
+                  //       <div>&#9733; {spot.avgRating}</div>
+                  //       <div> {spot.price} night</div>
+                  //     </div>
+                  //   </div>
+                  // </NavLink>
+                ))}
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </>
   );
 }
