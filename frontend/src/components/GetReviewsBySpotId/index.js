@@ -23,7 +23,11 @@ function GetReviewsBySpotId() {
     dispatch(deleteAReview(reviewId, spotId));
     dispatch(spotDetailsThunk(spotId));
   };
-
+ const deleteThisSpot = (spotId) => {
+   // e.preventDefault()
+   dispatch((spotId));
+   dispatch(spotDetailsThunk(spotId));
+ };
   if (!reviews || !sessionUser) return null;
   return (
     <>
@@ -32,22 +36,22 @@ function GetReviewsBySpotId() {
         <div key={`review${review.id}`}>
           {/* {console.log("review", review)}
           {console.log("sessionUser", sessionUser, review.userId)} */}
-          <li>{review.id}</li>
-          <li>{review.review}</li>
-          <li>{review.stars}</li>
-          <li>{sessionUser.id}</li>
+          <li>review Id:{review.id}</li>
+          <li>review:{review.review}</li>
+          <li>review stars:{review.stars}</li>
+          <li>user Id:{sessionUser.id}</li>
           <button
-            // style={{
-            //   visibility: `${
-            //     sessionUser.id === review.userId ? "visible" : "hidden"
-            //   }`,
-            // }}
-
             hidden={sessionUser.id !== review.userId}
             onClick={() => deleteYourReview(review.id)}
           >
             Delete your review
           </button>
+          {/* <button
+            hidden={sessionUser.id !== review.userId}
+            onClick={() => deleteThisSpot(review.id)}
+          >
+            Delete this spot
+          </button> */}
         </div>
       ))}
     </>
