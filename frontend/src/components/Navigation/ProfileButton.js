@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import profileButton from "./profileButton.png";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   // console.log("user in Profile Button", user);
@@ -33,13 +33,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      {/* <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
         <img src={profileButton} alt={"profile-button"} />
-      </button>
-      {/* <Link>
+      </button> */}
+      <div onClick={openMenu}>
         <img src={profileButton} alt={"profile-button"} />
-      </Link> */}
+      </div>
 
       {showMenu && (
         <div>
