@@ -17,7 +17,7 @@ function GetReviewsBySpotId() {
   const spot = spotsObj[spotId];
 
   const reviews = useSelector((state) => Object.values(state.reviews));
-  console.log("this is reviews in get reviews by spot id", reviews);
+  // console.log("this is reviews in get reviews by spot id", reviews);
   const sessionUser = useSelector((state) => state.session.user);
 
   // useEffect(() => {
@@ -44,8 +44,8 @@ function GetReviewsBySpotId() {
       <div>Hello this is review by spot id</div>
       {reviews.map((review) => (
         <div key={`review${review.id}`}>
-          {console.log("review", review)}
-          {console.log("sessionUser", sessionUser, review.userId)}
+          {/* {console.log("review", review)} */}
+          {/* {console.log("sessionUser", sessionUser, review.userId)} */}
           <li>review Id:{review.id}</li>
           <li>review:{review.review}</li>
           <li>review stars:{review.stars}</li>

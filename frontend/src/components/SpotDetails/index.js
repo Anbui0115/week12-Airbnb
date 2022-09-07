@@ -21,8 +21,8 @@ function GetSpotDetails() {
   //   const spot = useSelector((state) => state.spots.id);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("sessionUser", sessionUser, sessionUser.id);
-  console.log("spot~~~~~", spot, spot.ownerId);
+  // console.log("sessionUser", sessionUser, sessionUser.id);
+  // console.log("spot~~~~~", spot, spot.ownerId);
   // const reviews = useSelector((state) => state.reviews);
   // let owner =false
   //   if (sessionUser && spot) {
