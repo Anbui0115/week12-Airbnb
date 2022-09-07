@@ -21,21 +21,22 @@ function GetSpotDetails() {
   //   const spot = useSelector((state) => state.spots.id);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => state.reviews);
-  // console.log("spot~~~~~", spot);
-let owner =false
-  if (sessionUser && spot) {
-    owner = sessionUser.id === spot.ownerId;
-  }
-  let ownerFunctionality;
-  if (sessionUser === spot?.owner) {
-    ownerFunctionality = (
-      <>
-        <button onClick={onClickEdit}>Edit</button>
-        <button onClick={onClickDelete}>Delete</button>
-      </>
-    );
-  }
+  console.log("sessionUser", sessionUser, sessionUser.id);
+  console.log("spot~~~~~", spot, spot.ownerId);
+  // const reviews = useSelector((state) => state.reviews);
+  // let owner =false
+  //   if (sessionUser && spot) {
+  //     owner = sessionUser.id === spot.ownerId;
+  //   }
+  //   let ownerFunctionality;
+  //   if (sessionUser === spot?.owner) {
+  //     ownerFunctionality = (
+  //       <>
+  //         <button onClick={onClickEdit}>Edit</button>
+  //         <button onClick={onClickDelete}>Delete</button>
+  //       </>
+  //     );
+  //   }
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
@@ -44,17 +45,8 @@ let owner =false
   if (!spot) {
     return <h1>Loading ...</h1>;
   }
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    history.push(`/spots/${spotId}/edit`);
-  };
-  const onClickDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteASpotThunk(spotId));
-    history.push(`/`);
-  };
   let images;
-  //need to conditionally render or else it's undefined
+  //need to conditionally render
   if (spot.Images) {
     images = spot.Images.map((image) => (
       <div>
@@ -63,14 +55,25 @@ let owner =false
     ));
   }
 
-  const createAReview = (e) => {
+
+  const onClickDelete = (e) => {
     e.preventDefault();
-    history.push(`/spots/${spot.id}/create-review`);
+    dispatch(deleteASpotThunk(spotId));
+    history.push(`/`);
   };
-  const editYourSpot=(e)=>{
-    e.preventDefault()
-   history.push(`/spots/${spotId}/edit`);
-  }
+  // const createAReview = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/spots/${spot.id}/create-review`);
+  // };
+  const editYourSpot = (e) => {
+    e.preventDefault();
+    history.push(`/spots/${spotId}/edit`);
+  };
+  const deleteThisSpot = (spotId) => {
+    // e.preventDefault()
+    dispatch(spotId);
+    dispatch(spotDetailsThunk(spotId));
+  };
   return (
     { images } && (
       <>
@@ -86,9 +89,16 @@ let owner =false
         <div>{images}</div>
         <p>{spot.description}</p>
         <p>${spot.price} per night</p>
+        <p>spot.ownerId {spot.ownerId}</p>
         <GetReviewsBySpotId />
-        <div>{ownerFunctionality}</div>
-        <button onClick={createAReview}>Leave a review</button>
+        {/* <div>{ownerFunctionality}</div> */}
+        {/* <button onClick={createAReview}>Leave a review</button> */}
+        {/* <button
+          hidden={sessionUser.id !== spot.ownerId}
+          onClick={createAReview}
+        >
+          Delete your review
+        </button> */}
 
         <button
           hidden={sessionUser.id !== spot.ownerId}
@@ -96,10 +106,7 @@ let owner =false
         >
           Delete your spot
         </button>
-        <button
-          hidden={sessionUser.id !== spot.ownerId}
-          onClick={editYourSpot}
-        >
+        <button hidden={sessionUser.id !== spot.ownerId} onClick={editYourSpot}>
           Edit your spot
         </button>
       </>
