@@ -80,6 +80,7 @@ router.get("/current", requireAuth, restoreUser, async (req, res, next) => {
     // console.log("review``````````````````", review);
     let spot = await review.getSpot();
     let images = await review.getImages({
+      //alias reviewId to be called imageableId now
       attributes: ["id", ["reviewId", "imageableId"], "url"],
     });
     let owner = await review.getUser({

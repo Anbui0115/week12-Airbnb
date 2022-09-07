@@ -49,7 +49,7 @@ function GetReviewsBySpotId() {
           <li>review Id:{review.id}</li>
           <li>review:{review.review}</li>
           <li>review stars:{review.stars}</li>
-          <li>review Owner id:{sessionUser.id}</li>
+          <li>review Owner id:{review.userId}</li>
           <button
             hidden={sessionUser.id !== review.userId}
             onClick={() => deleteYourReview(review.id)}
