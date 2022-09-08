@@ -101,7 +101,7 @@ function GetSpotDetails() {
         </button> */}
 
         <button
-          hidden={sessionUser.id !== spot.ownerId}
+          hidden={sessionUser?.id !== spot?.ownerId}
           onClick={() => deleteASpotThunk(spot.id)}
         >
           Delete your spot
