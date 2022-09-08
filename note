@@ -24,3 +24,5 @@
 // );
 // //test log out in dev console
 // window.store.dispatch(window.sessionActions.logout());
+// Proxy error: Could not proxy request /api/csrf/restore from localhost:3000 to http://localhost:8001.
+// See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ECONNREFUSED).
