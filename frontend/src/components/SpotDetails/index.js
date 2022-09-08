@@ -55,7 +55,6 @@ function GetSpotDetails() {
     ));
   }
 
-
   const onClickDelete = (e) => {
     e.preventDefault();
     dispatch(deleteASpotThunk(spotId));
@@ -106,7 +105,10 @@ function GetSpotDetails() {
         >
           Delete your spot
         </button>
-        <button hidden={sessionUser.id !== spot.ownerId} onClick={editYourSpot}>
+        <button
+          hidden={sessionUser?.id !== spot?.ownerId}
+          onClick={editYourSpot}
+        >
           Edit your spot
         </button>
       </>
