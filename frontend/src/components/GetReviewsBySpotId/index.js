@@ -42,7 +42,22 @@ function GetReviewsBySpotId() {
   return (
     <>
       <div>Hello this is review by spot id</div>
+      {/* {reviews.length === 0 && (
+        {reviews.map(review =>(
+          <>
+          <div>This is a new spot, please leave a review</div>
+          <button
+            hidden={sessionUser.id === review.userId}
+            onClick={createAReview}
+          >
+            Leave a review
+          </button>
+        </>
+        ))}
+
+      )} */}
       {reviews.map((review) => (
+
         <div key={`review${review.id}`}>
           {/* {console.log("review", review)} */}
           {/* {console.log("sessionUser", sessionUser, review.userId)} */}
@@ -62,12 +77,6 @@ function GetReviewsBySpotId() {
           >
             Leave a review
           </button>
-          {/* <button
-            hidden={sessionUser.id !== review.userId}
-            onClick={() => deleteThisSpot(review.id)}
-          >
-            Delete this spot
-          </button> */}
         </div>
       ))}
     </>
