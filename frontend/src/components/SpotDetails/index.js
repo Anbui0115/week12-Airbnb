@@ -75,7 +75,7 @@ function GetSpotDetails() {
   };
   return (
     { images } &&
-    spot && (
+    {spot} && (
       <>
         <h2>{spot.name}</h2>
         <span>&#9733; {spot.avgStarRating} </span>
