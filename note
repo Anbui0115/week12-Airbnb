@@ -31,3 +31,10 @@ We might have to iterate through the review data before the return in the compon
 and just check if the current user left a review and save a true or false in a variable based off of that.
 Then we can conditionally render the Leave a review button off of that.
 */
+/* heroku command
+git push heroku main
+heroku run npm run sequelize db:migrate
+heroku run npm run sequelize db:seed:all
+heroku logs
+https://open.appacademy.io/learn/js-py---may-2022-cohort-1-online/week-12---security--authentication--authorization/authenticate-me--deployment
+*/
