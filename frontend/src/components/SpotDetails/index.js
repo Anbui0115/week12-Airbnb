@@ -74,7 +74,8 @@ function GetSpotDetails() {
     dispatch(spotDetailsThunk(spotId));
   };
   return (
-    { images } && (
+    { images } &&
+    spot && (
       <>
         <h2>{spot.name}</h2>
         <span>&#9733; {spot.avgStarRating} </span>
@@ -82,7 +83,7 @@ function GetSpotDetails() {
           <span>{spot.numReviews} Reviews</span>
         </NavLink>
         <span>
-          {spot?.city}, {spot?.state}, {spot?.country}
+          {spot.city}, {spot.state}, {spot.country}
         </span>
         <br />
         <div>{images}</div>
@@ -100,13 +101,13 @@ function GetSpotDetails() {
         </button> */}
 
         <button
-          hidden={sessionUser?.id !== spot?.ownerId}
+          hidden={sessionUser?.id !== spot.ownerId}
           onClick={() => deleteASpotThunk(spot.id)}
         >
           Delete your spot
         </button>
         <button
-          hidden={sessionUser?.id !== spot?.ownerId}
+          hidden={sessionUser?.id !== spot.ownerId}
           onClick={editYourSpot}
         >
           Edit your spot

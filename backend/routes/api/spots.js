@@ -460,6 +460,7 @@ router.get("/", validateQuery, async (req, res, next) => {
   }
   res.status(200);
   // res.json({ Spots: allSpots });
+  console.log('yelllllllll',allSpots[0])
   res.json({
     Spots: allSpots,//allSpots is an array
     page,
