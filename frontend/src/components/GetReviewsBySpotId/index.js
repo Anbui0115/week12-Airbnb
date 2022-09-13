@@ -17,15 +17,15 @@ function GetReviewsBySpotId() {
   const spot = spotsObj[spotId];
 
   const reviews = useSelector((state) => Object.values(state.reviews));
-  // console.log("this is reviews in get reviews by spot id", reviews);
+  console.log("this is reviews in get reviews by spot id", reviews);
   const sessionUser = useSelector((state) => state.session.user);
 
   // useEffect(() => {
   //   dispatch(getReviewsBySpotId(spotId));
   // }, [dispatch, spotId]);
 
-  const deleteYourReview = (reviewId) => {
-    // e.preventDefault()
+  const deleteYourReview = (e, reviewId) => {
+    e.preventDefault();
     dispatch(deleteAReview(reviewId, spotId));
     dispatch(spotDetailsThunk(spotId));
   };
@@ -57,7 +57,6 @@ function GetReviewsBySpotId() {
 
       )} */}
       {reviews.map((review) => (
-
         <div key={`review${review.id}`}>
           {/* {console.log("review", review)} */}
           {/* {console.log("sessionUser", sessionUser, review.userId)} */}
@@ -67,7 +66,7 @@ function GetReviewsBySpotId() {
           <li>review Owner id:{review.userId}</li>
           <button
             hidden={sessionUser.id !== review.userId}
-            onClick={() => deleteYourReview(review.id)}
+            onClick={(e) => deleteYourReview(e, review.id)}
           >
             Delete your review
           </button>
