@@ -374,6 +374,7 @@ router.get("/:spotId", async (req, res, next) => {
 
 //-------------GET ALL SPOTS--------------NOW ADD QUERY AND PAGINATION
 router.get("/", validateQuery, async (req, res, next) => {
+  console.log("enter api/spots");
   let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } =
     req.query;
   let pagination = { options: [] };
@@ -435,14 +436,15 @@ router.get("/", validateQuery, async (req, res, next) => {
     limit: pagination.limit,
     offset: pagination.offset,
   });
+  console.log("can you see allSpots array", allSpots);
   for (let spot of allSpots) {
     // console.log("spotId``````", spot.id);
     const spotReview = await spot.getReviews({
       attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
     });
-    // console.log('spotReview',spotReview)
+    console.log('can you see spotReview',spotReview)
     let avgRating = spotReview[0].dataValues.avgRating;
-    // console.log('avgRating',avgRating)
+    console.log('can you see avgRating',avgRating)
     spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
 
     const previewImage = await Image.findOne({
@@ -453,16 +455,16 @@ router.get("/", validateQuery, async (req, res, next) => {
         },
       },
     });
-    // console.log("previewImage", previewImage);
+    console.log("can you see previewImage", previewImage);
     if (previewImage) {
       spot.dataValues.previewImage = previewImage.dataValues.url;
     }
   }
   res.status(200);
   // res.json({ Spots: allSpots });
-  // console.log('yelllllllll',allSpots[0])
+  console.log('yelllllllll',allSpots[0])
   res.json({
-    Spots: allSpots,//allSpots is an array
+    Spots: allSpots, //allSpots is an array
     page,
     size,
   });
