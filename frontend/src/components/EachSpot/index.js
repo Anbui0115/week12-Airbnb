@@ -60,7 +60,7 @@ function EachSpot({ spot }) {
             alt-="house-image"
             className="spot-img"
             src={
-              spot?.previewImage 
+              spot?.previewImage
               // "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
               // "https://a0.muscache.com/im/pictures/prohost-api/Hosting-619648648726300172/original/96071aa3-ec82-4527-a74d-460406afb070.jpeg?im_w=720"
             }
