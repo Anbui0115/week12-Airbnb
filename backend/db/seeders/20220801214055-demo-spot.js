@@ -19,7 +19,7 @@ module.exports = {
           lng: -122.4730327,
           name: "Cozy Lakefront Home",
           description:
-            "7 Sierra Shores Cozy Lakefront Home - Steps to Lake Tahoe - 3BR/3BA - Breathtaking Views",
+            "7 Sierra Shores - Steps to Lake Tahoe - Breathtaking Views",
           price: 919,
         },
         {
@@ -57,7 +57,7 @@ module.exports = {
           lng: -122.4730327,
           name: "Beachfront Tahoe Home",
           description:
-            "Dreamy Lakeside Retreat w/ Shared Pools, Hot Tubs, Lake View, & Beach Access!",
+            "Dreamy Lakeside Retreat w/ Shared Pools, Hot Tubs & Beach Access!",
           price: 570,
         },
         {
@@ -93,7 +93,7 @@ module.exports = {
           lat: 37.7645358,
           lng: -122.4730327,
           name: "Groveland Lake House near Yosemite",
-          description: "NEW! Groveland Lake House w/ Hot Tub & Water Views",
+          description: "Groveland Lake House w/ Hot Tub & Water Views",
           price: 1100,
         },
         {
@@ -106,7 +106,7 @@ module.exports = {
           lng: -122.4730327,
           name: "Villa De Lago The Lake House, Dock and Buoy",
           description:
-            "VIlladeLago, The Lake House, is located in a secluded enclave in historic Cave Rock Nevada.",
+            "VIlladeLago is located in a secluded enclave in historic Cave Rock Nevada.",
           price: 1000,
         },
         {
@@ -119,7 +119,7 @@ module.exports = {
           lng: -122.4730327,
           name: "Lake Tahoe Shoreside Retreat: Stunning Lake Views!",
           description:
-            "Enjoy the fresh air and stunning views at this charming Elk Point Country Club vacation rental! Featuring 4 bedrooms, 5 bathrooms, 2 furnished decks, a fully equipped kitchen, and easy access to a private beach, this luxury home is sure to make your stay unforgettable! ",
+            "Charming Elk Point Country Club vacation rental",
           price: 900,
         },
         {
@@ -132,7 +132,7 @@ module.exports = {
           lng: -122.4730327,
           name: "Stylish 3 Bed / 4 Bath | Residence 205",
           description:
-            "Tahoe Beach Club is a private lakefront community on Tahoe’s East Shore.",
+            "Tahoe Beach Club is a private lakefront community on Tahoe East Shore.",
           price: 1190,
         },
       ],
