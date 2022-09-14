@@ -55,7 +55,7 @@ function GetSpotDetails() {
     ));
   }
 
-  const onClickDelete = (e) => {
+  const onClickDelete = (e, spotId) => {
     e.preventDefault();
     dispatch(deleteASpotThunk(spotId));
     history.push(`/`);
@@ -68,14 +68,13 @@ function GetSpotDetails() {
     e.preventDefault();
     history.push(`/spots/${spotId}/edit`);
   };
-  const deleteThisSpot = (spotId) => {
-    // e.preventDefault()
-    dispatch(spotId);
-    dispatch(spotDetailsThunk(spotId));
-  };
+  // const deleteThisSpot = (spotId) => {
+  //   // e.preventDefault()
+  //   dispatch(spotId);
+  //   dispatch(spotDetailsThunk(spotId));
+  // };
   return (
-    { images } &&
-    {spot} && (
+    { images } && { spot } && (
       <>
         <h2>{spot.name}</h2>
         <span>&#9733; {spot.avgStarRating} </span>
@@ -102,7 +101,7 @@ function GetSpotDetails() {
 
         <button
           hidden={sessionUser?.id !== spot.ownerId}
-          onClick={() => deleteASpotThunk(spot.id)}
+          onClick={(e) => onClickDelete(e,spot.id)}
         >
           Delete your spot
         </button>
