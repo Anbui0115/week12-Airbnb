@@ -3,6 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -15,7 +16,8 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <SignupFormModal />
+        {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
   }
@@ -44,9 +46,9 @@ function Navigation({ isLoaded }) {
         {/* </div> */}
 
         <div className="profile_button">{isLoaded && sessionLinks}</div>
-        <button className="create_a_spot" onClick={goToCreateASpot}>
+        <div className="create_a_spot" onClick={goToCreateASpot}>
           Become a Host
-        </button>
+        </div>
       </div>
     </>
   );
