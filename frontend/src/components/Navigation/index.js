@@ -32,11 +32,11 @@ function Navigation({ isLoaded }) {
     e.preventDefault();
     history.push("/spots/new");
   };
-  const demoUser = (e) => {
-    e.preventDefault();
-    // <DemoUser />
-    history.push("/demo-user");
-  };
+  // const demoUser = (e) => {
+  //   e.preventDefault();
+  //   // <DemoUser />
+  //   history.push("/demo-user");
+  // };
   return (
     <div className="outer-nav">
       <div className="nav-container">

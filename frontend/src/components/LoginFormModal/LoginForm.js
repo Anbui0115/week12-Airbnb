@@ -9,7 +9,7 @@ function LoginForm() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  
+
   const sessionUser = useSelector((state) => state.session.user);
   if (sessionUser) return <Redirect to="/" />;
 
@@ -20,6 +20,7 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
+        // console.log("Login errors: ", data.errors);
       }
     );
   };
