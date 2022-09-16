@@ -3,11 +3,12 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-function LoginFormPage() {
+function DemoUser() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [credential, setCredential] = useState("user1");
+  const [password, setPassword] = useState("password1");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -53,4 +54,4 @@ function LoginFormPage() {
   );
 }
 
-export default LoginFormPage;
+export default DemoUser;

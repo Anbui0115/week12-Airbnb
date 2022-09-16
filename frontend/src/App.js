@@ -14,6 +14,7 @@ import SpotsByOwner from "./components/SpotByOwner";
 import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
 import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
 import CreateReview from "./components/CreateReview";
+// import DemoUser from "./components/DemoUser";
 // import CreateSpotForm from "./components/CreateSpot/createSpotForm";
 function App() {
   const dispatch = useDispatch();
@@ -29,9 +30,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/signup">
+          {/* <Route exact path="/signup">
             <SignupFormPage />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <GetAllSpots />
           </Route>
@@ -47,8 +48,8 @@ function App() {
           <Route exact path="/spots/:spotId/edit">
             <EditASpot />
           </Route>
-          {/* <Route exact path="/spots/:spotId/delete">
-            <DeleteASpot/>
+          {/* <Route exact path="/demo-user">
+            <DemoFormModal/>
           </Route> */}
           <Route exact path="/reviews/current">
             <GetReviewsCurrentUser />
