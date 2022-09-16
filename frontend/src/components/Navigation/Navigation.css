@@ -1,10 +1,27 @@
 /* to do: add styling here */
-/* .airbnb_logo {
+.outer-nav {
+  border: 2px black dashed;
+  width: 100%;
 }
-.profile_button {
+.nav-container {
+  border: 2px solid pink;
+  margin: 0px 297px;
+  padding: 0px 80px;
 }
-.create_a_spot {
-} */
-.outer-nav-container{
-    border: 4px pink dashed;
+.nav-bar {
+  border: 1px solid blueviolet;
+}
+.session-links {
+  border: 2px solid brown;
+  display: flex;
+  align-items: center;
+}
+.signup-button {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+@media (min-width: 760px) {
+  /* To be added */
 }

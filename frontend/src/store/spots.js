@@ -197,10 +197,11 @@ export const editASpotThunk =
   };
 
 export const deleteASpotThunk = (spotId) => async (dispatch) => {
+  //this is where we edit/create/delete to the database
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "DELETE",
-  }); ///
-  // console.log("response inside delete a Spot Thunk", response);
+  });
+  //this is where we get the response from dadatabse to add it to Redux store
   if (response.ok) {
     const data = await response.json();
     // console.log("data inside delete a spot thunk", data);
