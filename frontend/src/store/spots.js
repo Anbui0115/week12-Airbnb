@@ -9,7 +9,7 @@ const CREATE_A_SPOT = "spot/create";
 const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
 const EDIT_A_SPOT = "/spots/spotId/edit";
 const DELETE_A_SPOT = "/spots/spotId/delete";
-
+const CLEAN_UP_ALL_SPOTS = "clean-up";
 //action creators
 const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
   return {
@@ -17,7 +17,11 @@ const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
     spotsArr,
   };
 };
-
+const cleanUp = () => {
+  return {
+    type: CLEAN_UP_ALL_SPOTS,
+  };
+};
 const getSpotsOwnedByUser = (payload) => {
   return {
     type: GET_SPOTS_OWNED_BY_USER,
@@ -67,6 +71,10 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   } else {
     return response;
   }
+};
+
+export const cleanUpAllSpots = () => async (dispatch) => {
+  dispatch(cleanUp());
 };
 
 export const getSpotByOwnerThunk = () => async (dispatch) => {
@@ -261,6 +269,10 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.payload];
       return newState;
+    }
+    case CLEAN_UP_ALL_SPOTS: {
+      console.log("STATE", state);
+      return state;
     }
     default:
       return state;

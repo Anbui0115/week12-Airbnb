@@ -3,7 +3,7 @@
 // import { getRounds } from "bcryptjs";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSpotsThunk } from "../../store/spots";
+import { cleanUpAllSpots, getAllSpotsThunk } from "../../store/spots";
 import "./getAllSpots.css";
 import EachSpot from "../EachSpot";
 function GetAllSpots() {
@@ -16,14 +16,15 @@ function GetAllSpots() {
   // console.log("allSpotArray------------", allSpotsArray);
 
   useEffect(() => {
-    //handle errors
-    // ex:.catch(async (res) => {
-    //         const data = await res.json();
-    //         if (data && data.errors) setErrors(data.errors);
-    //       }
     // console.log("useEffect isrunning !!!");
     dispatch(getAllSpotsThunk());
     // .then(setIsLoaded(true));
+
+    //need clean up func here?
+    return () => {
+      // console.log("clean up is running ~~~~~~~~~~");
+    cleanUpAllSpots();
+    };
   }, [dispatch]);
 
   return (
