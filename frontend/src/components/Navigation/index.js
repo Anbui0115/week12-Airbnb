@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
       <div className="session-links">
         <LoginFormModal />
         <SignupFormModal />
-        <DemoUserModal />
+        {/* <DemoUserModal /> */}
         {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </div>
     );

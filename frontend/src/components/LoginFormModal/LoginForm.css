@@ -1,1 +1,140 @@
 /* to do: add styling here */
+/* .login-form {
+  border: 1px dashed orange;
+  display: flex;
+  flex-direction: column;
+  min-height: 48px;
+  height: 500px;
+  width: 500px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid orange;
+  justify-content: space-between;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: space-between;
+  padding: 0px 24px !important;
+  min-height: 48px !important;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
+  color: rgb(34, 34, 34) !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-weight: 800 !important;
+}
+
+.x {
+  border: 1px black solid;
+  flex: 0 0 16px !important;
+  text-align: left !important;
+  font-size: 20px;
+  justify-content: flex-start;
+}
+
+} */
+.login-form {
+  /* border: 1px dashed orange; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  width: 450px;
+  border-radius: 30px;
+  cursor: pointer;
+  min-height: 48px;
+  border-radius: 18px;
+  background-color: transparent;
+  color: rgb(34, 34, 34);
+}
+
+.login-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: rgb(34, 34, 34);
+}
+
+.welcome {
+  /* border: 1px solid black; */
+  font-size: 18pt;
+  font-weight: 600;
+  position: absolute;
+  top: 50px;
+  align-items: center;
+  justify-content: center;
+  color: rgb(34, 34, 34);
+}
+.welcome-text {
+  /* border: 1px solid orange; */
+  margin: 10px 28px;
+  color: rgb(34, 34, 34);
+}
+.input-field {
+  /* border: 1px solid salmon; */
+  display: flex;
+  flex-direction: column;
+  color: rgb(34, 34, 34);
+  justify-content: center;
+  align-items: center;
+}
+.login-text {
+  display: flex;
+  /* border: 1px solid salmon; */
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 800;
+  height: 40px;
+  position: absolute;
+  top: 100px;
+  left: 175px;
+}
+.text-login {
+  /* border: 1px slateblue solid; */
+  margin: 10px;
+  align-self: center;
+}
+.input {
+  /* border: 1px solid royalblue; */
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  border-radius: 13px;
+  font-weight: 400;
+  margin-top: 10px;
+  color: rgb(34, 34, 34);
+  width: 100%;
+}
+.credential {
+  /* border: 1px solid black; */
+  display: flex;
+  width: 100%;
+  height: 30px;
+  border: 1px solid lightgrey;
+  border-radius: 7px;
+  color: rgb(34, 34, 34);
+}
+/* .text {
+  align-self: center;
+} */
+.login-button {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background-color: rgb(208, 87, 87);
+  color: white;
+  justify-content: center;
+  /* margin top | right | bottom | left */
+  margin: 8px 15px 0px 18px;
+  border-radius: 6px;
+  height: 30px;
+  font-size: 14pt;
+  align-items: center;
+  cursor: pointer;
+}
+@media (min-width: 744px) {
+  .login-form {
+    min-height: 64px;
+  }
+}

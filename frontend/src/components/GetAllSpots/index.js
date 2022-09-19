@@ -1,13 +1,13 @@
 // import * as sessionActions from "../../store/session";
 // import { Redirect } from "react-router-dom";
 // import { getRounds } from "bcryptjs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUpAllSpots, getAllSpotsThunk } from "../../store/spots";
 import "./getAllSpots.css";
 import EachSpot from "../EachSpot";
 function GetAllSpots() {
-  // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
+  const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots); //{null}---{}
@@ -17,20 +17,19 @@ function GetAllSpots() {
 
   useEffect(() => {
     // console.log("useEffect isrunning !!!");
-    dispatch(getAllSpotsThunk());
-    // .then(setIsLoaded(true));
+    dispatch(getAllSpotsThunk()).then(setIsLoaded(true));
 
     //need clean up func here?
     return () => {
       // console.log("clean up is running ~~~~~~~~~~");
-    cleanUpAllSpots();
+      cleanUpAllSpots();
     };
   }, [dispatch]);
 
   return (
     <>
       <div className="outer-body">
-        {allSpotsArray && (
+        { isLoaded && (
           <>
             <div className="home-outer-container">
               <div className="home-container">

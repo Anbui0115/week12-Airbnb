@@ -73,8 +73,6 @@ function CreateSpotForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    // console.log("helooooooooooooo");
     setIsSubmitted(true);
     if (validationErrors.length > 0) return;
     let spotInfo = {
