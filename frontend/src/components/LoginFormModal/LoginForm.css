@@ -57,7 +57,7 @@
 
 .welcome {
   /* border: 1px solid black; */
-  font-size: 18pt;
+  font-size: 24px;
   font-weight: 600;
   position: absolute;
   top: 50px;
@@ -83,7 +83,7 @@
   /* border: 1px solid salmon; */
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 800;
   height: 40px;
   position: absolute;
@@ -121,17 +121,19 @@
 .login-button {
   display: flex;
   flex-direction: row;
+  /* border: 1px solid black; */
   border: none;
   background-color: rgb(208, 87, 87);
   color: white;
   justify-content: center;
   /* margin top | right | bottom | left */
-  margin: 8px 15px 0px 18px;
+  margin: 8px 20px 0px 18px;
   border-radius: 6px;
   height: 30px;
   font-size: 14pt;
   align-items: center;
   cursor: pointer;
+  /* width: 100%; */
 }
 @media (min-width: 744px) {
   .login-form {
