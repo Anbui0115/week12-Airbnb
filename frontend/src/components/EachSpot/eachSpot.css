@@ -3,7 +3,7 @@
 }
 .image-container {
   /* background-color: #efefef; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 12px;
   height: 265px;
 }
@@ -15,14 +15,14 @@
 }
 
 .spot-info-container {
-  border: solid palevioletred 1px;
+  /* border: solid palevioletred 1px; */
   display: grid;
   grid-template-columns: 5fr 1fr;
   padding: 10px 0px;
   width: 100%;
 }
 .spot-info {
-  border: 1px rgb(63, 205, 181) solid;
+  /* border: 1px rgb(63, 205, 181) solid; */
   /* display: flex;
   flex-direction: column; */
   /* white-space: nowrap; */
@@ -33,7 +33,7 @@
 }
 
 .spot-location {
-  border: 2px peru solid;
+  /* border: 2px peru solid; */
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -42,7 +42,7 @@
 .spot-price-container {
   /* display: flex;
   align-items: baseline; */
-  border: 1px orange solid;
+  /* border: 1px orange solid; */
   padding: 5px 0px;
 }
 .spot-price {
@@ -51,7 +51,7 @@
 }
 
 .spot-review-data {
-  border: 1px solid salmon;
+  /* border: 1px solid salmon; */
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
