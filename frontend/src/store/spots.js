@@ -9,7 +9,7 @@ const CREATE_A_SPOT = "spot/create";
 const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
 const EDIT_A_SPOT = "/spots/spotId/edit";
 const DELETE_A_SPOT = "/spots/spotId/delete";
-const CLEAN_UP_ALL_SPOTS = "clean-up";
+const CLEAN_UP_ALL_SPOTS = "clean-up-spots";
 //action creators
 const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
   return {
@@ -17,7 +17,7 @@ const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
     spotsArr,
   };
 };
-const cleanUp = () => {
+export const cleanUpAllSpots = () => {
   return {
     type: CLEAN_UP_ALL_SPOTS,
   };
@@ -73,9 +73,9 @@ export const getAllSpotsThunk = () => async (dispatch) => {
   }
 };
 
-export const cleanUpAllSpots = () => async (dispatch) => {
-  dispatch(cleanUp());
-};
+// export const cleanUpAllSpots = () => async (dispatch) => {
+//   dispatch(cleanUp());
+// };
 
 export const getSpotByOwnerThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots/current");
@@ -272,7 +272,7 @@ const spotsReducer = (state = initialState, action) => {
     }
     case CLEAN_UP_ALL_SPOTS: {
       console.log("STATE", state);
-      return state;
+      return {};
     }
     default:
       return state;

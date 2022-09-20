@@ -21,15 +21,15 @@ function GetAllSpots() {
 
     //need clean up func here?
     return () => {
-      // console.log("clean up is running ~~~~~~~~~~");
-      cleanUpAllSpots();
+      console.log("clean up is running ~~~~~~~~~~");
+      dispatch(cleanUpAllSpots());
     };
   }, [dispatch]);
 
   return (
     <>
       <div className="outer-body">
-        { isLoaded && (
+        {isLoaded && (
           <>
             <div className="home-outer-container">
               <div className="home-container">

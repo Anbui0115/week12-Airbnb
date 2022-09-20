@@ -7,7 +7,7 @@ const GET_REVIEWS_OF_SPOT = "reviews/:spotId";
 const CREATE_REVIEW = "reviews/create";
 const EDIT_REVIEW = "reviews/reviewId/edit";
 const DELETE_REVIEW = "reviews/reviewId/delete";
-
+const CLEAN_UP_REVIEW = "clean-up-review";
 //ActionCreators:
 const getReviewsCurrentUser = (reviews) => {
   return {
@@ -15,7 +15,11 @@ const getReviewsCurrentUser = (reviews) => {
     reviews,
   };
 };
-
+export const cleanUpReviewsState = () => {
+  return {
+    type: CLEAN_UP_REVIEW,
+  };
+};
 const getReviewsOfSpot = (payload) => {
   return {
     type: GET_REVIEWS_OF_SPOT,
@@ -135,6 +139,10 @@ const reviewsReducer = (state = initialState, action) => {
       const newState = { ...state };
       delete newState[action.reviewId];
       return newState;
+    }
+    case CLEAN_UP_REVIEW: {
+      console.log("STATE", state);
+      return {};
     }
     default:
       return state;

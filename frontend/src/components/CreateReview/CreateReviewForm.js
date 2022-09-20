@@ -45,15 +45,17 @@ function CreateReviewForm() {
 
     const payload = { userInput, spotId };
     // let createReview = await dispatch(createAReview(payload)).catch(
-    return await dispatch(createAReview(payload)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    const createReview = await dispatch(createAReview(payload)).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
     // Added the dispatch below so that the state is updated with all the information needed for the new review
-    // const reviews = await dispatch(getReviewsBySpotId(spotId));
-    // if (createReview) {
-    //   history.push(`/spots/${spotId}`);
-    // }
+    const reviews = await dispatch(getReviewsBySpotId(spotId));
+    if (createReview) {
+      history.push(`/spots/${spotId}`);
+    }
   };
   return (
     // { hasSubmitted } && (
