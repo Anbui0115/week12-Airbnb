@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import DemoUserModal from "../DemoUserModal";
 import "./Navigation.css";
+import logo from './test1.png'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -48,6 +49,10 @@ function Navigation({ isLoaded }) {
                 fill="red"
               ></path>
             </svg>
+            <div>
+              {/* <img src="./Screen Shot 2022-09-19 at 5.20.14 PM.png" /> */}
+              <img src={logo} alt={"anbnb-logo"} />
+            </div>
           </NavLink>
           <span className="create_a_spot" onClick={goToCreateASpot}>
             Become a Host

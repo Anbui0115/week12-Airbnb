@@ -46,7 +46,7 @@ function LoginForm() {
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="login-container">
         <div className="welcome">
-          <div className="welcome-text">Welcome to airbedandbreakfast</div>
+          <div className="welcome-text">Welcome to AnBnB</div>
         </div>
 
         <ul>

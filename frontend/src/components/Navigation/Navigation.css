@@ -7,6 +7,7 @@
   border: 2px solid pink;
   margin: 0px 297px;
   padding: 0px 80px;
+   /* width: 100%; */
 }
 .nav-bar {
   border: 1px solid blueviolet;
@@ -24,4 +25,8 @@
 
 @media (min-width: 760px) {
   /* To be added */
+}
+img {
+  height: 50px;
+  width: 90px;
 }

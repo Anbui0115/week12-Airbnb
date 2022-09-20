@@ -46,7 +46,7 @@ function SignupForm() {
       <div className="signup-container">
         <div className="welcome-signup">
           <div className="welcome-signup-text">
-            Welcome to airbedandbreakfast
+            Welcome to AnBnB
           </div>
         </div>{" "}
         <div className="signup-text">
