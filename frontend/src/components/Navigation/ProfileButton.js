@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import profileButton from "./profileButton.png";
 import { useHistory } from "react-router-dom";
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   // console.log("user in Profile Button", user);
@@ -40,20 +41,17 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle" />
         <img src={profileButton} alt={"profile-button"} />
       </button> */}
-      <div onClick={openMenu}>
+      <div onClick={openMenu} className="dropdown-menu">
         <img src={profileButton} alt={"profile-button"} />
       </div>
 
       {showMenu && (
-        <div>
-          <ul className="profile-dropdown">
-            <li>username: {user.username}</li>
-            <li>user email:{user.email}</li>
-            {/* <li>
-              <button onClick={logout}>Log Out</button>
-            </li> */}
-          </ul>
-
+        <div className="dropdown-content">
+          {/* <ul className="profile-dropdown">
+            <li>Hi {user.username}</li>
+            <li>{user.email}</li>
+          </ul> */}
+          {/* <div>Hi {user.username}</div> */}
           <div onClick={() => history.push("/spots/current")}>
             Your Listings
           </div>

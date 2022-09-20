@@ -57,13 +57,16 @@ function Navigation({ isLoaded }) {
             </svg>
           </span> */}
         </div>
-        <div className="host-your-spot">
-          <span className="create_a_spot" onClick={goToCreateASpot}>
-            Become a Host
-          </span>
-        </div>
+        <div className="nav-welcome">Welcome to AnBnB</div>
+        <div className="right-nav">
+          <div className="host-your-spot">
+            <span className="create_a_spot" onClick={goToCreateASpot}>
+              Host your place
+            </span>
+          </div>
 
-        <div className="profile_button">{isLoaded && sessionLinks}</div>
+          <div className="profile_button">{isLoaded && sessionLinks}</div>
+        </div>
 
         {/* <div className="search_bar"> */}
         {/* <form>

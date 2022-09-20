@@ -1,0 +1,26 @@
+.dropdown-menu {
+  /* border: 1px solid green; */
+  position: relative;
+  color: gray;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+.dropdown-content {
+  /* border: 1px solid salmon; */
+  position: absolute;
+  right: 55px;
+  color: gray;
+  top: 3.2rem;
+  background-color: white;
+  padding: 0.6rem;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  transition: transform 100ms ease-in-out;
+  transform: translateY(-10px);
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+.dropdown-content > div:focus,
+div:hover {
+  color: black;
+}

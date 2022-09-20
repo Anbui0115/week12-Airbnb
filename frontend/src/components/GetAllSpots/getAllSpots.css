@@ -2,13 +2,14 @@
 .home-outer-container {
   /* border: 2px green solid; */
   width: 100%;
+  font-family: 'Times New Roman', Times, serif;
 }
 .home-container {
   /* border: 2px red solid; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
 }
 .inner-container {
