@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-
+import logo from "./anbnb2.png";
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
@@ -47,6 +47,9 @@ function LoginForm() {
       <div className="welcome-login">
         <div className="welcome-login-text">Welcome to AnBnB</div>
       </div>
+      {/* <div>
+        <img src={logo} />
+      </div> */}
       <div className="login-text-container">
         <div className="text-login">Log in</div>
       </div>

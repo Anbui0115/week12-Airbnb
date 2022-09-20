@@ -165,6 +165,20 @@ router.post(
         },
       });
     }
+    if (req.body.review.length < 4) {
+      const err = new Error("Invalid Review");
+      err.status = 401;
+      err.title = "Invalid Review";
+      err.errors = ["Review needs to be longer than 4 characters"];
+      return next(err);
+    }
+      if (req.body.review.length >= 150) {
+        const err = new Error("Invalid Review");
+        err.status = 401;
+        err.title = "Invalid Review";
+        err.errors = ["Review needs to be less than 150 characters"];
+        return next(err);
+      }
     const totalReviews = await Review.findAll({
       where: {
         [Op.and]: [{ userId: req.user.id }, { spotId: req.params.spotId }],
@@ -374,7 +388,6 @@ router.get("/:spotId", async (req, res, next) => {
 
 //-------------GET ALL SPOTS--------------NOW ADD QUERY AND PAGINATION
 router.get("/", validateQuery, async (req, res, next) => {
-
   let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } =
     req.query;
   let pagination = { options: [] };
