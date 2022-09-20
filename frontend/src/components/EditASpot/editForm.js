@@ -15,7 +15,6 @@ function EditSpotForm() {
   //   console.log("spot is undefined");
   // }
 
-  
   // console.log("spot exist now", spot);
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [address, setAddress] = useState("");
@@ -40,7 +39,7 @@ function EditSpotForm() {
 
   //errors
   const [validationErrors, setValidationErrors] = useState([]);
-  // const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(spot?.previewImage);
   const history = useHistory();
 
   // useEffect(() => {
@@ -58,9 +57,8 @@ function EditSpotForm() {
   // }, [spot]);
 
   useEffect(() => {
-    dispatch(getAllSpotsThunk())
-      .then(dispatch(getSpotByIdThunk(spotId)))
-      // .then(setIsLoaded(true));
+    dispatch(getAllSpotsThunk()).then(dispatch(getSpotByIdThunk(spotId)));
+    // .then(setIsLoaded(true));
   }, [dispatch, spotId]);
 
   useEffect(() => {
@@ -79,7 +77,7 @@ function EditSpotForm() {
     if (name?.length > 50) errors.push("Name must be less than 50 characters");
     if (description === "") errors.push("Description is required");
     if (price === "") errors.push("Price per day is required");
-    // if (imageUrl === "") errors.push("Image URL is required");
+    if (imageUrl === "") errors.push("Image URL is required");
     setValidationErrors(errors);
   }, [
     address,
@@ -91,7 +89,7 @@ function EditSpotForm() {
     name,
     description,
     price,
-    // imageUrl,
+    imageUrl,
   ]);
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -215,16 +213,16 @@ function EditSpotForm() {
             required
           />
         </label>
-        {/* <label>
-        Image URL
-        <input
-          type="text"
-          name="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          required
-        />
-      </label> */}
+        <label>
+          Image URL
+          <input
+            type="text"
+            name="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            required
+          />
+        </label>
         <button type="submit" disabled={validationErrors.length > 0}>
           Submit
         </button>
