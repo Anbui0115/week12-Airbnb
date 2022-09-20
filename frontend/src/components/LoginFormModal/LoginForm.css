@@ -24,14 +24,6 @@
   font-weight: 800 !important;
 }
 
-.x {
-  border: 1px black solid;
-  flex: 0 0 16px !important;
-  text-align: left !important;
-  font-size: 20px;
-  justify-content: flex-start;
-}
-
 } */
 .login-form {
   /* border: 1px dashed orange; */
@@ -49,23 +41,39 @@
 }
 
 .login-container {
+  /* border: 1px solid black; */
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
   color: rgb(34, 34, 34);
 }
 
-.welcome {
+.welcome-login {
   /* border: 1px solid black; */
-  font-size: 24px;
+  /* font-size: 24px;
   font-weight: 600;
   position: absolute;
   top: 50px;
+  left: 100px;
   align-items: center;
   justify-content: center;
   color: rgb(34, 34, 34);
+  position absolute works but hard to use */
+
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: rgb(34, 34, 34);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  font-family: "Times New Roman", Times, serif;
 }
-.welcome-text {
+.welcome-login-text {
   /* border: 1px solid orange; */
   margin: 10px 28px;
   color: rgb(34, 34, 34);
@@ -78,9 +86,9 @@
   justify-content: center;
   align-items: center;
 }
-.login-text {
-  display: flex;
-  /* border: 1px solid salmon; */
+.login-text-container {
+  /* display: flex;
+  border: 1px solid salmon;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -88,7 +96,20 @@
   height: 40px;
   position: absolute;
   top: 100px;
-  left: 175px;
+  left: 175px; */
+
+  display: flex;
+  /* border: 1px solid salmon; */
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 1px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: rgb(34, 34, 34);
+  font-family: "Times New Roman", Times, serif;
 }
 .text-login {
   /* border: 1px slateblue solid; */
@@ -139,4 +160,12 @@
   .login-form {
     min-height: 64px;
   }
+}
+.login-button-modal {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
 }

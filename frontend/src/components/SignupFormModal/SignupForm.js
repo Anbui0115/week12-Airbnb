@@ -43,15 +43,13 @@ function SignupForm() {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
+      <div className="welcome-signup">
+        <div className="welcome-signup-text">Welcome to AnBnB</div>
+      </div>
+      <div className="signup-text-container">
+        <div className="text-signup">Sign up</div>
+      </div>
       <div className="signup-container">
-        <div className="welcome-signup">
-          <div className="welcome-signup-text">
-            Welcome to AnBnB
-          </div>
-        </div>{" "}
-        <div className="signup-text">
-          <div className="text-signup">Sign up</div>
-        </div>
         <ul>
           {submitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
