@@ -1,32 +1,81 @@
 /* to do: add styling here */
 .outer-nav {
-  border: 2px black dashed;
-  width: 100%;
+  /* border: 2px black dashed; */
+
+  display: flex;
+  margin: auto;
+  position: sticky;
+  top: 11px;
+  width: 100vw;
+  height: 50px;
+  background-color: white;
+  justify-content: space-between;
+align-items: center;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  padding-bottom: 50px;
+  padding-top: 10px;
 }
 .nav-container {
-  border: 2px solid pink;
-  margin: 0px 297px;
-  padding: 0px 80px;
-   /* width: 100%; */
+  /* border: 2px solid purple; */
+  /* margin: 0px 297px;
+  padding: 0px 80px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 38px;
+  margin: 0px auto;
+  z-index: 1;
 }
-.nav-bar {
-  border: 1px solid blueviolet;
+
+
+
+.logo-anbnb {
+  /* border: 1px seagreen dashed; */
+  margin-top: 30px;
+  width: 220px;
+  height: 200px;
+
 }
 .session-links {
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 49px;
 }
-.signup-button {
+img {
+  height: 47px;
+  width: 77px;
+}
+.home-logo-container {
+  margin: 1px;
+}
+.host-your-spot {
+  /* border: 1px solid darkgreen; */
+  cursor: pointer;
+}
+.create_a_spot {
+  /* border: 1px solid hotpink; */
+  margin: 4px;
+  padding-right: 56px;
+  font-size: 20px;
+  color: rgba(235, 26, 26);
+  font-weight: 500;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/* .signup-button {
   font-size: 16px;
   text-decoration: none;
   color: black;
-}
-
-@media (min-width: 760px) {
+} */
+/* .login-button {
+  margin: 15px;
+  font-size: 16px;
+} */
+@media (min-width: 980px) {
   /* To be added */
-}
-img {
-  height: 50px;
-  width: 90px;
 }
