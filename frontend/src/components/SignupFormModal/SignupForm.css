@@ -13,7 +13,7 @@
   background-color: transparent;
   color: rgb(34, 34, 34);
   margin: 5px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .signup-container {
@@ -23,6 +23,7 @@
   margin-top: 0px;
   cursor: pointer;
   color: rgb(34, 34, 34);
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .welcome-signup {
@@ -43,7 +44,7 @@
   margin-right: 20px;
   margin-top: 0px;
   margin-bottom: 30px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .welcome-signup-text {
   /* border: 1px solid orange; */
@@ -59,7 +60,7 @@
   color: rgb(34, 34, 34);
   justify-content: center;
   align-items: center;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .signup-text-container {
   display: flex;
@@ -73,7 +74,7 @@
   margin-left: 20px;
   margin-right: 20px;
   color: rgb(34, 34, 34);
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   /* height: 70px; */
   /* position: absolute;
   top: 110px;
@@ -85,7 +86,7 @@
   margin: 10px;
   align-self: center;
   color: rgb(34, 34, 34);
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .input {
   /* border: 1px solid royalblue; */
@@ -97,7 +98,7 @@
   margin-top: 10px;
   color: rgb(34, 34, 34);
   width: 100%;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .credential {
   /* border: 1px solid black; */
@@ -107,7 +108,7 @@
   border: 1px solid lightgrey;
   border-radius: 7px;
   color: rgb(34, 34, 34);
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 /* .text {
   align-self: center;
@@ -141,5 +142,5 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }

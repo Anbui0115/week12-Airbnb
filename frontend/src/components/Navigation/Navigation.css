@@ -14,6 +14,7 @@
   border-bottom: 1px solid rgb(228, 228, 228);
   padding-bottom: 30px;
   padding-top: 10px;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .nav-container {
   /* border: 2px solid purple; */
@@ -29,6 +30,7 @@
   height: 38px;
   margin: 0px auto;
   z-index: 1;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .logo-anbnb {
@@ -43,6 +45,7 @@
   align-items: center;
   width: 100%;
   height: 49px;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 img {
   height: 47px;
@@ -55,6 +58,7 @@ img {
   /* border: 1px solid blue; */
   display: flex;
   flex-direction: row;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .host-your-spot {
   /* border: 1px solid greenyellow; */
@@ -62,6 +66,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .create_a_spot {
@@ -71,13 +76,13 @@ img {
   font-size: 20px;
   font-weight: 500;
   /* font-family: sans-serif; */
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .nav-welcome {
   /* border: 1px solid navy; */
   font-size: 20px;
-  /* font-family: sans-serif; */
-  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 /* .signup-button {
   font-size: 16px;

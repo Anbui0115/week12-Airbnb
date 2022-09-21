@@ -1,5 +1,6 @@
 .spot-outer-container {
   width: 18em;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .image-container {
   /* background-color: #efefef; */

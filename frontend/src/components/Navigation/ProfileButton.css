@@ -3,7 +3,7 @@
   position: relative;
   color: gray;
   cursor: pointer;
-  font-family: 'Times New Roman', Times, serif;
+font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
 }
 .dropdown-content {
   /* border: 1px solid salmon; */
@@ -18,7 +18,7 @@
   transition: transform 100ms ease-in-out;
   transform: translateY(-10px);
   cursor: pointer;
-  font-family: 'Times New Roman', Times, serif;
+ font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
 }
 .dropdown-content > div:focus,
 div:hover {
