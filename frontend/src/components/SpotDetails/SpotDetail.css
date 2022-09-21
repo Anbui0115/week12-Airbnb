@@ -24,7 +24,7 @@
 
 .spot-detail-sub-bar {
   border: 1px solid firebrick;
-
+  font-weight: 500;
   margin-top: 20px;
   margin-left: 10px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
@@ -45,21 +45,24 @@
 .spot-image-container {
   border: 2px solid slateblue;
   margin-top: 0px;
-  height: 400px;
-  width: 40%;
+  height: 500px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .spot-img {
   border: 1px darkred dashed;
-  height: 95%;
-  width: 95%;
+  /* height: 95%;
+  width: 95%; */
+  height: 480px;
+  width: 520px;
   border-radius: 10px;
+  margin: auto;
 }
 .spot-img > img {
-  height: 380px;
-  width: 420px;
+   height: 480px;
+  width: 520px;
   border-radius: 10px;
 }
 .spot-description-container {

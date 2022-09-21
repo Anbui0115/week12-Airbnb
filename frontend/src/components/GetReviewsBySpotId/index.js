@@ -4,6 +4,9 @@ import { useHistory, useParams } from "react-router-dom";
 import { getReviewsBySpotId } from "../../store/reviews";
 import { deleteAReview } from "../../store/reviews";
 import { spotDetailsThunk } from "../../store/spots";
+
+import "./GetReviewSpotId.css";
+
 function GetReviewsBySpotId() {
   console.log("GET REVIEW BY SPOT ID ------");
   const dispatch = useDispatch();
@@ -42,8 +45,14 @@ function GetReviewsBySpotId() {
   if (!reviews) return null;
 
   return (
-    <>
+    <div className="reviews-outer-container">
       <div>Hello this is review by spot id</div>
+      <div className="spot-detail-sub-bar ">
+        {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
+          <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>
+        )}
+        <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
+      </div>
       {reviews.map((review) => (
         <div key={`review${review.id}`}>
           <li>review Id:{review.id}</li>
@@ -69,7 +78,7 @@ function GetReviewsBySpotId() {
           Leave a review
         </button>
       )}
-    </>
+    </div>
   );
 }
 
