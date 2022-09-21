@@ -5,7 +5,7 @@ import { createASpotThunk } from "../../store/spots";
 import { getAllSpotsThunk, addImgThunk } from "../../store/spots";
 // import { useHistory } from "react-router-dom";
 // import "./CreateSpot.css";
-function CreateSpotForm() {
+function CreateSpotForm({ hideModal }) {
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -20,7 +20,7 @@ function CreateSpotForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const history = useHistory();
   // //errors
-  const [validationErrors, setValidationErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   // useEffect(() => {
   //   dispatch(getAllSpotsThunk());
@@ -30,16 +30,16 @@ function CreateSpotForm() {
     let errors = [];
     if (address.length < 10)
       errors.push("Street address needs to be at least 10 characters");
-    if (city === "") errors.push("City is required");
-    if (state === "") errors.push("State is required");
-    if (country === "") errors.push("Country is required");
-    if (lat === "") errors.push("Latitude is not valid");
-    if (lng === "") errors.push("Longitude is not valid");
-    if (name === "") errors.push("Name is required");
+    // if (city === "") errors.push("City is required");
+    // if (state === "") errors.push("State is required");
+    // if (country === "") errors.push("Country is required");
+    if (lat < -90 || lat > 90) errors.push("Latitude is not valid");
+    if (lng < -180 || lng > 180) errors.push("Longitude is not valid");
+    // if (name === "") errors.push("Name is required");
     if (name.length > 50) errors.push("Name must be less than 50 characters");
-    if (description === "") errors.push("Description is required");
-    if (price === "") errors.push("Price per day is required");
-    if (imageUrl === "") errors.push("Image URL is required");
+    // if (description === "") errors.push("Description is required");
+    // if (price === "") errors.push("Price per day is required");
+    // if (imageUrl === "") errors.push("Image URL is required");
     if (
       !imageUrl.includes(".jpg") &&
       !imageUrl.includes(".png") &&
@@ -55,24 +55,28 @@ function CreateSpotForm() {
     //   //  ) {
     //   //    errors.push("Provide a valid image");
     //   //  }
-    setValidationErrors(errors);
+    setErrors(errors);
   }, [
     address,
-    city,
-    state,
-    country,
+    // city,
+    // state,
+    // country,
     lat,
     lng,
     name,
-    description,
-    price,
+    // description,
+    // price,
     imageUrl,
   ]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    if (validationErrors.length > 0) return;
+    setErrors([]);
+    // if (validationErrors.length > 0) return;
+    // if (errors.length > 0) {
+    //   return alert("Cannot Submit");
+    // }
     let spotInfo = {
       address,
       city,
@@ -86,13 +90,20 @@ function CreateSpotForm() {
       // imageUrl,
     };
     // console.log("spotInfo inside Form", spotInfo);
-    setValidationErrors([]);
-    const data = await dispatch(createASpotThunk(spotInfo));
+
+    const data = await dispatch(createASpotThunk(spotInfo)).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
     // console.log("data````````````", data);
     dispatch(addImgThunk({ previewImage: true, url: imageUrl }, data.id));
-
-    //need to redirect to the newly created spot
-    history.push(`/spots/${data.id}`);
+    if (data) {
+      hideModal();
+      //need to redirect to the newly created spot
+      history.push(`/spots/${data.id}`);
+    }
   };
   return (
     <form className="create-a-spot-form" onSubmit={onSubmit}>
@@ -105,8 +116,8 @@ function CreateSpotForm() {
       </div>
       <div className="create-a-spot-container">
         {isSubmitted && (
-          <ul className="create-spot_error">
-            {validationErrors.map((error) => (
+          <ul className="create-spot-error">
+            {errors.map((error) => (
               <li key={error}>{error}</li>
             ))}
           </ul>
@@ -250,7 +261,7 @@ function CreateSpotForm() {
         <button
           className="create-spot-modal-submit-button"
           type="submit"
-          disabled={isSubmitted && validationErrors.length > 0}
+          disabled={isSubmitted && errors.length > 0}
         >
           Submit
         </button>

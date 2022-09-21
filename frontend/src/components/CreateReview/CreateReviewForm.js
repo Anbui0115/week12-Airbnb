@@ -62,12 +62,7 @@ function CreateReviewForm() {
     <form onSubmit={handleSubmit}>
       <h2>Write a Review</h2>
       <div>
-        {/* <ul>
-          {hasSubmitted && errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul> */}
-        <ul>
+        <ul className="create-review-error">
           {hasSubmitted &&
             errors.map((error, idx) => <li key={error}>{error}</li>)}
         </ul>

@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
 import CreateSpotForm from "./createSpotForm";
 import { Modal } from "../../context/Modal";
-import './CreateSpot.css'
+import "./CreateSpot.css";
 import { useState } from "react";
 function CreateASpotModal(userInput) {
   const [showModal, setShowModal] = useState(false);
+  const hideModal = () => {
+    setShowModal(false);
+  };
   return (
     <>
       <div
@@ -16,7 +19,7 @@ function CreateASpotModal(userInput) {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div>
-            <CreateSpotForm  />
+            <CreateSpotForm hideModal={hideModal} />
           </div>
         </Modal>
       )}

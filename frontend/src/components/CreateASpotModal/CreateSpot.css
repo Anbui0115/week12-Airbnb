@@ -6,6 +6,7 @@
   /* height: 100px; */
   /* width: 80%; */
   margin: 20px 20px;
+  padding: 3px;
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -21,7 +22,7 @@
   scrollbar-width: thin;
 }
 .welcome-create-a-spot {
-  border: 1px dashed hotpink;
+  /* border: 1px dashed hotpink; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,17 +33,17 @@
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .welcome-create-a-spot-text {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 10px 10px;
   color: rgb(34, 34, 34);
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .become-a-host-container {
-  border: 1px darkblue dotted;
+  /* border: 1px darkblue dotted; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +57,7 @@
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .become-a-host-text {
-  border: 1px darkmagenta solid;
+  /* border: 1px darkmagenta solid; */
   margin: 10px;
   align-self: center;
   color: rgb(34, 34, 34);
@@ -64,7 +65,7 @@
 }
 
 .create-a-spot-container {
-  border: 1px darkgreen dashed;
+  /* border: 1px darkgreen dashed; */
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 0px;
@@ -73,13 +74,16 @@
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-.create-spot_error {
+.create-spot-error{
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .create-spot-body {
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .create-spot-input-items {
+  /* border: 1px dashed hotpink; */
+  margin-left: 2px;
+  margin-right: 8px;
   display: flex;
   flex-direction: column;
   color: rgb(34, 34, 34);
@@ -99,7 +103,10 @@
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .create-spot-input {
+  /* border: 1px solid brown; */
   display: flex;
+  /* margin-left: 5px; */
+  margin-right: 5px;
   width: 100%;
   height: 25px;
   border: 1px solid lightgrey;
@@ -108,6 +115,7 @@
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .create-spot-modal-submit-button {
+  /* border: 1px dashed black; */
   display: flex;
   flex-direction: row;
   border: none;
@@ -115,7 +123,7 @@
   color: white;
   justify-content: center;
   /* margin top | right | bottom | left */
-  margin: 11px 0px 0px 0px;
+  margin-top: 11px;
   /* padding: 50px; */
   border-radius: 6px;
   height: 30px;
@@ -124,13 +132,13 @@
   cursor: pointer;
   width: 100%;
 }
-.create-spot-modal-button{
+.create-spot-modal-button {
   font-size: 20px;
   font-weight: 500;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-@media (min-width: 744px) {
-  .signup-form {
+@media (min-width: 998px) {
+  .create-a-spot-form {
     min-height: 64px;
   }
 }
