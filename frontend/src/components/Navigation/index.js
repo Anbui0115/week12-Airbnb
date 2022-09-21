@@ -8,7 +8,7 @@ import SignupFormModal from "../SignupFormModal";
 import DemoUserModal from "../DemoUserModal";
 import "./Navigation.css";
 import logo from "./logo.png";
-import CreateASpotModal from "../CreateSpot";
+import CreateASpotModal from "../CreateASpotModal";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);

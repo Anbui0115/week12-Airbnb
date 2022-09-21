@@ -7,7 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllSpots from "./components/GetAllSpots";
 import GetSpotDetails from "./components/SpotDetails";
-import CreateASpot from "./components/CreateSpot";
+// import CreateASpot from "./components/CreateSpot";
 import EditASpot from "./components/EditASpot";
 import SpotsByOwner from "./components/SpotByOwner";
 // import DeleteASpot from './components/DeleteSpot'
@@ -36,9 +36,9 @@ function App() {
           <Route exact path="/">
             <GetAllSpots />
           </Route>
-          <Route exact path="/spots/new">
+          {/* <Route exact path="/spots/new">
             <CreateASpot />
-          </Route>
+          </Route> */}
           <Route exact path="/spots/current">
             <SpotsByOwner />
           </Route>
