@@ -40,7 +40,6 @@ function ProfileButton({ user }) {
   };
   return (
     <>
-
       <div onClick={openMenu} className="dropdown-menu">
         <img src={profileButton} alt={"profile-button"} />
       </div>
@@ -52,10 +51,16 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
           </ul> */}
           {/* <div>Hi {user.username}</div> */}
-          <div onClick={() => history.push("/spots/current")}>
+          <div
+            className="your-listing"
+            onClick={() => history.push("/spots/current")}
+          >
             Your Listings
           </div>
-          <div onClick={() => history.push("/reviews/current")}>
+          <div
+            className="your-review"
+             onClick={() => history.push("/reviews/current")}
+          >
             Your Reviews
           </div>
           {/* <div className="host-your-spot">

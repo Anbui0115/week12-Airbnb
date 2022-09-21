@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createASpotThunk } from "../../store/spots";
 import { getAllSpotsThunk, addImgThunk } from "../../store/spots";
 // import { useHistory } from "react-router-dom";
-import "./CreateSpot.css";
+// import "./CreateSpot.css";
 function CreateSpotForm() {
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");

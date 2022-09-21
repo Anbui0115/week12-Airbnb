@@ -17,8 +17,8 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links">
-        <ProfileButton user={sessionUser} />
         <CreateASpotModal />
+        <ProfileButton user={sessionUser} />
       </div>
     );
   } else {
@@ -37,11 +37,7 @@ function Navigation({ isLoaded }) {
     setShowModal(true);
     // history.push("/spots/new");
   };
-  // const demoUser = (e) => {
-  //   e.preventDefault();
-  //   // <DemoUser />
-  //   history.push("/demo-user");
-  // };
+
   return (
     <div className="outer-nav">
       <div className="nav-container">
@@ -72,10 +68,10 @@ function Navigation({ isLoaded }) {
                 <CreateASpot />
               </Modal>
             )} */}
-          </div>
+
 
           <div className="profile_button">{isLoaded && sessionLinks}</div>
-        </div>
+             </div>  </div>
 
         {/* <div className="search_bar"> */}
         {/* <form>
