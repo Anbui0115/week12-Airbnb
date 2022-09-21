@@ -91,7 +91,8 @@ function CreateSpotForm({ hideModal }) {
     };
     // console.log("spotInfo inside Form", spotInfo);
 
-    const data = await dispatch(createASpotThunk(spotInfo)).catch(
+    const data = await dispatch(createASpotThunk(spotInfo))
+    .catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
