@@ -69,15 +69,14 @@ img {
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-.create_a_spot {
-  /* border: 1px solid hotpink; */
+/* .create_a_spot {
+  border: 1px solid hotpink;
   margin: 4px;
   padding-right: 8px;
   font-size: 20px;
   font-weight: 500;
-  /* font-family: sans-serif; */
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-}
+} */
 .nav-welcome {
   /* border: 1px solid navy; */
   font-size: 20px;

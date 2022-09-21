@@ -1,12 +1,24 @@
 import { useSelector } from "react-redux";
 import CreateSpotForm from "./createSpotForm";
-function CreateASpot(userInput) {
-  // const spots = useSelector((state) => state.spots);??
+import { Modal } from "../../context/Modal";
+// import './CreateSpot.css'
+import { useState } from "react";
+function CreateASpotModal(userInput) {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <div>Create a Spot</div>
-      <CreateSpotForm />
+      {/* <button
+        className="create-spot-modal-button"
+        onClick={() => setShowModal(true)}
+      >
+        Host Your Place
+      </button> */}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <CreateSpotForm />
+        </Modal>
+      )}
     </>
   );
 }
-export default CreateASpot;
+export default CreateASpotModal;

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import { Modal } from "../../context/Modal";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -7,15 +8,17 @@ import SignupFormModal from "../SignupFormModal";
 import DemoUserModal from "../DemoUserModal";
 import "./Navigation.css";
 import logo from "./logo.png";
+import CreateASpotModal from "../CreateSpot";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-
+  const [showModal, setShowModal] = useState(false);
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links">
         <ProfileButton user={sessionUser} />
+        <CreateASpotModal />
       </div>
     );
   } else {
@@ -31,7 +34,8 @@ function Navigation({ isLoaded }) {
   const history = useHistory();
   const goToCreateASpot = (e) => {
     e.preventDefault();
-    history.push("/spots/new");
+    setShowModal(true);
+    // history.push("/spots/new");
   };
   // const demoUser = (e) => {
   //   e.preventDefault();
@@ -60,9 +64,14 @@ function Navigation({ isLoaded }) {
         <div className="nav-welcome">Welcome to AnBnB</div>
         <div className="right-nav">
           <div className="host-your-spot">
-            <span className="create_a_spot" onClick={goToCreateASpot}>
+            {/* <span className="create_a_spot" onClick={goToCreateASpot}>
               Host your place
             </span>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <CreateASpot />
+              </Modal>
+            )} */}
           </div>
 
           <div className="profile_button">{isLoaded && sessionLinks}</div>

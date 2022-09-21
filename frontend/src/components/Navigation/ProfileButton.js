@@ -31,10 +31,10 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
-  // const goToCreateASpot = (e) => {
-  //   e.preventDefault();
-  //   history.push("/spots/new");
-  // };
+  const goToCreateASpot = (e) => {
+    e.preventDefault();
+    // history.push("/spots/new");
+  };
   return (
     <>
       {/* <button onClick={openMenu}>
@@ -58,11 +58,12 @@ function ProfileButton({ user }) {
           <div onClick={() => history.push("/reviews/current")}>
             Your Reviews
           </div>
-          {/* <div className="host-your-spot">
+          <div className="host-your-spot">
             <span className="create_a_spot" onClick={goToCreateASpot}>
-              Become a Host
+              Host your place
             </span>
-          </div> */}
+          </div>
+
           <div className="profile-log-out" onClick={logout}>
             Log Out
           </div>

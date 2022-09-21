@@ -25,7 +25,9 @@
   position: absolute;
   background-color: white;
   border-radius: 15px;
+  max-height: 90%;
   /* border: 1px solid rgba(0, 0, 0, 0.5); */
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.5);
+  overflow-y: scroll;
 }

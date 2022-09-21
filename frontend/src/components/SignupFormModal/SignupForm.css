@@ -6,7 +6,7 @@
   justify-content: center;
   height: 730px;
   width: 600px;
-  border-radius: 30px;
+
   cursor: pointer;
   min-height: 48px;
   border-radius: 18px;
@@ -15,17 +15,6 @@
   margin: 5px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-
-.signup-container {
-  /* border: 1px blue solid; */
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 0px;
-  cursor: pointer;
-  color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-}
-
 .welcome-signup {
   /* border: 1px solid black; */
   font-size: 24px;
@@ -46,23 +35,14 @@
   margin-bottom: 30px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
+
 .welcome-signup-text {
   /* border: 1px solid orange; */
   /* margin: 10px 20px; */
 
   color: rgb(34, 34, 34);
-  font-family: "Times New Roman", Times, serif;
-}
-.input-field {
-  /* border: 1px solid salmon; */
-  display: flex;
-  flex-direction: column;
-  color: rgb(34, 34, 34);
-  justify-content: center;
-  align-items: center;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-}
-.signup-text-container {
+}.signup-text-container {
   display: flex;
   /* border: 1px solid salmon; */
   justify-content: center;
@@ -80,14 +60,33 @@
   top: 110px;
   left: 275px;
   bottom: 570px; */
-}
-.text-signup {
+}.text-signup {
   /* border: 1px slateblue solid; */
   margin: 10px;
   align-self: center;
   color: rgb(34, 34, 34);
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
+.signup-container {
+  /* border: 1px blue solid; */
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  cursor: pointer;
+  color: rgb(34, 34, 34);
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.input-field {
+  /* border: 1px solid salmon; */
+  display: flex;
+  flex-direction: column;
+  color: rgb(34, 34, 34);
+  justify-content: center;
+  align-items: center;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+
 .input {
   /* border: 1px solid royalblue; */
   display: flex;
