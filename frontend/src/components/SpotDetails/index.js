@@ -39,7 +39,7 @@ function GetSpotDetails() {
   //need to conditionally render
   if (spot.Images) {
     images = spot.Images.map((image) => (
-      <div>
+      <div className="spot-img">
         <img src={image.url} />
       </div>
     ));
@@ -65,36 +65,42 @@ function GetSpotDetails() {
   // };
   return (
     { images } && { spot } && (
-      <>
-        <h2>{spot.name}</h2>
+      <div className="spot-details-outer-container ">
+        <div className="spot-name-container">
+          <div className="spot-name-text">{spot.name}</div>
+        </div>
         {/* <span>&#9733; {spot.avgStarRating} </span> */}
-        {spot.avgStarRating ===
-        "0.0" ? // <span className="spot-rating">No Reviews</span>
-        null : (
-          <span className="spot-rating">&#9733; {spot.avgStarRating}</span>
-        )}
-        {/* <NavLink to={`/spots/${spot.id}/reviews`}> */}
 
-        <span>{spot.numReviews} Reviews</span>
+        <div className="spot-detail-sub-bar ">
+          {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
+            <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>
+          )}
 
-        {/* </NavLink> */}
-        <span>
-          {spot.city}, {spot.state}, {spot.country}
-        </span>
+          <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
+
+          <span className="spot-sub-bar-info ">
+            . {spot.city}, {spot.state}, {spot.country}
+          </span>
+        </div>
+
         <br />
-        <div>{images}</div>
-        <p>{spot.description}</p>
-        <p>${spot.price} per night</p>
-        <p>spot.ownerId {spot.ownerId}</p>
+        <div className="spot-image-container ">
+          <div className="spot-img">{images}</div>
+        </div>
+
+        <div className="spot-description-container">
+          <p className="spot-description-text">{spot.description}</p>
+        </div>
+        <div className="spot-price-container">
+          <p>${spot.price} per night</p>
+        </div>
+        {/* <div className="hosted-by-container ">
+          <p className="hosted-by-text">
+            Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
+          </p>
+        </div> */}
+
         <GetReviewsBySpotId />
-        {/* <div>{ownerFunctionality}</div> */}
-        {/* <button onClick={createAReview}>Leave a review</button> */}
-        {/* <button
-          hidden={sessionUser.id !== spot.ownerId}
-          onClick={createAReview}
-        >
-          Delete your review
-        </button> */}
 
         <button
           hidden={sessionUser?.id !== spot.ownerId}
@@ -108,7 +114,7 @@ function GetSpotDetails() {
         >
           Edit your spot
         </button>
-      </>
+      </div>
     )
   );
 }

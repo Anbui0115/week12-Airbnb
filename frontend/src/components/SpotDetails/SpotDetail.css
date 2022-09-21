@@ -1,1 +1,90 @@
- /* font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif; */
+.spot-details-outer-container {
+  border: 2px dashed purple;
+  margin: 10px 10px;
+  /* display: flex;
+  flex-direction: column; */
+  /* padding: 10px; */
+  padding-left: 25px;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-name-container {
+  border: solid 1px palegreen;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin-bottom: 10px;
+}
+.spot-name-text {
+  border: 1px dotted palevioletred;
+  margin: 10px 10px;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.spot-detail-sub-bar {
+  border: 1px solid firebrick;
+
+  margin-top: 20px;
+  margin-left: 10px;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.spot-rating {
+  border: 1px solid hotpink;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-numReviews {
+  border: 1px solid navy;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-sub-bar-info {
+  border: 1px dotted rgb(50, 229, 71);
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-image-container {
+  border: 2px solid slateblue;
+  margin-top: 0px;
+  height: 400px;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spot-img {
+  border: 1px darkred dashed;
+  height: 95%;
+  width: 95%;
+  border-radius: 10px;
+}
+.spot-img > img {
+  height: 380px;
+  width: 420px;
+  border-radius: 10px;
+}
+.spot-description-container {
+  border: 1px solid firebrick;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-description-text {
+  border: 1px solid rgb(70, 34, 178);
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin: 10px;
+}
+.spot-price-container {
+  border: 1px solid firebrick;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.spot-price-text {
+  border: 1px solid rgb(70, 34, 178);
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin: 10px;
+}
+/* .hosted-by-container {
+  border: 1px solid firebrick;
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+.hosted-by-text {
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin: 10px;
+} */
