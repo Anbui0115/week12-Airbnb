@@ -38,3 +38,6 @@ heroku run npm run sequelize db:seed:all
 heroku logs
 https://open.appacademy.io/learn/js-py---may-2022-cohort-1-online/week-12---security--authentication--authorization/authenticate-me--deployment
 */
+/*
+if see slashes remember to CLEAN UP STATE to protect personal info
+*/

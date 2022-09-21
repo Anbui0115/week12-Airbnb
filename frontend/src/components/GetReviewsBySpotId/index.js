@@ -5,6 +5,7 @@ import { getReviewsBySpotId } from "../../store/reviews";
 import { deleteAReview } from "../../store/reviews";
 import { spotDetailsThunk } from "../../store/spots";
 function GetReviewsBySpotId() {
+  console.log("GET REVIEW BY SPOT ID ------");
   const dispatch = useDispatch();
   const history = useHistory();
   let { spotId } = useParams();
@@ -38,7 +39,7 @@ function GetReviewsBySpotId() {
     e.preventDefault();
     history.push(`/spots/${spot.id}/create-review`);
   };
-  if (!reviews || !sessionUser) return null;
+  if (!reviews) return null;
 
   return (
     <>
@@ -49,15 +50,17 @@ function GetReviewsBySpotId() {
           <li>review:{review.review}</li>
           <li>review stars:{review.stars}</li>
           <li>review Owner id:{review.userId}</li>
-          <button
-            hidden={sessionUser.id !== review.userId}
-            onClick={(e) => deleteYourReview(e, review.id)}
-          >
-            Delete your review
-          </button>
+          {sessionUser && (
+            <button
+              hidden={sessionUser.id !== review.userId}
+              onClick={(e) => deleteYourReview(e, review.id)}
+            >
+              Delete your review
+            </button>
+          )}
         </div>
       ))}
-      {!leftAReview && (
+      {!leftAReview && sessionUser && (
         <button
           // hidden={sessionUser.id === review.userId}
           // hidden={leaveAReview}

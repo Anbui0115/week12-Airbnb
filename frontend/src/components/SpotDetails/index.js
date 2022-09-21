@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { editASpotThunk } from "../../store/spots";
+import { cleanUpAllSpots, editASpotThunk } from "../../store/spots";
 import { deleteASpotThunk, spotDetailsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
-import { getReviewsBySpotId } from "../../store/reviews";
+import { cleanUpReviewsState, getReviewsBySpotId } from "../../store/reviews";
 // import EditSpotForm from "../EditASpot";
 import "./SpotDetail.css";
 
@@ -21,25 +21,15 @@ function GetSpotDetails() {
   //   const spot = useSelector((state) => state.spots.id);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  // console.log("sessionUser", sessionUser, sessionUser.id);
-  // console.log("spot~~~~~", spot, spot.ownerId);
-  // const reviews = useSelector((state) => state.reviews);
-  // let owner =false
-  //   if (sessionUser && spot) {
-  //     owner = sessionUser.id === spot.ownerId;
-  //   }
-  //   let ownerFunctionality;
-  //   if (sessionUser === spot?.owner) {
-  //     ownerFunctionality = (
-  //       <>
-  //         <button onClick={onClickEdit}>Edit</button>
-  //         <button onClick={onClickDelete}>Delete</button>
-  //       </>
-  //     );
-  //   }
+
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
+    return () => {
+      console.log("clean up review running");
+      dispatch(cleanUpReviewsState());
+      dispatch(cleanUpAllSpots());
+    };
   }, [dispatch, spotId]);
 
   if (!spot) {
@@ -77,10 +67,17 @@ function GetSpotDetails() {
     { images } && { spot } && (
       <>
         <h2>{spot.name}</h2>
-        <span>&#9733; {spot.avgStarRating} </span>
-        <NavLink to={`/spots/${spot.id}/reviews`}>
-          <span>{spot.numReviews} Reviews</span>
-        </NavLink>
+        {/* <span>&#9733; {spot.avgStarRating} </span> */}
+        {spot.avgStarRating ===
+        "0.0" ? // <span className="spot-rating">No Reviews</span>
+        null : (
+          <span className="spot-rating">&#9733; {spot.avgStarRating}</span>
+        )}
+        {/* <NavLink to={`/spots/${spot.id}/reviews`}> */}
+
+        <span>{spot.numReviews} Reviews</span>
+
+        {/* </NavLink> */}
         <span>
           {spot.city}, {spot.state}, {spot.country}
         </span>
@@ -101,7 +98,7 @@ function GetSpotDetails() {
 
         <button
           hidden={sessionUser?.id !== spot.ownerId}
-          onClick={(e) => onClickDelete(e,spot.id)}
+          onClick={(e) => onClickDelete(e, spot.id)}
         >
           Delete your spot
         </button>

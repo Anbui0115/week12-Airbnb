@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 //             className="spot-image"
 //             src={
 //               spot.previewImage ||
-              // "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
+// "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
 //             }
 //             width="250"
 //             height="250"
@@ -81,8 +81,13 @@ function EachSpot({ spot }) {
               <span>night</span>
             </div>
           </div>
+
           <div className="spot-review-data">
-            <span className="spot-rating">&#9733; {spot.avgRating}</span>
+            {spot.avgRating === "0.0" ? (
+              <span className="spot-rating">No Reviews</span>
+            ) : (
+              <span className="spot-rating">&#9733; {spot.avgRating}</span>
+            )}
           </div>
         </div>
       </div>
