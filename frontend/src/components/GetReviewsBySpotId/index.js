@@ -47,7 +47,7 @@ function GetReviewsBySpotId() {
 
   return (
     <div className="reviews-outer-container">
-      <div>Hello this is review by spot id</div>
+      {/* <div>Hello this is review by spot id</div> */}
       <div className="spot-detail-sub-bar ">
         {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
           <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>

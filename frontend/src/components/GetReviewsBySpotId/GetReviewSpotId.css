@@ -1,10 +1,11 @@
 /* font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif} */
 .reviews-outer-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .reviews-display {
-  border: 2px rgb(188, 112, 216) solid;
-  margin: 10px 10px;
+  /* border: 2px rgb(188, 112, 216) solid; */
+  /* margin: 10px 10px; */
+  margin: auto;
   padding: 10px 10px;
   display: flex;
   justify-content: space-evenly;
@@ -14,13 +15,31 @@
   width: 100%;
 }
 .each-review-container {
-  border: 2px dashed green;
+  /* border: 2px dashed green; */
+  margin: auto;
 }
 .all-reviews-container {
-  border: 1px solid salmon;
+  /* border: 1px solid salmon; */
   margin-top: 6px;
   max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+.review-avatar-container {
+  /* border: 1px dashed black; */
+  height: 50px;
+  width: 50px;
+  border-radius: 120px;
+}
+.review-avatar-container > img {
+  height: 50px;
+  width: 50px;
+  margin-right: 2px;
+}
+.review-card-bar {
+  /* border: 1px dashed darkred; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

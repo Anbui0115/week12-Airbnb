@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { spotDetailsThunk } from "../../store/spots";
 import { useParams } from "react-router-dom";
 import { deleteAReview } from "../../store/reviews";
+import reviewAvatar from "./review-avatar.jpeg";
+
 const ReviewCard = ({ review }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -28,9 +30,16 @@ const ReviewCard = ({ review }) => {
     <div>
       <div className="each-review-container">
         {/* <div>review Id:{review.id}</div> */}
-        <div>{review.userId}</div>
-        <div>review stars:{review.stars}</div>
-        <div>review:{review.review}</div>
+
+        <div className="review-card-bar">
+          <div className="review-avatar-container">
+            <img src={reviewAvatar} />
+          </div>
+          <div>{review.User.firstName}</div>
+        </div>
+
+        <div>&#9733; {review.stars}</div>
+        <div>{review.review}</div>
 
         {sessionUser && (
           <button
