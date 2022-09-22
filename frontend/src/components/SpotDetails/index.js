@@ -30,7 +30,6 @@ function GetSpotDetails() {
     };
   }, [dispatch, spotId]);
 
-
   if (!spot) {
     return <h1>Loading ...</h1>;
   }
@@ -65,44 +64,48 @@ function GetSpotDetails() {
   // };
   return (
     { images } && { spot } && (
-      <div className="spot-details-outer-container ">
-        <div className="spot-name-container">
-          <div className="spot-name-text">{spot.name}</div>
-        </div>
-        {/* <span>&#9733; {spot.avgStarRating} </span> */}
+      <div className="spot-details-outer-container">
+        <div className="spot-details-inner-container">
+          <div className="spot-name-container">
+            <div className="spot-name-text">{spot.name}</div>
+          </div>
+          {/* <span>&#9733; {spot.avgStarRating} </span> */}
 
-        <div className="spot-detail-sub-bar ">
-          {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
-            <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>
-          )}
+          <div className="spot-detail-sub-bar ">
+            {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
+              <span className="spot-rating">
+                &#9733; {spot.avgStarRating} .{" "}
+              </span>
+            )}
 
-          <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
+            <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
 
-          <span className="spot-sub-bar-info ">
-            . {spot.city}, {spot.state}, {spot.country}
-          </span>
-        </div>
+            <span className="spot-sub-bar-info ">
+              . {spot.city}, {spot.state}, {spot.country}
+            </span>
+          </div>
 
-        <br />
-        <div className="spot-image-container ">
-          <div className="spot-img">{images}</div>
-        </div>
+          <br />
+          <div className="spot-image-container ">
+            <div className="spot-img">{images}</div>
+          </div>
 
-        <div className="spot-description-container">
-          <p className="spot-description-text">{spot.description}</p>
-        </div>
-        <div className="spot-price-container">
-          <p>${spot.price} per night</p>
-        </div>
-        {/* <div className="hosted-by-container ">
+          <div className="spot-description-container">
+            <p className="spot-description-text">{spot.description}</p>
+          </div>
+          <div className="spot-price-container">
+            <p className="spot-price-text">${spot.price}</p>
+            <span>per night</span>
+          </div>
+          {/* <div className="hosted-by-container ">
           <p className="hosted-by-text">
             Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
           </p>
         </div> */}
 
-        <GetReviewsBySpotId />
+          <GetReviewsBySpotId />
 
-        {/* <button
+          {/* <button
           hidden={sessionUser?.id !== spot.ownerId}
           onClick={(e) => onClickDelete(e, spot.id)}
         >
@@ -114,6 +117,7 @@ function GetSpotDetails() {
         >
           Edit your spot
         </button> */}
+        </div>
       </div>
     )
   );
