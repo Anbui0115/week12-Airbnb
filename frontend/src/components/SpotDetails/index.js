@@ -12,13 +12,11 @@ import "./SpotDetail.css";
 function GetSpotDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
+
   let { spotId } = useParams();
-  // console.log("spotId------", spotId, typeof spotId); //1--string
   spotId = Number(spotId);
-  // console.log("spotsId!!!!!!!", spotId);
+
   const spotsObj = useSelector((state) => state.spots);
-  // console.log("spotsArray", spotsObj);
-  //   const spot = useSelector((state) => state.spots.id);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -26,15 +24,17 @@ function GetSpotDetails() {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
     return () => {
-      console.log("clean up review running");
+      // console.log("clean up review running");
       dispatch(cleanUpReviewsState());
       dispatch(cleanUpAllSpots());
     };
   }, [dispatch, spotId]);
 
+
   if (!spot) {
     return <h1>Loading ...</h1>;
   }
+
   let images;
   //need to conditionally render
   if (spot.Images) {
@@ -102,7 +102,7 @@ function GetSpotDetails() {
 
         <GetReviewsBySpotId />
 
-        <button
+        {/* <button
           hidden={sessionUser?.id !== spot.ownerId}
           onClick={(e) => onClickDelete(e, spot.id)}
         >
@@ -113,7 +113,7 @@ function GetSpotDetails() {
           onClick={editYourSpot}
         >
           Edit your spot
-        </button>
+        </button> */}
       </div>
     )
   );

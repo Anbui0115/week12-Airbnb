@@ -1,11 +1,18 @@
 import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpotByOwnerThunk } from "../../store/spots";
 import { NavLink, Redirect } from "react-router-dom";
+
+import { getSpotByOwnerThunk } from "../../store/spots";
+import { deleteASpotThunk } from "../../store/spots";
+
 import "./SpotByOwner.css";
 
 function SpotsByOwner() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  let { spotId } = useParams();
+  spotId = Number(spotId);
   const spots = useSelector((state) => state.spots);
   const spotsArray = Object.values(spots);
   const sessionUser = useSelector((state) => state.session.user);
@@ -18,20 +25,18 @@ function SpotsByOwner() {
     dispatch(getSpotByOwnerThunk());
   }, [dispatch]);
 
+  const onClickDelete = (e, spotId) => {
+    e.preventDefault();
+    dispatch(deleteASpotThunk(spotId));
+    history.push(`/`);
+  };
+
   if (!spots) return null;
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
     { spotsArray } && (
       <>
-        {/* <h1>Spots Owned by Current User</h1>
-        <ul>
-          {spotsArray.map((spot) => (
-            <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
-              <li>{spot.name}</li>
-            </NavLink>
-          ))}
-        </ul> */}
         <div className="owner-spots-outer-container">
           <div className="onwer-listing">Your listing </div>
           <div className="owner-spots-inner-container">
@@ -58,12 +63,16 @@ function SpotsByOwner() {
                     <button className="one-button">
                       <NavLink to={`/spots/${spot.id}/edit`}>Edit Spot</NavLink>
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => {
                         dispatch(deleteSpotThunk(spot.id));
                       }}
                     >
                       Delete Spot
+                    </button> */}
+
+                    <button onClick={(e) => onClickDelete(e, spot.id)}>
+                      Delete your spot
                     </button>
                   </div>
                 </div>
