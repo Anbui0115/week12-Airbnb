@@ -60,18 +60,19 @@ function SpotsByOwner() {
                   </div>
 
                   <div>
-                    <button className="one-button">
-                      <NavLink to={`/spots/${spot.id}/edit`}>Edit Spot</NavLink>
+                    <button className="onwer-edit-button">
+                      <NavLink
+                        to={`/spots/${spot.id}/edit`}
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        Edit Spot
+                      </NavLink>
                     </button>
-                    {/* <button
-                      onClick={() => {
-                        dispatch(deleteSpotThunk(spot.id));
-                      }}
-                    >
-                      Delete Spot
-                    </button> */}
 
-                    <button onClick={(e) => onClickDelete(e, spot.id)}>
+                    <button
+                      className="onwer-delete-button"
+                      onClick={(e) => onClickDelete(e, spot.id)}
+                    >
                       Delete your spot
                     </button>
                   </div>

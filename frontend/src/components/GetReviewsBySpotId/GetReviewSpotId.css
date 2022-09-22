@@ -25,7 +25,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-   display: flex;
+  display: flex;
   flex-wrap: wrap;
 }
 /* .review-avatar-container {
@@ -50,5 +50,8 @@
   background-color: transparent;
   font-size: 16px;
   box-shadow: 1px 1px gray;
+  border-radius: 5px;
   margin: 10px 10px;
+  background-color: rgb(227, 28, 95);
+  color: white;
 }
