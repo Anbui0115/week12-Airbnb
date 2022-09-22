@@ -47,7 +47,7 @@
   height: 49px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-img {
+.profile_button > img {
   height: 47px;
   width: 77px;
 }

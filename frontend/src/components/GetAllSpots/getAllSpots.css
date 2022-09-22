@@ -1,8 +1,7 @@
-
 .home-outer-container {
   /* border: 2px green solid; */
   width: 100%;
- font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .home-container {
   /* border: 2px red solid; */
@@ -26,7 +25,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3%;
-  /* width: 100%; setting width 100% break the*/
+  /* width: 100%; setting width 100% break the */
   place-items: center;
 }
 

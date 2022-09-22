@@ -69,9 +69,9 @@ function Navigation({ isLoaded }) {
               </Modal>
             )} */}
 
-
-          <div className="profile_button">{isLoaded && sessionLinks}</div>
-             </div>  </div>
+            <div className="profile_button">{isLoaded && sessionLinks}</div>
+          </div>
+        </div>
 
         {/* <div className="search_bar"> */}
         {/* <form>

@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getReviewsBySpotId } from "../../store/reviews";
 import { deleteAReview } from "../../store/reviews";
 import { spotDetailsThunk } from "../../store/spots";
+import ReviewCard from "../ReviewCard";
 
 import "./GetReviewSpotId.css";
 
@@ -53,31 +54,23 @@ function GetReviewsBySpotId() {
         )}
         <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
       </div>
-      {reviews.map((review) => (
-        <div key={`review${review.id}`}>
-          <li>review Id:{review.id}</li>
-          <li>review:{review.review}</li>
-          <li>review stars:{review.stars}</li>
-          <li>review Owner id:{review.userId}</li>
-          {sessionUser && (
-            <button
-              hidden={sessionUser.id !== review.userId}
-              onClick={(e) => deleteYourReview(e, review.id)}
-            >
-              Delete your review
-            </button>
-          )}
+      <div className="all-reviews-container">
+        <div className="reviews-display">
+          {reviews.map((review) => (
+            <ReviewCard review={review} />
+          ))}
         </div>
-      ))}
-      {!leftAReview && sessionUser && (
-        <button
-          // hidden={sessionUser.id === review.userId}
-          // hidden={leaveAReview}
-          onClick={createAReview}
-        >
-          Leave a review
-        </button>
-      )}
+
+        {!leftAReview && sessionUser && (
+          <button
+            // hidden={sessionUser.id === review.userId}
+            // hidden={leaveAReview}
+            onClick={createAReview}
+          >
+            Leave a review
+          </button>
+        )}
+      </div>
     </div>
   );
 }

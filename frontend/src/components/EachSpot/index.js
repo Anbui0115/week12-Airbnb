@@ -54,11 +54,11 @@ function EachSpot({ spot }) {
   console.log("spot previewImage", spot.previewImage);
   return (
     <Link key={`spot${spot.id}`} to={`/spots/${spot?.id}`}>
-      <div className="spot-outer-container">
-        <div className="image-container">
+      <div className="all-spots-outer-container">
+        <div className="homepage-image-container">
           <img
             alt-="house-image"
-            className="spot-img"
+            className="homepage-spot-img"
             src={
               spot?.previewImage
               // "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
@@ -71,10 +71,10 @@ function EachSpot({ spot }) {
             // }
           />
         </div>
-        <div className="spot-info-container">
+        <div className="homepage-spot-info-container">
           <div className="spot-info">
-            <span className="spot-location">{`${spot?.city}, ${spot?.state}`}</span>
-            <div className="spot-price-container">
+            <span className="homepage-spot-location">{`${spot?.city}, ${spot?.state}`}</span>
+            <div className="homepage-spot-price-container">
               <span className="spot-price">
                 ${spot?.price.toLocaleString("en-US")}
               </span>
@@ -82,7 +82,7 @@ function EachSpot({ spot }) {
             </div>
           </div>
 
-          <div className="spot-review-data">
+          <div className="homepage-spot-review-data">
             {spot.avgRating === "0.0" ? (
               <span className="spot-rating">No Reviews</span>
             ) : (
