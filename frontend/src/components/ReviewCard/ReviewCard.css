@@ -1,3 +1,28 @@
 /* .each-review-container {
   border: 2px dashed green;
 } */
+.each-review-container {
+  /* border: 2px dashed green; */
+  margin: auto;
+  width: 400px;
+  /* height: 300px; */
+}
+
+.review-avatar-container {
+  /* border: 1px dashed black; */
+  height: 50px;
+  width: 50px;
+  border-radius: 120px;
+}
+.review-avatar-container > img {
+  height: 50px;
+  width: 50px;
+  margin-right: 2px;
+}
+
+.review-card-bar {
+  /* border: 1px dashed darkred; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

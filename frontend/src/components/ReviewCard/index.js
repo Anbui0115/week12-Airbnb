@@ -3,7 +3,7 @@ import { spotDetailsThunk } from "../../store/spots";
 import { useParams } from "react-router-dom";
 import { deleteAReview } from "../../store/reviews";
 import reviewAvatar from "./review-avatar.jpeg";
-
+import './ReviewCard.css'
 const ReviewCard = ({ review }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const ReviewCard = ({ review }) => {
       options
     );
   }
-  console.log("REVIEW DATE", reviewDate);
+  // console.log("REVIEW DATE", reviewDate);
   return (
     <div>
       <div className="each-review-container">
@@ -41,14 +41,14 @@ const ReviewCard = ({ review }) => {
         <div>&#9733; {review.stars}</div>
         <div>{review.review}</div>
 
-        {sessionUser && (
+        {/* {sessionUser && (
           <button
             hidden={sessionUser.id !== review.User.firstName}
             onClick={(e) => deleteYourReview(e, review.id)}
           >
             Delete your review
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

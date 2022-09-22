@@ -63,6 +63,7 @@ function GetReviewsBySpotId() {
 
         {!leftAReview && sessionUser && (
           <button
+            className="leave-a-review"
             // hidden={sessionUser.id === review.userId}
             // hidden={leaveAReview}
             onClick={createAReview}
