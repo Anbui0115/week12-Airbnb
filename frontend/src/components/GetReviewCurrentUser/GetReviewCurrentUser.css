@@ -1,1 +1,56 @@
 /* font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif} */
+.sessionUser-reviews-outer-container {
+  /* border: 1px solid blue; */
+  width: 900px;
+  margin: auto;
+  padding-bottom: 100px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  /* min-width: fit-content; */
+}
+.sessionUser-reviews-inner-container {
+  /* border: 1px solid rgb(237, 148, 216); */
+  margin: 10px 10px;
+}
+.sessionUser-review-card {
+  /* border: 1px solid rgb(68, 138, 35); */
+  margin: 10px 10px;
+}
+.sessionUser-each-review {
+  /* border: 1px solid rgb(186, 71, 9); */
+  margin: auto;
+  width: 700px;
+  display: flex;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgb(218, 210, 210, 0.7);
+}
+
+.sessionUser-review-info {
+  /* border: 1px rgb(68, 33, 139) dashed; */
+  width: 600px;
+  padding-right: 20px;
+}
+.sessionUser-review-details {
+  /* border: 1px darkred dotted; */
+  margin: 4px 4px;
+  padding-bottom: 5px;
+}
+.delete-your-review {
+  /* border: 1px hotpink dashed; */
+  margin: 5px 5px;
+  width: 180px;
+  height: 60px;
+}
+.delete-user-review-button {
+  border: none;
+  background-color: rgb(216, 102, 102);
+  margin: auto;
+  color: #eddbc3;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 2px;
+}
