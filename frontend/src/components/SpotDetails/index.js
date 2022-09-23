@@ -19,8 +19,7 @@ function GetSpotDetails() {
   const spotsObj = useSelector((state) => state.spots);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  // console.log("hosted by-----", spot.Owner.firstName);
-
+  // console.log("hosted by-----", spotsObj[spotId]?.Owner.firstName);
 
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
@@ -93,7 +92,9 @@ function GetSpotDetails() {
           </div>
 
           <div className="spot-description-container">
-            {/* <div className="hosted-by">Hosted by {spot.Owner.firstName}</div> */}
+            {/* <div className="hosted-by">
+              Hosted by {spot && spot.Owner.firstName}
+            </div> */}
             <p className="spot-description-text">{spot.description}</p>
           </div>
           <div className="spot-price-container">
