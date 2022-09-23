@@ -155,15 +155,15 @@ router.post(
     }
 
     if (!req.body.review || !req.body.stars) {
-      res.status(400);
-      return res.json({
-        message: "Validation error",
-        statusCode: 400,
-        errors: {
-          review: "Review text is required",
-          stars: "Stars must be an integer from 1 to 5",
-        },
-      });
+      // res.status(400);
+      // return res.json({
+      //   message: "Validation error",
+      //   statusCode: 400,
+      //   errors: {
+      //     review: "Review text is required",
+      //     stars: "Stars must be an integer from 1 to 5",
+      //   },
+      // });
     }
     if (req.body.review.length < 4) {
       const err = new Error("Invalid Review");
@@ -172,13 +172,13 @@ router.post(
       err.errors = ["Review needs to be longer than 4 characters"];
       return next(err);
     }
-      if (req.body.review.length >= 150) {
-        const err = new Error("Invalid Review");
-        err.status = 401;
-        err.title = "Invalid Review";
-        err.errors = ["Review needs to be less than 150 characters"];
-        return next(err);
-      }
+    if (req.body.review.length >= 150) {
+      const err = new Error("Invalid Review");
+      err.status = 401;
+      err.title = "Invalid Review";
+      err.errors = ["Review needs to be less than 150 characters"];
+      return next(err);
+    }
     const totalReviews = await Review.findAll({
       where: {
         [Op.and]: [{ userId: req.user.id }, { spotId: req.params.spotId }],

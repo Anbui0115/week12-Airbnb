@@ -19,7 +19,7 @@ function CreateReviewForm() {
   useEffect(() => {
     let errors = [];
     if (stars < 1 || stars > 5) errors.push("Stars must be between 1 and 5");
-    if (!review) errors.push("Review is required");
+    // if (review.length < 1) errors.push("Review is required");
     if (review.length < 4)
       errors.push("Review needs to be longer than 4 characters");
     if (review.length >= 150)
@@ -74,6 +74,7 @@ function CreateReviewForm() {
             onChange={(e) => setReview(e.target.value)}
             value={review}
             placeholder="Write your review"
+            required
           ></textarea>
         </div>
         <div className="create-review-star">
