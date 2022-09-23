@@ -48,7 +48,7 @@ function GetReviewsBySpotId() {
   return (
     <div className="reviews-outer-container">
       {/* <div>Hello this is review by spot id</div> */}
-      <div className="spot-detail-sub-bar ">
+      <div className="spot-detail-sub-bar">
         {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
           <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>
         )}
@@ -56,9 +56,11 @@ function GetReviewsBySpotId() {
       </div>
       <div className="all-reviews-container">
         <div className="reviews-display">
-          {reviews.map((review) => (
-            <ReviewCard review={review} />
-          ))}
+          <div className="all-reviews-outer-container">
+            {reviews.map((review) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
         </div>
 
         {!leftAReview && sessionUser && (

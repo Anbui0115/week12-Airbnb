@@ -35,11 +35,11 @@ const ReviewCard = ({ review }) => {
           <div className="review-avatar-container">
             <img src={reviewAvatar} />
           </div>
-          <div>{review.User.firstName}</div>
+          <div className="review-firstName">{review.User.firstName}</div>
         </div>
 
-        <div>&#9733; {review.stars}</div>
-        <div>{review.review}</div>
+        <div className="spotDetails-review-star">&#9733; {review.stars}</div>
+        <div className="spotDetails-review-info">{review.review}</div>
 
         {/* {sessionUser && (
           <button
