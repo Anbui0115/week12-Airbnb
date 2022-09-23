@@ -75,7 +75,7 @@ function EachSpot({ spot }) {
           <div className="spot-info">
             <span className="homepage-spot-location">{`${spot?.city}, ${spot?.state}`}</span>
             <div className="homepage-spot-price-container">
-              <span className="spot-price">
+              <span className="homepage-spot-price-text">
                 ${spot?.price.toLocaleString("en-US")}
               </span>
               <span>night</span>

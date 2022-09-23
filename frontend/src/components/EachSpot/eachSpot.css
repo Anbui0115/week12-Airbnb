@@ -50,7 +50,10 @@
   padding-top: 10px;
   /* padding-right: 3px; */
 }
-
+.homepage-spot-price-text {
+  /* border: 1px dotted hotpink; */
+  margin-right: 5px;
+}
 .homepage-spot-review-data {
   /* border: 1px solid salmon; */
   display: flex;
