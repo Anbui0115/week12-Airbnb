@@ -15,13 +15,13 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      setSubmitted(true);
+      // setSubmitted(true);
       setErrors([]);
       return dispatch(
         sessionActions.signup({
@@ -34,6 +34,7 @@ function SignupForm() {
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
+        console.log("ERRORRRRRRR", data.errors);
       });
     }
     return setErrors([
@@ -51,7 +52,12 @@ function SignupForm() {
       </div>
       <div className="signup-container">
         <ul className="signup-errors">
-          {submitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {
+            // submitted &&
+            errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))
+          }
         </ul>
         <div className="signup-body">
           <div className="input-field">
@@ -127,7 +133,8 @@ function SignupForm() {
           <button
             className="button-signup"
             type="submit"
-            disabled={submitted && errors.length > 0}
+            // disabled={submitted && errors.length > 0}
+            // disabled={errors.length > 0}
           >
             Sign Up
           </button>
