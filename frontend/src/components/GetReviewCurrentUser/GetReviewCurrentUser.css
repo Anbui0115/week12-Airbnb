@@ -53,4 +53,8 @@ background-color: rgb(227, 28, 95);
   border-radius: 5px;
   width: fit-content;
   margin: 2px;
+
+    width: 200px;
+  height: 30px;
+  font-size: 17px;
 }

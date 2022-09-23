@@ -24,7 +24,7 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 3%;
+  gap: 4%;
   /* width: 100%; setting width 100% break the */
   place-items: center;
 }
