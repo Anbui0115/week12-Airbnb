@@ -1,6 +1,6 @@
 /* to do: add styling here */
 /* .login-form {
-  border: 1px dashed orange;
+
   display: flex;
   flex-direction: column;
   min-height: 48px;
@@ -9,7 +9,6 @@
   border-radius: 15px;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid orange;
   justify-content: space-between;
   display: flex !important;
   flex: 0 0 auto !important;
@@ -17,7 +16,6 @@
   justify-content: space-between;
   padding: 0px 24px !important;
   min-height: 48px !important;
-  border-bottom: 1px solid rgb(235, 235, 235) !important;
   color: rgb(34, 34, 34) !important;
   font-size: 16px !important;
   line-height: 20px !important;
@@ -32,7 +30,6 @@
   justify-content: center;
   height: 500px;
   width: 450px;
-  border-radius: 30px;
   cursor: pointer;
   min-height: 48px;
   border-radius: 18px;

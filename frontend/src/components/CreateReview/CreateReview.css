@@ -4,10 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .create-review-inner-container {
   /* border: 1px solid black; */
-  width: 40rem;
+  width: 1000px;
   margin-top: 50px;
   margin-bottom: 80px;
   display: flex;
@@ -33,16 +34,17 @@
 .create-review-details-container {
   /* border: 1px dashed blue; */
   margin-bottom: 25px;
+  width: 100%;
 }
 .create-review-text {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 .create-review-details-input {
   border: 1px rgb(168, 166, 167, 0.6) solid;
-  box-shadow: 1px 2px 1px 1px rgba(187, 172, 172, 0.1);
+  box-shadow: 1px 2px 1px 1px rgba(172, 168, 168, 0.1);
   border-radius: 20px;
-  width: 40rem;
+  width: 97%;
   height: 200px;
   padding-left: 20px;
   padding-top: 20px;

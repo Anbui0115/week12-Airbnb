@@ -40,7 +40,7 @@ function GetReviewsCurrentUser() {
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
-    <>
+    <div className="sessionUser-most-outer">
       <div className="sessionUser-reviews-outer-container">
         <h1 className="your-reviews">Your Reviews</h1>
         <div className="sessionUser-reviews-inner-container">
@@ -68,7 +68,7 @@ function GetReviewsCurrentUser() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default GetReviewsCurrentUser;
