@@ -8,7 +8,8 @@
 }
 .create-review-inner-container {
   /* border: 1px solid black; */
-  width: 1000px;
+  /* width: 1000px; */
+   width: 899px;
   margin-top: 50px;
   margin-bottom: 80px;
   display: flex;

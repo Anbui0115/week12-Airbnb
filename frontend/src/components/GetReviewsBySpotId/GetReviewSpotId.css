@@ -7,7 +7,8 @@
 /* } */
 .all-reviews-outer-container {
   /* border: 2px solid black; */
-  width: 1000px;
+  /* width: 1000px; */
+   width: 890px;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 100px;

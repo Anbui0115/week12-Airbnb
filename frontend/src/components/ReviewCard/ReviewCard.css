@@ -1,11 +1,12 @@
 .each-review-container {
   /* border: 2px dashed green; */
   margin: auto;
-  width: 480px;
+  width: 420px;
   height: 200px;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-right: 4px;
+  margin-right: 9px;
+
   padding: 6px;
   /* height: 300px; */
 }

@@ -13,7 +13,7 @@
 .spot-details-inner-container {
   /* border: 2px dashed rgb(20, 13, 20); */
   margin: auto;
-  width: 1000px;
+  width: 890px;
 }
 .spot-name-container {
   /* border: solid 1px palegreen; */
@@ -53,7 +53,8 @@
   /* border: 2px solid slateblue; */
   margin-top: 0px;
   height: 500px;
-  width: 100%;
+   width: 890px;
+  /* width: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +72,8 @@
 .spot-img > img {
   /* height: 480px;
   width: 520px; */
-  width: 1000px;
+  /* width: 1000px; */
+   width: 890px;
   border-radius: 20px;
 }
 .spot-description-container {

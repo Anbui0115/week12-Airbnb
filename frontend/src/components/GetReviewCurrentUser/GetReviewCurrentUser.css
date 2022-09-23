@@ -9,7 +9,8 @@
 
 .sessionUser-reviews-outer-container {
   /* border: 1px solid blue; */
-  width: 1000px;
+  /* width: 1000px; */
+   width: 890px;
   margin: auto;
   padding-bottom: 100px;
   padding-top: 50px;
@@ -21,16 +22,19 @@
 .sessionUser-reviews-inner-container {
   /* border: 1px solid rgb(237, 148, 216); */
   margin: 10px 10px;
-  width: 1000px;
+  /* width: 1000px; */
+   width: 890px;
 }
 .sessionUser-review-card {
   /* border: 1px solid rgb(68, 138, 35); */
   margin: 10px 0px;
+   width: 890px;
 }
 .sessionUser-each-review {
   /* border: 1px solid rgb(186, 71, 9); */
   margin: auto;
-  width: 1000px;
+  /* width: 1000px; */
+   width: 890px;
   display: flex;
   /* justify-content:space-around; */
   padding: 10px 10px;
@@ -63,7 +67,7 @@
   width: fit-content;
   margin: 2px;
 
-  width: 200px;
+  width: 170px;
   height: 30px;
   font-size: 17px;
 }

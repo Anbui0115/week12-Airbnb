@@ -2,7 +2,7 @@
 .owner-spots-outer-container {
   /* border: 1px solid firebrick; */
   margin: auto;
-  width: 1002px;
+  width: 890px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -19,7 +19,8 @@
 .owner-spots-inner-container {
   /* border: 1px solid rgb(90, 156, 33); */
   margin: 10px 0px;
-  width: 1001px;
+  /* width: 1001px; */
+  width: 890px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -30,16 +31,19 @@
 .owner-spot-display {
   /* border: 1px dashed rgb(156, 33, 33); */
   margin: 5px 0px;
-  width: 1000px;
+  /* width: 1000px; */
+  width: 890px;
 }
 .owner-each-spot {
   /* border: 2px solid black; */
   margin-bottom: 140px;
+  width: 890px;
   /* border-bottom: 1px solid rgb(170, 161, 161, 0.5); */
 }
 .owner-spot-img {
-  width: 995px;
-  height: fit-content;
+  /* width: 995px; */
+  width: 890px;
+  /* height: fit-content; */
 }
 .owner-spot-img > img {
   width: 100%;
@@ -67,17 +71,17 @@
   /* padding: 5px 5px; */
 }
 .onwer-edit-button {
-  width: 485px;
+  width: 420px;
   border: none;
   background-color: rgb(227, 28, 95);
   color: white;
   border-radius: 6px;
-  margin-right: 25px;
+  margin-right: 45px;
   font-size: 16px;
   height: 30px;
 }
 .onwer-delete-button {
-  width: 485px;
+  width: 420px;
   border: none;
   margin: auto;
   background-color: rgb(227, 28, 95);

@@ -242,14 +242,17 @@ function EditSpotForm() {
               />
             </label>
           </div>
-
-          <button
+<div className="edit-spot-submit-button-container">
+ <button
             className="edit-spot-submit-button"
             type="submit"
             disabled={errors.length > 0}
           >
             Submit
           </button>
+</div>
+
+
         </div>
       </form>
     )

@@ -7,11 +7,14 @@
   justify-content: center;
   margin: auto;
   align-items: center;
+  padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 .edit-spot-inner-container {
   /* border: 3px dashed orange; */
-  width: 800px;
+  /* width: 800px; */
+  width: 880px;
   height: 780px;
   display: flex;
   flex-direction: column;
@@ -52,15 +55,26 @@
   margin-top: 2px;
   margin-bottom: 10px;
   display: flex;
-  width: 800px;
+  /* width: 800px; */
+  width: 890px;
   height: 23px;
+  margin-left: 4px;
+}
+.edit-spot-submit-button-container {
+  /* border: 1px solid black; */
+  width: 890px;
+  display: flex;
+  justify-content: center;
 }
 .edit-spot-submit-button {
   border: none;
   background-color: rgb(227, 28, 95);
   color: white;
-  width: 800px;
+  width: 500px;
   height: 27px;
   border-radius: 10px;
   font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
