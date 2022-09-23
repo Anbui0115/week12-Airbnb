@@ -1,3 +1,10 @@
 /* TODO Add site wide styles */
-html,body {
-font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif}
+html,
+body {
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+div,
+p,
+span {
+  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
