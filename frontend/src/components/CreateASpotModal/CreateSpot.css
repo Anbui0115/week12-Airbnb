@@ -75,6 +75,7 @@
 }
 
 .create-spot-error{
+   color: rgb(205, 47, 47);
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .create-spot-body {

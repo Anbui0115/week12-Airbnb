@@ -42,13 +42,15 @@
 
   color: rgb(34, 34, 34);
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-}.signup-text-container {
+}
+.signup-text-container {
   display: flex;
   /* border: 1px solid salmon; */
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 22px;
+
+  font-weight: 600;
   margin-top: 1px;
   margin-bottom: 25px;
   margin-left: 20px;
@@ -60,7 +62,8 @@
   top: 110px;
   left: 275px;
   bottom: 570px; */
-}.text-signup {
+}
+.text-signup {
   /* border: 1px slateblue solid; */
   margin: 10px;
   align-self: center;
@@ -76,6 +79,9 @@
   color: rgb(34, 34, 34);
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
+.signup-errors{
+  color: rgb(205, 47, 47);
+}
 .input-field {
   /* border: 1px solid salmon; */
   display: flex;
@@ -85,7 +91,6 @@
   align-items: center;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-
 
 .input {
   /* border: 1px solid royalblue; */

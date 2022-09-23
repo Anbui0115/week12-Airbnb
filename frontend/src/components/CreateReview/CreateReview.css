@@ -27,7 +27,7 @@
 }
 
 .create-review-error {
-  color: rgb(227, 28, 95, 0.8);
+   color: rgb(205, 47, 47);;
   display: flex;
   justify-content: center;
   align-items: center;

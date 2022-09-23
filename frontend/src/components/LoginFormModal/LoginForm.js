@@ -54,7 +54,7 @@ function LoginForm() {
         <div className="text-login">Log in</div>
       </div>
       <div className="login-container">
-        <ul>
+        <ul className="login-errors">
           {submitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
 

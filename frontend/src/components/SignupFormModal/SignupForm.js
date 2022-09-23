@@ -50,7 +50,7 @@ function SignupForm() {
         <div className="text-signup">Sign up</div>
       </div>
       <div className="signup-container">
-        <ul>
+        <ul className="signup-errors">
           {submitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className="signup-body">
