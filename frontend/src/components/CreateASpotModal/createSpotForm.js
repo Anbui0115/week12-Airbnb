@@ -30,16 +30,16 @@ function CreateSpotForm({ hideModal }) {
     let errors = [];
     if (address.length < 10)
       errors.push("Street address needs to be at least 10 characters");
-    // if (city === "") errors.push("City is required");
-    // if (state === "") errors.push("State is required");
-    // if (country === "") errors.push("Country is required");
+    if (city === "") errors.push("City is required");
+    if (state === "") errors.push("State is required");
+    if (country === "") errors.push("Country is required");
     if (lat < -90 || lat > 90) errors.push("Latitude is not valid");
     if (lng < -180 || lng > 180) errors.push("Longitude is not valid");
-    // if (name === "") errors.push("Name is required");
+    if (name === "") errors.push("Name is required");
     if (name.length > 50) errors.push("Name must be less than 50 characters");
-    // if (description === "") errors.push("Description is required");
-    // if (price === "") errors.push("Price per day is required");
-    // if (imageUrl === "") errors.push("Image URL is required");
+    if (description === "") errors.push("Description is required");
+    if (price === "") errors.push("Price per day is required");
+    if (imageUrl === "") errors.push("Image URL is required");
     if (
       !imageUrl.includes(".jpg") &&
       !imageUrl.includes(".png") &&
@@ -55,28 +55,26 @@ function CreateSpotForm({ hideModal }) {
     //   //  ) {
     //   //    errors.push("Provide a valid image");
     //   //  }
-    setErrors(errors);
+    return setErrors(errors);
   }, [
     address,
-    // city,
-    // state,
-    // country,
+    city,
+    state,
+    country,
     lat,
     lng,
     name,
-    // description,
-    // price,
+    description,
+    price,
     imageUrl,
   ]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    setErrors([]);
+    if (errors.length) return;
     // if (validationErrors.length > 0) return;
-    // if (errors.length > 0) {
-    //   return alert("Cannot Submit");
-    // }
+
     let spotInfo = {
       address,
       city,
@@ -90,9 +88,8 @@ function CreateSpotForm({ hideModal }) {
       // imageUrl,
     };
     // console.log("spotInfo inside Form", spotInfo);
-
-    const data = await dispatch(createASpotThunk(spotInfo))
-    .catch(
+    setErrors([]);
+    const data = await dispatch(createASpotThunk(spotInfo)).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
