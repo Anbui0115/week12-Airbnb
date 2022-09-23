@@ -92,12 +92,15 @@ function CreateReviewForm() {
           />
         </div>
         {/* <button disabled={validationErrors.length > 0}>Submit</button> */}
-        <button
-          className="create-review-submit"
-          disabled={hasSubmitted && errors.length > 0}
-        >
-          Create review
-        </button>
+
+        <div className="create-review-submit-container">
+          <button
+            className="create-review-submit"
+            disabled={hasSubmitted && errors.length > 0}
+          >
+            Create review
+          </button>
+        </div>
       </div>
     </form>
     // )

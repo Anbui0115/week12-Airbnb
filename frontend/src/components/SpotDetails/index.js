@@ -31,7 +31,7 @@ function GetSpotDetails() {
   }, [dispatch, spotId]);
 
   if (!spot) {
-    return <h1>Loading ...</h1>;
+    return null;
   }
 
   let images;

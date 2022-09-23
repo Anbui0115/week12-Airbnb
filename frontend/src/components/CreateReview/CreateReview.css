@@ -40,10 +40,12 @@
 }
 .create-review-details-input {
   border: 1px rgb(168, 166, 167, 0.6) solid;
-  box-shadow: 1px 2px 1px 1px rgb(128, 128, 128, 0.2);
+  box-shadow: 1px 2px 1px 1px rgba(187, 172, 172, 0.1);
   border-radius: 20px;
   width: 40rem;
   height: 200px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 .create-review-star {
   margin-bottom: 10px;
@@ -58,17 +60,24 @@
 } */
 .create-review-rating-input {
   border: 1px rgb(168, 166, 167, 0.6) solid;
-  box-shadow: 1px 2px 1px 1px rgb(128, 128, 128, 0.2);
+  box-shadow: 1px 2px 1px 1px rgba(187, 172, 172, 0.1);
   border-radius: 20px;
   width: 4rem;
-  height: 45px;
-  /* margin-left: 10px; */
+  height: 35px;
+  padding: 10px;
+}
+.create-review-submit-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 10px;
 }
 .create-review-submit {
   border: none;
   background-color: rgb(227, 28, 95, 0.8);
   color: white;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 17px;
   width: 450px;
   height: 30px;
