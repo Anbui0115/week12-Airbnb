@@ -53,12 +53,16 @@
   display: flex;
   justify-content: flex-start;
 }
+/* .create-review-rating-input{
+    margin-left: 10px;
+} */
 .create-review-rating-input {
   border: 1px rgb(168, 166, 167, 0.6) solid;
   box-shadow: 1px 2px 1px 1px rgb(128, 128, 128, 0.2);
   border-radius: 20px;
   width: 4rem;
   height: 45px;
+  /* margin-left: 10px; */
 }
 .create-review-submit {
   border: none;

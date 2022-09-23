@@ -1,1 +1,66 @@
 /* font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif} */
+.edit-spot-outer-container {
+  border: 2px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+}
+
+.edit-spot-inner-container {
+  border: 3px dashed orange;
+  width: 800px;
+  height: 780px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.edit-spot-title {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  border: 1px hotpink dashed;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+.edit-spot-errors {
+  color: brown;
+}
+.edit-spot-all-input {
+  /* border: 1px red solid; */
+  width: 800px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+}
+.edit-spot-name,
+.edit-spot-address,
+.edit-spot-city,
+.edit-spot-state,
+.edit-spot-country,
+.edit-spot-lat,
+.edit-spot-lng,
+.edit-spot-des,
+.edit-spot-price,
+.edit-spot-img-url {
+  border: 1px solid rgb(161, 152, 152, 0.5);
+  border-radius: 6px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  width: 800px;
+  height: 23px;
+}
+.edit-spot-submit-button {
+  border: none;
+  background-color: rgb(227, 28, 95);
+  color: white;
+  width: 800px;
+  height: 27px;
+  border-radius: 10px;
+  font-size: 17px;
+}
