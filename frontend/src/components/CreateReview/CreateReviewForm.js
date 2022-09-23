@@ -60,31 +60,45 @@ function CreateReviewForm() {
   return (
     // { hasSubmitted } && (
     <form onSubmit={handleSubmit}>
-      <h2>Write a Review</h2>
-      <div>
+      <h2 className="create-review-title">How was your experience?</h2>
+      <div className="create-review-inner-container">
         <ul className="create-review-error">
           {hasSubmitted &&
             errors.map((error, idx) => <li key={error}>{error}</li>)}
         </ul>
+        <div className="create-review-details-container">
+          <div className="create-review-text">Review</div>
+          <textarea
+            className="create-review-details-input"
+            id="review"
+            onChange={(e) => setReview(e.target.value)}
+            value={review}
+            placeholder="Write your review"
+          ></textarea>
+        </div>
+        <div className="create-review-star">
+          How would you rate this experience?
+        </div>
+        <div className="create-review-rating-container">
+          <input
+            className="create-review-rating-input"
+            type="number"
+            min="1"
+            max="5"
+            placeholder="Stars"
+            required
+            value={stars}
+            onChange={(e) => setStars(e.target.value)}
+          />
+        </div>
+        {/* <button disabled={validationErrors.length > 0}>Submit</button> */}
+        <button
+          className="create-review-submit"
+          disabled={hasSubmitted && errors.length > 0}
+        >
+          Create review
+        </button>
       </div>
-
-      <input
-        type="number"
-        min="1"
-        max="5"
-        placeholder="Stars"
-        required
-        value={stars}
-        onChange={(e) => setStars(e.target.value)}
-      />
-      <textarea
-        id="review"
-        onChange={(e) => setReview(e.target.value)}
-        value={review}
-        placeholder="Write your review here"
-      ></textarea>
-      {/* <button disabled={validationErrors.length > 0}>Submit</button> */}
-      <button disabled={hasSubmitted && errors.length > 0}>Submit</button>
     </form>
     // )
   );

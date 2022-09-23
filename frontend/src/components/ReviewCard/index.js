@@ -3,7 +3,7 @@ import { spotDetailsThunk } from "../../store/spots";
 import { useParams } from "react-router-dom";
 import { deleteAReview } from "../../store/reviews";
 import reviewAvatar from "./review-avatar.jpeg";
-import './ReviewCard.css'
+import "./ReviewCard.css";
 const ReviewCard = ({ review }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -35,7 +35,10 @@ const ReviewCard = ({ review }) => {
           <div className="review-avatar-container">
             <img src={reviewAvatar} />
           </div>
-          <div className="review-firstName">{review.User.firstName}</div>
+          <div>
+            <div className="review-firstName">{review.User.firstName}</div>
+            <div className="review-date">{reviewDate}</div>
+          </div>
         </div>
 
         <div className="spotDetails-review-star">&#9733; {review.stars}</div>
