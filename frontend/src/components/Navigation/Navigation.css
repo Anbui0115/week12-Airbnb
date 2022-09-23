@@ -1,6 +1,6 @@
 /* to do: add styling here */
 .outer-nav {
-  border: 2px black dashed;
+  /* border: 2px black dashed; */
 
   display: flex;
   margin: auto;
@@ -19,14 +19,14 @@
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .nav-container {
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   width: 90%;
   /* width: 890px; */
-  max-width: 900px;
+  max-width: 990px;
   padding-left: 50px;
   padding-right: 50px;
   height: 38px;
