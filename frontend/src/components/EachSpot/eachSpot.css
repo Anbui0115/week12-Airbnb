@@ -1,8 +1,9 @@
 .all-spots-outer-container {
   /* border: 2px solid black; */
-  width: 17em;
+  width: 289px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   margin-bottom: 15px;
+   height: 345px;
 }
 .homepage-image-container {
   /* background-color: #efefef; */
