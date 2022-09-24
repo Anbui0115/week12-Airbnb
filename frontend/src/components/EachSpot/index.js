@@ -51,7 +51,7 @@ import { Link } from "react-router-dom";
 //           </table>
 
 function EachSpot({ spot }) {
-  console.log("spot previewImage", spot.previewImage);
+  // console.log("spot previewImage", spot.previewImage);
   return (
     <Link key={`spot${spot.id}`} to={`/spots/${spot?.id}`}>
       <div className="all-spots-outer-container">

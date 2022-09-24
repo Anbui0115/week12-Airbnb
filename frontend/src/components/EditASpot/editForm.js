@@ -66,8 +66,10 @@ function EditSpotForm() {
     let errors = [];
     if (address === "")
       errors.push(
-        "Street address is required and need to be at least 10 characters"
+        "Street address is required"
       );
+    if (address.length < 10)
+      errors.push("Street address need to be at least 10 characters");
     if (city === "") errors.push("City is required");
     if (state === "") errors.push("State is required");
     if (country === "") errors.push("Country is required");
@@ -242,17 +244,15 @@ function EditSpotForm() {
               />
             </label>
           </div>
-<div className="edit-spot-submit-button-container">
- <button
-            className="edit-spot-submit-button"
-            type="submit"
-            disabled={errors.length > 0}
-          >
-            Submit
-          </button>
-</div>
-
-
+          <div className="edit-spot-submit-button-container">
+            <button
+              className="edit-spot-submit-button"
+              type="submit"
+              disabled={errors.length > 0}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     )

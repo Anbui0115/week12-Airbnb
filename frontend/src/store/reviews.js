@@ -141,7 +141,7 @@ const reviewsReducer = (state = initialState, action) => {
       return newState;
     }
     case CLEAN_UP_REVIEW: {
-      console.log("STATE", state);
+      // console.log("STATE", state);
       return {};
     }
     default:

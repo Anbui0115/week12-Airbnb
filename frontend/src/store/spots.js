@@ -271,7 +271,7 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
     }
     case CLEAN_UP_ALL_SPOTS: {
-      console.log("STATE", state);
+      // console.log("STATE", state);
       return {};
     }
     default:

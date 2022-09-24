@@ -22,7 +22,7 @@ function GetReviewsBySpotId() {
   const spot = spotsObj[spotId];
 
   const reviews = useSelector((state) => Object.values(state.reviews));
-  console.log("this is reviews in get reviews by spot id", reviews);
+  // console.log("this is reviews in get reviews by spot id", reviews);
   const sessionUser = useSelector((state) => state.session.user);
 
   let leftAReview = false;

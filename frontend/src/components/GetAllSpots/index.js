@@ -21,7 +21,7 @@ function GetAllSpots() {
 
     //need clean up func here?
     return () => {
-      console.log("clean up is running ~~~~~~~~~~");
+      // console.log("clean up is running ~~~~~~~~~~");
       dispatch(cleanUpAllSpots());
     };
   }, [dispatch]);
