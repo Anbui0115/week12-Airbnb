@@ -13,6 +13,15 @@ AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App us
 - Sequelize
 - PostgresSQL
 
+## Features:
+
+### Home Page
+
+
+### Spot Details Page
+
+### Review For Current Spot Page
+
 If you would like to launch this site locally please follow these instructions:
 
 1. Clone this repo by using your terminal by going to a directory of where you would want the file stored and type in git clone https://github.com/Anbui0115/week12-Airbnb.git
