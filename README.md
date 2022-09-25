@@ -23,7 +23,7 @@ Review For Current Spot Page
 Locally
 If you would like to launch this site locally please follow these instructions:
 * You can also have the same result by just going to the repository link and downloading zip file and extract it to a folder on your device.
-1. Clone this repo by using your terminal by going to a directory of where you would want the file stored and type in git clone https://github.com/Justinguu/API-project.git
+1. Clone this repo by using your terminal by going to a directory of where you would want the file stored and type in git clone https://github.com/Anbui0115/week12-Airbnb.git
 2. change directories (cd) into the 'backend' directory and run the command in the CLI: npm install what this command does is grab all the dependencies needed for the application.
 3. In the same directory(backend) create a .env file and add your own values to these variables: PORT, DB_FILE (location of the database), JWT_SECRET, and JWT_EXPIRES_IN
 4. In the same directory(backend) load the migrations database by running the command in the CLI npx dotenv sequelize db:migrate
