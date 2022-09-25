@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 
-import { getSpotByOwnerThunk } from "../../store/spots";
+import { cleanUpAllSpots, getSpotByOwnerThunk } from "../../store/spots";
 import { deleteASpotThunk } from "../../store/spots";
 
 import "./SpotByOwner.css";
@@ -23,6 +23,9 @@ function SpotsByOwner() {
 
   useEffect(() => {
     dispatch(getSpotByOwnerThunk());
+    return () => {
+      dispatch(cleanUpAllSpots());
+    };
   }, [dispatch]);
 
   const onClickDelete = (e, spotId) => {
