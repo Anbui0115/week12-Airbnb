@@ -28,9 +28,9 @@ function SpotsByOwner() {
     };
   }, [dispatch]);
 
-  const onClickDelete = (e, spotId) => {
+  const onClickDelete = async (e, spotId) => {
     e.preventDefault();
-    dispatch(deleteASpotThunk(spotId));
+    await dispatch(deleteASpotThunk(spotId));
     history.push(`/`);
   };
 
