@@ -43,8 +43,8 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Unbelievable Views of Lake Tahoe",
-          description: "Lake Tahoe in Marla Bay, Nevada",
+          name: "Lake Tahoe in Marla Bay",
+          description: "Unbelievable Views of Lake Tahoe",
           price: 1200,
         },
         {
@@ -92,8 +92,9 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Groveland Lake House near Yosemite",
-          description: "Groveland Lake House w/ Hot Tub & Water Views",
+          name: "Groveland Lake House",
+          description:
+            "Groveland Lake House near Yosemite with Hot Tub & Water Views",
           price: 1100,
         },
         {
@@ -104,9 +105,9 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Villa De Lago The Lake House, Dock and Buoy",
+          name: "Villa De Lago ",
           description:
-            "VIlladeLago is located in a secluded enclave in historic Cave Rock Nevada.",
+            "VIlladeLago The Lake House, Dock and Buoy is located in a secluded enclave in historic Cave Rock Nevada.",
           price: 1000,
         },
         {
@@ -117,9 +118,9 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Lake Tahoe Shoreside Retreat: Stunning Lake Views!",
+          name: "Lake Tahoe Shoreside Retreat",
           description:
-            "Charming Elk Point Country Club vacation rental",
+            "Charming Elk Point Country Club vacation rental: Stunning Lake Views!",
           price: 900,
         },
         {
@@ -130,9 +131,9 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Stylish 3 Bed / 4 Bath | Residence 205",
+          name: "Tahoe Beach Club",
           description:
-            "Tahoe Beach Club is a private lakefront community on Tahoe East Shore.",
+            "Tahoe Beach Club is a private lakefront community on Tahoe East Shore. Stylish 3 Bed / 4 Bath | Residence 205 ",
           price: 1190,
         },
       ],

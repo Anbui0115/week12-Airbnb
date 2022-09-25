@@ -74,6 +74,7 @@ function EachSpot({ spot }) {
         <div className="homepage-spot-info-container">
           <div className="spot-info">
             <span className="homepage-spot-location">{`${spot?.city}, ${spot?.state}`}</span>
+            <div className="homepage-spot-name">{spot?.name}</div>
             <div className="homepage-spot-price-container">
               <span className="homepage-spot-price-text">
                 ${spot?.price.toLocaleString("en-US")}
@@ -84,7 +85,7 @@ function EachSpot({ spot }) {
 
           <div className="homepage-spot-review-data">
             {spot.avgRating === "0.0" ? (
-              <span className="spot-rating">No Reviews</span>
+              <span className="spot-rating">New</span>
             ) : (
               <span className="spot-rating">&#9733; {spot.avgRating}</span>
             )}

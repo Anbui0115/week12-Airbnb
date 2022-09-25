@@ -3,7 +3,7 @@
   width: 289px;
   font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   margin-bottom: 15px;
-   height: 345px;
+  height: 400px;
 }
 .homepage-image-container {
   /* background-color: #efefef; */
@@ -32,17 +32,27 @@
   padding-bottom: 20px;
   width: 100%;
 }
+.homepage-spot-name {
+  /* border: 1px solid rgb(56, 34, 178); */
+  color: rgb(96, 91, 91);
+  margin: 6px 0;
+  padding-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 25x;
+}
 .spot-info {
   /* border: 1px dashed firebrick; */
   margin-right: 3px;
   padding-top: 5px;
-  width: 320px;
+  width: 390px;
 }
 .homepage-spot-location {
   /* border: 1px rgb(20, 20, 2) solid; */
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 390px;
 }
 
 .homepage-spot-price-container {
@@ -61,7 +71,7 @@
   align-items: flex-start;
   justify-content: flex-end;
   padding-top: 4px;
-  width: 120px;
+  width: 80px;
 }
 
 a {

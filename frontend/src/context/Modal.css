@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+   overflow: hidden;
   /* border-radius: 15px; */
 }
 
@@ -30,4 +31,5 @@
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.5);
   overflow-y: scroll;
+
 }
