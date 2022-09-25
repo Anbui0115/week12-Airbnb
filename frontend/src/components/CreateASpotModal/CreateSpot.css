@@ -17,7 +17,7 @@
   border-radius: 18px;
   background-color: transparent;
   color: rgb(34, 34, 34);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   scrollbar-color: black red;
   scrollbar-width: thin;
 }
