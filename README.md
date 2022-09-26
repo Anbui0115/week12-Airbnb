@@ -1,8 +1,15 @@
-# AnBnB (AirBnB Clone)
+# AnBnB
 
 AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App uses React & Redux in the Front-end and for the backend we use Express.js & an ORM called Sequelize.
 
 Live Link: https://anbnb.herokuapp.com/
+
+## Please see below links to project Wiki:
+
+[Feature List](https://github.com/Anbui0115/week12-Airbnb/wiki/CRUD-FEATURES)
+[API Routes Documentation](https://github.com/Anbui0115/week12-Airbnb/wiki/API-Routes-Documentation)
+[DB Schema](https://github.com/Anbui0115/week12-Airbnb/wiki/DB-Schema)
+[Redux Store Shape](https://github.com/Anbui0115/week12-Airbnb/wiki/Redux-Store-Shape)
 
 
 ## This application was built with:
