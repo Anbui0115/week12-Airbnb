@@ -41,7 +41,7 @@ function SpotsByOwner() {
     { spotsArray } && (
       <>
         <div className="owner-spots-outer-container">
-          <div className="onwer-listing">Your listing </div>
+          <div className="onwer-listing">Your listings </div>
           <div className="owner-spots-inner-container">
             <div className="owner-spot-display">
               {spotsByOwner.map((spot) => (

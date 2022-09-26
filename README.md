@@ -1,6 +1,9 @@
 # AnBnB (AirBnB Clone)
 
-AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App uses React & Redux in the Front-end and for the backend we use Express.js & an ORM called Sequelize. Live Link: https://anbnb.herokuapp.com/
+AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App uses React & Redux in the Front-end and for the backend we use Express.js & an ORM called Sequelize.
+
+Live Link: https://anbnb.herokuapp.com/
+
 
 ## This application was built with:
 
@@ -17,10 +20,25 @@ AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App us
 
 ### Home Page
 
+You will be able to test the features without sign up by clicking on the "Demo User" button
+
+![homepage](Screenshots/homepage.png)
 
 ### Spot Details Page
 
-### Review For Current Spot Page
+![spotDetails](Screenshots/spot-details.png)
+
+### User Listings
+
+![userListings](Screenshots/User-listings.png)
+
+### User Reviews
+
+![userReviews](Screenshots/User-reviews.png)
+
+
+
+### Get started: setting up the repo to run the project locally
 
 If you would like to launch this site locally please follow these instructions:
 
@@ -34,3 +52,7 @@ If you would like to launch this site locally please follow these instructions:
 8. Both frontend & backend should be running in order for you to see the application.
 
    You can also have the same result by just going to the repository link and downloading zip file and extract it to a folder on your device.
+
+
+
+### Contact information

@@ -1,2 +1,2 @@
 AnBnB (AirBnB Clone)
-AnBnb is a simple clone of
+AnBnb is a simple clone of AirBnB
