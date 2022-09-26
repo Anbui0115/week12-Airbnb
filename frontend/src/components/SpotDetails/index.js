@@ -19,13 +19,12 @@ function GetSpotDetails() {
   const spotsObj = useSelector((state) => state.spots);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-  // console.log("hosted by-----", spotsObj[spotId]?.Owner.firstName);
+
 
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
     return () => {
-      // console.log("clean up review running");
       dispatch(cleanUpReviewsState());
       dispatch(cleanUpAllSpots());
     };
@@ -35,6 +34,8 @@ function GetSpotDetails() {
     return null;
   }
 
+
+  
   let images;
   //need to conditionally render
   if (spot.Images) {

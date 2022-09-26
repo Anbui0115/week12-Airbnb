@@ -22,15 +22,22 @@ Live Link: https://anbnb.herokuapp.com/
 
 You will be able to test the features without sign up by clicking on the "Demo User" button
 
+
 ![homepage](Screenshots/homepage.png)
+
+
 
 ### Spot Details Page
 
 ![spotDetails](Screenshots/spot-details.png)
 
+
+
 ### User Listings
 
 ![userListings](Screenshots/User-listings.png)
+
+
 
 ### User Reviews
 
@@ -53,6 +60,10 @@ If you would like to launch this site locally please follow these instructions:
 
    You can also have the same result by just going to the repository link and downloading zip file and extract it to a folder on your device.
 
+### Code I'm proud of
 
 
-### Contact information
+I wasn't aware of the fact that I need to protect user information when a user log out until Rawaha suggested it.
+I'm proud of the code snippet below because it was my first time learning how to protect user information after they log out. It's a reminder for me to keep making sure the data of my users is protected
+
+![codeSnippet](Screenshots/proud.png)
