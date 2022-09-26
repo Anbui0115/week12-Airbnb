@@ -9,6 +9,8 @@
   align-items: center;
   padding-top: 50px;
   padding-bottom: 80px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .edit-spot-inner-container {
@@ -20,6 +22,8 @@
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-title {
   display: flex;
@@ -29,9 +33,13 @@
   /* border: 1px hotpink dashed; */
   margin-top: 10px;
   margin-bottom: 32px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-errors {
-   color: rgb(205, 47, 47);
+  color: rgb(205, 47, 47);
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-all-input {
   /* border: 1px red solid; */
@@ -39,6 +47,8 @@
   height: 650px;
   display: flex;
   flex-direction: column;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-name,
 .edit-spot-address,
@@ -59,23 +69,29 @@
   width: 890px;
   height: 23px;
   margin-left: 4px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-submit-button-container {
   /* border: 1px solid black; */
   width: 890px;
   display: flex;
   justify-content: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .edit-spot-submit-button {
   border: none;
   background-color: rgb(227, 28, 95);
   color: white;
   width: 500px;
-  height: 27px;
   border-radius: 10px;
   font-size: 17px;
   height: 45px;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }

@@ -9,12 +9,16 @@
   align-items: center;
   padding-top: 50px;
   padding-bottom: 80px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .onwer-listing {
   /* border: 1px solid rgb(65, 34, 178); */
   margin: 5px 5px;
   font-size: 24px;
   font-weight: 600;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spots-inner-container {
   /* border: 1px solid rgb(90, 156, 33); */
@@ -27,48 +31,66 @@
   align-items: center;
   padding-top: 50px;
   padding-bottom: 80px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-display {
   /* border: 1px dashed rgb(156, 33, 33); */
   margin: 5px 0px;
   /* width: 1000px; */
   width: 890px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-each-spot {
   /* border: 2px solid black; */
   margin-bottom: 140px;
   width: 890px;
   /* border-bottom: 1px solid rgb(170, 161, 161, 0.5); */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-img {
   /* width: 995px; */
   width: 890px;
   /* height: fit-content; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-img > img {
   width: 100%;
   border-radius: 20px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-info {
   /* border: 1px dashed rgb(88, 33, 156); */
   margin: 5px 0px;
   text-align: left;
   font-size: 17px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-name {
   /* border: 1px dashed rgb(33, 156, 74); */
   margin: 20px 0px;
   /* padding: 5px 5px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .onwer-spot-city-state {
   /* border: 1px dotted gold; */
   margin: 20px 0px;
   /* padding: 5px 5px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .owner-spot-price {
   /* border: 1px dotted rgb(212, 107, 108); */
   margin: 20px 0px;
   /* padding: 5px 5px; */
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .onwer-edit-button {
   width: 420px;
@@ -77,9 +99,12 @@
   color: white;
   border-radius: 6px;
   margin-right: 45px;
-  font-size: 16px;
   height: 45px;
+  font-size: 15pt;
+
   cursor: pointer;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .onwer-delete-button {
   width: 420px;
@@ -88,7 +113,9 @@
   background-color: rgb(227, 28, 95);
   color: white;
   border-radius: 5px;
-height: 45px;
-  font-size: 16px;
-    cursor: pointer;
+  height: 45px;
+  font-size: 15pt;
+  cursor: pointer;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }

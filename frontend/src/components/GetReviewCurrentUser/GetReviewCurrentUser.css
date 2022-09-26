@@ -2,15 +2,17 @@
 .sessionUser-most-outer {
   /* border: 1px solid rgb(255, 85, 0); */
   width: 100%;
-    display: flex;
+  display: flex;
   margin: auto;
-   align-items: center;
+  align-items: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .sessionUser-reviews-outer-container {
   /* border: 1px solid blue; */
   /* width: 1000px; */
-   width: 890px;
+  width: 890px;
   margin: auto;
   padding-bottom: 100px;
   padding-top: 50px;
@@ -18,38 +20,50 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .sessionUser-reviews-inner-container {
   /* border: 1px solid rgb(237, 148, 216); */
   margin: 10px 10px;
   /* width: 1000px; */
-   width: 890px;
+  width: 890px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .sessionUser-review-card {
   /* border: 1px solid rgb(68, 138, 35); */
   margin: 10px 0px;
-   width: 890px;
+  width: 890px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .sessionUser-each-review {
   /* border: 1px solid rgb(186, 71, 9); */
   margin: auto;
   /* width: 1000px; */
-   width: 890px;
+  width: 890px;
   display: flex;
   /* justify-content:space-around; */
   padding: 10px 10px;
   border-bottom: 1px solid rgb(218, 210, 210, 0.7);
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .sessionUser-review-info {
   /* border: 1px rgb(68, 33, 139) dashed; */
   width: 600px;
   padding-right: 20px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .sessionUser-review-details {
   /* border: 1px darkred dotted; */
   margin: 4px 4px;
   padding-bottom: 5px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .delete-your-review {
   /* border: 1px hotpink dashed; */
@@ -57,6 +71,8 @@
   width: 180px;
   height: 60px;
   padding-left: 150px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .delete-user-review-button {
   border: none;
@@ -64,10 +80,13 @@
   margin: auto;
   color: #eddbc3;
   border-radius: 5px;
-  width: fit-content;
+  /* width: fit-content; */
   margin: 2px;
-
-  width: 170px;
-height: 45px;
-  font-size: 17px;
+  width: 200px;
+  height: 45px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }

@@ -1,6 +1,5 @@
 /* font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif} */
 .create-a-spot-form {
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   /* border: 1px springgreen solid; */
   /* height: 550px; */
   /* height: 100px; */
@@ -20,6 +19,8 @@
   /* overflow-y: scroll; */
   scrollbar-color: black red;
   scrollbar-width: thin;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .welcome-create-a-spot {
   /* border: 1px dashed hotpink; */
@@ -34,13 +35,17 @@
   margin-right: 20px;
   margin-top: 0px;
   margin-bottom: 20px;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .welcome-create-a-spot-text {
   /* border: 1px solid black; */
+  font-size: 24px;
+  font-weight: 600;
   margin: 10px 10px;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .become-a-host-container {
   /* border: 1px darkblue dotted; */
@@ -54,14 +59,18 @@
   margin-left: 20px;
   margin-right: 20px;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .become-a-host-text {
   /* border: 1px darkmagenta solid; */
   margin: 10px;
   align-self: center;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .create-a-spot-container {
@@ -71,15 +80,18 @@
   margin-top: 0px;
   cursor: pointer;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .create-spot-error {
   color: rgb(205, 47, 47);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-body {
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-input-items {
   /* border: 1px dashed hotpink; */
@@ -90,7 +102,8 @@
   color: rgb(34, 34, 34);
   justify-content: center;
   align-items: center;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-input-field {
   display: flex;
@@ -101,7 +114,8 @@
   margin-top: 10px;
   color: rgb(34, 34, 34);
   width: 100%;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-input {
   /* border: 1px solid brown; */
@@ -113,7 +127,8 @@
   border: 1px solid lightgrey;
   border-radius: 7px;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-modal-submit-button {
   /* border: 1px dashed black; */
@@ -127,12 +142,13 @@
   margin-top: 11px;
   /* padding: 50px; */
   border-radius: 6px;
-  height: 30px;
   font-size: 14pt;
   align-items: center;
   cursor: pointer;
   width: 100%;
   height: 45px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-modal-button {
   /* border: 1px solid green; */
@@ -140,7 +156,8 @@
   padding-right: 2px;
   font-size: 20px;
   font-weight: 500;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .create-spot-modal-button:hover,
 .create-spot-modal-button:focus {

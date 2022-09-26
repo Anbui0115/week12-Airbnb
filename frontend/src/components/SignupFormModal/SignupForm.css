@@ -13,7 +13,8 @@
   background-color: transparent;
   color: rgb(34, 34, 34);
   margin: 5px;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .welcome-signup {
   /* border: 1px solid black; */
@@ -33,15 +34,18 @@
   margin-right: 20px;
   margin-top: 0px;
   margin-bottom: 30px;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .welcome-signup-text {
   /* border: 1px solid orange; */
   /* margin: 10px 20px; */
-
+  font-size: 24px;
+  font-weight: 600;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .signup-text-container {
   display: flex;
@@ -56,7 +60,8 @@
   margin-left: 20px;
   margin-right: 20px;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
   /* height: 70px; */
   /* position: absolute;
   top: 110px;
@@ -68,7 +73,8 @@
   margin: 10px;
   align-self: center;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .signup-container {
   /* border: 1px blue solid; */
@@ -77,10 +83,13 @@
   margin-top: 0px;
   cursor: pointer;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
-.signup-errors{
+.signup-errors {
   color: rgb(205, 47, 47);
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .input-field {
   /* border: 1px solid salmon; */
@@ -89,7 +98,8 @@
   color: rgb(34, 34, 34);
   justify-content: center;
   align-items: center;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .input {
@@ -102,7 +112,8 @@
   margin-top: 10px;
   color: rgb(34, 34, 34);
   width: 100%;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .credential {
   /* border: 1px solid black; */
@@ -112,7 +123,8 @@
   border: 1px solid lightgrey;
   border-radius: 7px;
   color: rgb(34, 34, 34);
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 /* .text {
   align-self: center;
@@ -128,12 +140,20 @@
   /* margin top | right | bottom | left */
   margin: 11px 0px 0px 0px;
   /* padding: 50px; */
-  border-radius: 6px;
- height: 45px;
-  font-size: 14pt;
+
+  height: 45px;
+  font-size: 16px;
   align-items: center;
+
+    width: 200px;
+  height: 45px;
+  border-radius: 6px;
   cursor: pointer;
+  height: 45px;
+  font-size: 15pt;
   width: 100%;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 @media (min-width: 744px) {
   .signup-form {
@@ -146,5 +166,6 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
-  font-family: Circular, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
