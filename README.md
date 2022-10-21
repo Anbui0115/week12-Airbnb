@@ -6,10 +6,10 @@ Live Link: https://anbnb.herokuapp.com/
 
 ## Please see below links to project Wiki:
 
-[Feature List](https://github.com/Anbui0115/week12-Airbnb/wiki/CRUD-FEATURES)
-[API Routes Documentation](https://github.com/Anbui0115/week12-Airbnb/wiki/API-Routes-Documentation)
-[DB Schema](https://github.com/Anbui0115/week12-Airbnb/wiki/DB-Schema)
-[Redux Store Shape](https://github.com/Anbui0115/week12-Airbnb/wiki/Redux-Store-Shape)
+-[Feature List](https://github.com/Anbui0115/week12-Airbnb/wiki/CRUD-FEATURES)
+-[API Routes Documentation](https://github.com/Anbui0115/week12-Airbnb/wiki/API-Routes-Documentation)
+-[DB Schema](https://github.com/Anbui0115/week12-Airbnb/wiki/DB-Schema)
+-[Redux Store Shape](https://github.com/Anbui0115/week12-Airbnb/wiki/Redux-Store-Shape)
 
 
 ## This application was built with:
