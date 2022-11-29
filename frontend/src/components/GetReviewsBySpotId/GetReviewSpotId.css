@@ -1,0 +1,63 @@
+/* font-family:Circular,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif} */
+/* .reviews-outer-container { */
+/* border: 1px solid black; */
+/* } */
+/* .spot-detail-sub-bar { */
+/* border: 1px dotted darkred; */
+/* } */
+.all-reviews-outer-container {
+  /* border: 2px solid black; */
+  /* width: 1000px; */
+   width: 890px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.reviews-display {
+  /* border: 2px rgb(188, 112, 216) solid; */
+  /* margin: 10px 10px; */
+  /* margin: auto; */
+  /* padding: 10px 10px; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  flex-wrap: wrap;
+  margin-top: 50px;
+  width: 1000px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+/* .each-review-container {
+  border: 2px dashed green;
+  margin: auto;
+} */
+.all-reviews-container {
+  /* border: 1px solid salmon; */
+  margin-top: 6px;
+  max-width: 2000px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+
+.leave-a-review {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  box-shadow: 1px 1px rgb(128, 128, 128, 0.7);
+  border-radius: 5px;
+  margin: 10px 10px;
+  background-color: rgb(227, 28, 95);
+  color: white;
+  width: 200px;
+ height: 45px;
+  font-size: 15pt;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}

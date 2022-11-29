@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import CreateReviewForm from "./CreateReviewForm";
-
+import './CreateReview.css'
 function CreateReview() {
   //   const [showModal, setShowModal] = useState(false);
 //   const reviews = useSelector((state) => state.reviews);
@@ -12,8 +12,10 @@ function CreateReview() {
 
   return (
     <>
-      <div>Create a review Form</div>
-      <CreateReviewForm />
+      <div className="create-review-outer-container">
+ <CreateReviewForm />
+      </div>
+
     </>
   );
 }

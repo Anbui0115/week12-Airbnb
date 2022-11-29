@@ -1,0 +1,65 @@
+.each-review-container {
+  /* border: 2px dashed green; */
+  margin: auto;
+  width: 420px;
+  height: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 9px;
+  padding: 6px;
+  /* height: 300px; */
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+
+.review-avatar-container {
+  /* border: 1px dashed black; */
+  height: 50px;
+  width: 50px;
+  border-radius: 120px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.review-avatar-container > img {
+  height: 50px;
+  width: 50px;
+  margin-right: 2px;
+}
+
+.review-card-bar {
+  /* border: 1px dashed darkred; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+
+.review-firstName {
+  /* border: 1px solid hotpink; */
+ font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+  font-size: 17px;
+}
+.review-date {
+  /* border: 1px saddlebrown dashed; */
+  margin-top: 5px;
+  font-size: 14px;
+  color: rgb(83, 79, 79);
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.spotDetails-review-star {
+  /* border: 1px solid green; */
+  margin-bottom: 10px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.spotDetails-review-info {
+  /* border: 1px dashed darkmagenta; */
+  margin-top: 18px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}

@@ -7,13 +7,14 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllSpots from "./components/GetAllSpots";
 import GetSpotDetails from "./components/SpotDetails";
-import CreateASpot from "./components/CreateSpot";
+// import CreateASpot from "./components/CreateSpot";
 import EditASpot from "./components/EditASpot";
 import SpotsByOwner from "./components/SpotByOwner";
 // import DeleteASpot from './components/DeleteSpot'
 import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
 import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
 import CreateReview from "./components/CreateReview";
+// import DemoUser from "./components/DemoUser";
 // import CreateSpotForm from "./components/CreateSpot/createSpotForm";
 import UserBookings from "./components/Bookings/AllBookings"
 function App() {
@@ -30,15 +31,15 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/signup">
+          {/* <Route exact path="/signup">
             <SignupFormPage />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <GetAllSpots />
           </Route>
-          <Route exact path="/spots/new">
+          {/* <Route exact path="/spots/new">
             <CreateASpot />
-          </Route>
+          </Route> */}
           <Route exact path="/spots/current">
             <SpotsByOwner />
           </Route>
@@ -48,8 +49,8 @@ function App() {
           <Route exact path="/spots/:spotId/edit">
             <EditASpot />
           </Route>
-          {/* <Route exact path="/spots/:spotId/delete">
-            <DeleteASpot/>
+          {/* <Route exact path="/demo-user">
+            <DemoFormModal/>
           </Route> */}
           <Route exact path="/reviews/current">
             <GetReviewsCurrentUser />

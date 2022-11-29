@@ -1,64 +1,97 @@
-.spot-outer-container {
-  width: 18em;
+.all-spots-outer-container {
+  /* border: 2px solid black; */
+  width: 289px;
+ font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+  margin-bottom: 15px;
+  height: 400px;
 }
-.image-container {
+.homepage-image-container {
   /* background-color: #efefef; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 12px;
   height: 265px;
+
 }
-.spot-img {
+.homepage-spot-img {
   width: 100%;
   height: 265px;
   border-radius: 12px;
   object-fit: cover;
 }
+/* .homepage-spot-info-container {
+  border: 1px solid slateblue;
+} */
 
-.spot-info-container {
-  border: solid palevioletred 1px;
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-  padding: 10px 0px;
-  width: 100%;
-}
-.spot-info {
-  border: 1px rgb(63, 205, 181) solid;
-  /* display: flex;
-  flex-direction: column; */
+.homepage-spot-info-container {
+  /* border: 1px rgb(63, 205, 181) solid; */
+  display: flex;
+  flex-direction: row;
   /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 5px 0px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   width: 100%;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
-
-.spot-location {
-  border: 2px peru solid;
+.homepage-spot-name {
+  /* border: 1px solid rgb(56, 34, 178); */
+  color: rgb(96, 91, 91);
+  margin: 6px 0;
+  padding-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 25x;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.spot-info {
+  /* border: 1px dashed firebrick; */
+  margin-right: 3px;
+  padding-top: 5px;
+  width: 390px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.homepage-spot-location {
+  /* border: 1px rgb(20, 20, 2) solid; */
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 390px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
-.spot-price-container {
-  /* display: flex;
-  align-items: baseline; */
-  border: 1px orange solid;
-  padding: 5px 0px;
-}
-.spot-price {
+.homepage-spot-price-container {
+  /* border: 1px solid green; */
   font-weight: bold;
-  padding-right: 3px;
+  padding-top: 10px;
+  /* padding-right: 3px; */
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
-
-.spot-review-data {
-  border: 1px solid salmon;
+.homepage-spot-price-text {
+  /* border: 1px dotted hotpink; */
+  margin-right: 5px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
+}
+.homepage-spot-review-data {
+  /* border: 1px solid salmon; */
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
   padding-top: 4px;
+  width: 80px;
+   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 a {
+  /* border: 3px solid red; */
   text-decoration: none;
   color: black;
 }

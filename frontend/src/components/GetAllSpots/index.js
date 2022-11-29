@@ -1,13 +1,13 @@
 // import * as sessionActions from "../../store/session";
 // import { Redirect } from "react-router-dom";
 // import { getRounds } from "bcryptjs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSpotsThunk } from "../../store/spots";
+import { cleanUpAllSpots, getAllSpotsThunk } from "../../store/spots";
 import "./getAllSpots.css";
 import EachSpot from "../EachSpot";
 function GetAllSpots() {
-  // const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
+  const [isLoaded, setIsLoaded] = useState(false); //conditional rendering
   //is Loaded set to false to prevent keying into something doesn't exist
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots); //{null}---{}
@@ -16,20 +16,20 @@ function GetAllSpots() {
   // console.log("allSpotArray------------", allSpotsArray);
 
   useEffect(() => {
-    //handle errors
-    // ex:.catch(async (res) => {
-    //         const data = await res.json();
-    //         if (data && data.errors) setErrors(data.errors);
-    //       }
     // console.log("useEffect isrunning !!!");
-    dispatch(getAllSpotsThunk());
-    // .then(setIsLoaded(true));
+    dispatch(getAllSpotsThunk()).then(setIsLoaded(true));
+
+    //need clean up func here?
+    return () => {
+      // console.log("clean up is running ~~~~~~~~~~");
+      dispatch(cleanUpAllSpots());
+    };
   }, [dispatch]);
 
   return (
     <>
       <div className="outer-body">
-        {allSpotsArray && (
+        {isLoaded && (
           <>
             <div className="home-outer-container">
               <div className="home-container">
@@ -40,32 +40,6 @@ function GetAllSpots() {
                     ))}
                   </div>
                 </div>
-
-                {/* {allSpotsArray.map((spot) => (
-                  <EachSpot key={spot?.id} spot={spot} />
-                  // <NavLink to={`/spots/${spot.id}`} key={`spot${spot.id}`}>
-                  //   <div>
-                  //     <div>
-                  //       <img
-                  //         src={
-                  //           spot.previewImage ||
-                  //           "https://a0.muscache.com/im/pictures/miso/Hosting-580351555068335274/original/94994b90-eab4-4e51-950f-07909eb24dce.jpeg?im_w=960"
-                  //         }
-                  //         width="250"
-                  //         height="250"
-                  //         alt-={"home"}
-                  //       />
-                  //     </div>
-
-                  //     <div>
-                  //       <div>{spot.name}</div>
-                  //       <div> {spot.description}</div>
-                  //       <div>&#9733; {spot.avgRating}</div>
-                  //       <div> {spot.price} night</div>
-                  //     </div>
-                  //   </div>
-                  // </NavLink>
-                ))} */}
               </div>
             </div>
           </>

@@ -1,35 +1,46 @@
-
 .home-outer-container {
-  border: 2px green solid;
+  /* border: 2px green solid; */
   width: 100%;
+
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .home-container {
-  border: 2px red solid;
+  /* border: 2px red solid; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 20px;
-  width: 100%;
+  margin-top: 50px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 .inner-container {
-  border: 3px black solid;
-  max-width: 2000px;
+  /* border: 3px black solid; */
+  /* max-width: 2000px; */
+  /* max-width: 1500px; */
+  max-width: 1190px;
+  /* display: flex;
+  justify-content: center; */
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
 .spots-display {
-  border: 3px orange solid;
+  /* border: 3px orange solid; */
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 3%;
-  /* width: 100%; setting width 100% break the*/
+  gap: 4%;
+  /* width: 100%; setting width 100% break the */
   place-items: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
+    sans-serif;
 }
 
-@media (min-width: 375px) {
+/* @media (min-width: 375px) {
   .spots-display {
     padding-right: 25px;
     padding-left: 25px;
@@ -59,4 +70,4 @@
     padding-right: 82px;
     padding-left: 82px;
   }
-}
+} */

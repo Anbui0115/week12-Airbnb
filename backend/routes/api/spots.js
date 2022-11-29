@@ -155,15 +155,29 @@ router.post(
     }
 
     if (!req.body.review || !req.body.stars) {
-      res.status(400);
-      return res.json({
-        message: "Validation error",
-        statusCode: 400,
-        errors: {
-          review: "Review text is required",
-          stars: "Stars must be an integer from 1 to 5",
-        },
-      });
+      // res.status(400);
+      // return res.json({
+      //   message: "Validation error",
+      //   statusCode: 400,
+      //   errors: {
+      //     review: "Review text is required",
+      //     stars: "Stars must be an integer from 1 to 5",
+      //   },
+      // });
+    }
+    if (req.body.review.length < 4) {
+      const err = new Error("Invalid Review");
+      err.status = 401;
+      err.title = "Invalid Review";
+      err.errors = ["Review needs to be longer than 4 characters"];
+      return next(err);
+    }
+    if (req.body.review.length >= 150) {
+      const err = new Error("Invalid Review");
+      err.status = 401;
+      err.title = "Invalid Review";
+      err.errors = ["Review needs to be less than 150 characters"];
+      return next(err);
     }
     const totalReviews = await Review.findAll({
       where: {
@@ -435,14 +449,15 @@ router.get("/", validateQuery, async (req, res, next) => {
     limit: pagination.limit,
     offset: pagination.offset,
   });
+
   for (let spot of allSpots) {
     // console.log("spotId``````", spot.id);
     const spotReview = await spot.getReviews({
       attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
     });
-    // console.log('spotReview',spotReview)
+    // console.log('can you see spotReview',spotReview)
     let avgRating = spotReview[0].dataValues.avgRating;
-    // console.log('avgRating',avgRating)
+    // console.log('can you see avgRating',avgRating)
     spot.dataValues.avgRating = Number(avgRating).toFixed(1); //round to 1 decimal
 
     const previewImage = await Image.findOne({
@@ -453,15 +468,16 @@ router.get("/", validateQuery, async (req, res, next) => {
         },
       },
     });
-    // console.log("previewImage", previewImage);
+    // console.log("can you see previewImage", previewImage);
     if (previewImage) {
       spot.dataValues.previewImage = previewImage.dataValues.url;
     }
   }
   res.status(200);
   // res.json({ Spots: allSpots });
+  // console.log('yelllllllll',allSpots[0])
   res.json({
-    Spots: allSpots,//allSpots is an array
+    Spots: allSpots, //allSpots is an array
     page,
     size,
   });

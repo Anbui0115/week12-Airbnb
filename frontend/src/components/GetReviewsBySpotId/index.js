@@ -4,7 +4,12 @@ import { useHistory, useParams } from "react-router-dom";
 import { getReviewsBySpotId } from "../../store/reviews";
 import { deleteAReview } from "../../store/reviews";
 import { spotDetailsThunk } from "../../store/spots";
+import ReviewCard from "../ReviewCard";
+
+import "./GetReviewSpotId.css";
+
 function GetReviewsBySpotId() {
+  console.log("GET REVIEW BY SPOT ID ------");
   const dispatch = useDispatch();
   const history = useHistory();
   let { spotId } = useParams();
@@ -20,66 +25,56 @@ function GetReviewsBySpotId() {
   // console.log("this is reviews in get reviews by spot id", reviews);
   const sessionUser = useSelector((state) => state.session.user);
 
-  // useEffect(() => {
-  //   dispatch(getReviewsBySpotId(spotId));
-  // }, [dispatch, spotId]);
+  let leftAReview = false;
+  if (sessionUser && reviews) {
+    reviews.map((review) => {
+      if (sessionUser.id === review.userId) {
+        leftAReview = true;
+      }
+    });
+  }
 
-  const deleteYourReview = (reviewId) => {
-    // e.preventDefault()
+  const deleteYourReview = (e, reviewId) => {
+    e.preventDefault();
     dispatch(deleteAReview(reviewId, spotId));
     dispatch(spotDetailsThunk(spotId));
   };
-  // const deleteThisSpot = (spotId) => {
-  //   // e.preventDefault()
-  //   dispatch(spotId);
-  //   dispatch(spotDetailsThunk(spotId));
-  // };
   const createAReview = (e) => {
     e.preventDefault();
     history.push(`/spots/${spot.id}/create-review`);
   };
-  if (!reviews || !sessionUser) return null;
+  if (!reviews) return null;
+
   return (
-    <>
-      <div>Hello this is review by spot id</div>
-      {/* {reviews.length === 0 && (
-        {reviews.map(review =>(
-          <>
-          <div>This is a new spot, please leave a review</div>
-          <button
-            hidden={sessionUser.id === review.userId}
-            onClick={createAReview}
-          >
-            Leave a review
-          </button>
-        </>
-        ))}
-
-      )} */}
-      {reviews.map((review) => (
-
-        <div key={`review${review.id}`}>
-          {/* {console.log("review", review)} */}
-          {/* {console.log("sessionUser", sessionUser, review.userId)} */}
-          <li>review Id:{review.id}</li>
-          <li>review:{review.review}</li>
-          <li>review stars:{review.stars}</li>
-          <li>review Owner id:{review.userId}</li>
-          <button
-            hidden={sessionUser.id !== review.userId}
-            onClick={() => deleteYourReview(review.id)}
-          >
-            Delete your review
-          </button>
-          <button
-            hidden={sessionUser.id === review.userId}
-            onClick={createAReview}
-          >
-            Leave a review
-          </button>
+    <div className="reviews-outer-container">
+      {/* <div>Hello this is review by spot id</div> */}
+      <div className="spot-detail-sub-bar">
+        {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
+          <span className="spot-rating">&#9733; {spot.avgStarRating} . </span>
+        )}
+        <span className="spot-numReviews ">{spot.numReviews} Reviews </span>
+      </div>
+      <div className="all-reviews-container">
+        <div className="reviews-display">
+          <div className="all-reviews-outer-container">
+            {reviews.map((review) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
         </div>
-      ))}
-    </>
+
+        {!leftAReview && sessionUser && (
+          <button
+            className="leave-a-review"
+            // hidden={sessionUser.id === review.userId}
+            // hidden={leaveAReview}
+            onClick={createAReview}
+          >
+            Leave a review
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 

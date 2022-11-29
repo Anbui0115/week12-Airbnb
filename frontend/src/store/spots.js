@@ -9,7 +9,7 @@ const CREATE_A_SPOT = "spot/create";
 const ADD_IMG_TO_A_SPOT = "/spots/spotId/new-img";
 const EDIT_A_SPOT = "/spots/spotId/edit";
 const DELETE_A_SPOT = "/spots/spotId/delete";
-
+const CLEAN_UP_ALL_SPOTS = "clean-up-spots";
 //action creators
 const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
   return {
@@ -17,7 +17,11 @@ const getAllSpots = (spotsArr /* data.Spots array of obj*/) => {
     spotsArr,
   };
 };
-
+export const cleanUpAllSpots = () => {
+  return {
+    type: CLEAN_UP_ALL_SPOTS,
+  };
+};
 const getSpotsOwnedByUser = (payload) => {
   return {
     type: GET_SPOTS_OWNED_BY_USER,
@@ -68,6 +72,10 @@ export const getAllSpotsThunk = () => async (dispatch) => {
     return response;
   }
 };
+
+// export const cleanUpAllSpots = () => async (dispatch) => {
+//   dispatch(cleanUp());
+// };
 
 export const getSpotByOwnerThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots/current");
@@ -197,10 +205,11 @@ export const editASpotThunk =
   };
 
 export const deleteASpotThunk = (spotId) => async (dispatch) => {
+  //this is where we edit/create/delete to the database
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "DELETE",
-  }); ///
-  // console.log("response inside delete a Spot Thunk", response);
+  });
+  //this is where we get the response from dadatabse to add it to Redux store
   if (response.ok) {
     const data = await response.json();
     // console.log("data inside delete a spot thunk", data);
@@ -260,6 +269,10 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.payload];
       return newState;
+    }
+    case CLEAN_UP_ALL_SPOTS: {
+      // console.log("STATE", state);
+      return {};
     }
     default:
       return state;

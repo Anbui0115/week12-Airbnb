@@ -15,7 +15,6 @@ function EditSpotForm() {
   //   console.log("spot is undefined");
   // }
 
-  
   // console.log("spot exist now", spot);
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [address, setAddress] = useState("");
@@ -39,8 +38,9 @@ function EditSpotForm() {
   const [price, setPrice] = useState(spot?.price);
 
   //errors
-  const [validationErrors, setValidationErrors] = useState([]);
-  // const [imageUrl, setImageUrl] = useState("");
+  // const [validationErrors, setValidationErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const [imageUrl, setImageUrl] = useState(spot?.previewImage);
   const history = useHistory();
 
   // useEffect(() => {
@@ -58,17 +58,18 @@ function EditSpotForm() {
   // }, [spot]);
 
   useEffect(() => {
-    dispatch(getAllSpotsThunk())
-      .then(dispatch(getSpotByIdThunk(spotId)))
-      // .then(setIsLoaded(true));
+    dispatch(getAllSpotsThunk()).then(dispatch(getSpotByIdThunk(spotId)));
+    // .then(setIsLoaded(true));
   }, [dispatch, spotId]);
 
   useEffect(() => {
     let errors = [];
     if (address === "")
       errors.push(
-        "Street address is required and need to be at least 10 characters"
+        "Street address is required"
       );
+    if (address.length < 10)
+      errors.push("Street address need to be at least 10 characters");
     if (city === "") errors.push("City is required");
     if (state === "") errors.push("State is required");
     if (country === "") errors.push("Country is required");
@@ -79,8 +80,8 @@ function EditSpotForm() {
     if (name?.length > 50) errors.push("Name must be less than 50 characters");
     if (description === "") errors.push("Description is required");
     if (price === "") errors.push("Price per day is required");
-    // if (imageUrl === "") errors.push("Image URL is required");
-    setValidationErrors(errors);
+    if (imageUrl === "") errors.push("Image URL is required");
+    setErrors(errors);
   }, [
     address,
     city,
@@ -91,7 +92,7 @@ function EditSpotForm() {
     name,
     description,
     price,
-    // imageUrl,
+    imageUrl,
   ]);
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -108,126 +109,151 @@ function EditSpotForm() {
       // imageUrl,
     };
     // console.log("spotInfo inside Form", spotInfo);
-    setValidationErrors([]);
+    setErrors([]);
 
     const payload = { userInput: spotInfo, spotId };
-    const data = await dispatch(editASpotThunk(payload));
-    //need to redirect to the newly created spot
+    const data = await dispatch(editASpotThunk(payload)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+    //need to redirect to the newly edited spot?
     history.push(`/spots/${data.id}`);
   };
   return (
     // { isLoaded } &&
     { spot } && (
       <form onSubmit={onSubmit}>
-        <h1>Form</h1>
-        <ul>
-          {validationErrors.map((error, i) => (
-            <li key={i}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Address
-          <input
-            type="text"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          City
-          <input
-            type="text"
-            name="city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          State
-          <input
-            type="text"
-            name="state"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Country
-          <input
-            type="text"
-            name="country"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          lat
-          <input
-            type="number"
-            name="lat"
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          lng
-          <input
-            type="number"
-            name="lng"
-            value={lng}
-            onChange={(e) => setLng(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Description
-          <textarea
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Price
-          <input
-            type="text"
-            name="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-        {/* <label>
-        Image URL
-        <input
-          type="text"
-          name="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          required
-        />
-      </label> */}
-        <button type="submit" disabled={validationErrors.length > 0}>
-          Submit
-        </button>
+        <div className="edit-spot-inner-container">
+          <h1 className="edit-spot-title">Edit your spot</h1>
+
+          <ul className="edit-spot-errors">
+            {errors.map((error, i) => (
+              <li key={i}>{error}</li>
+            ))}
+          </ul>
+          <div className="edit-spot-all-input">
+            <label>
+              Name
+              <input
+                className="edit-spot-name"
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Address
+              <input
+                className="edit-spot-address"
+                type="text"
+                name="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              City
+              <input
+                className="edit-spot-city"
+                type="text"
+                name="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              State
+              <input
+                className="edit-spot-state"
+                type="text"
+                name="state"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Country
+              <input
+                className="edit-spot-country"
+                type="text"
+                name="country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Latitude
+              <input
+                className="edit-spot-lat"
+                type="number"
+                name="lat"
+                value={lat}
+                onChange={(e) => setLat(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Longitude
+              <input
+                className="edit-spot-lng"
+                type="number"
+                name="lng"
+                value={lng}
+                onChange={(e) => setLng(e.target.value)}
+                required
+              />
+            </label>
+
+            <label>
+              Description
+              <textarea
+                className="edit-spot-des"
+                type="text"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Price
+              <input
+                className="edit-spot-price"
+                type="text"
+                name="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Image URL
+              <input
+                className="edit-spot-img-url"
+                type="text"
+                name="imageUrl"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="edit-spot-submit-button-container">
+            <button
+              className="edit-spot-submit-button"
+              type="submit"
+              disabled={errors.length > 0}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
       </form>
     )
   );
