@@ -15,6 +15,7 @@ import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
 import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
 import CreateReview from "./components/CreateReview";
 // import CreateSpotForm from "./components/CreateSpot/createSpotForm";
+import UserBookings from "./components/Bookings/AllBookings"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId/create-review">
             <CreateReview />
+          </Route>
+          <Route exact path="/bookings">
+            <UserBookings />
           </Route>
         </Switch>
       )}
