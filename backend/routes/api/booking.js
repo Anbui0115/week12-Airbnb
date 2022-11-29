@@ -104,14 +104,14 @@ router.get("/auth", requireAuth, async (req, res) => {
   // });
   // console.log("-----------img", img);
   let result = [];
-  
+
   for (let booking of bookings) {
     console.log("this is booking ``````````````", booking);
     let resultBooking = { ...booking.toJSON() };
     let spot = resultBooking.Spot;
-    console.log("this is spot ``````````````", spot);
+    // console.log("this is spot ``````````````", spot);
     let user = await User.findByPk(spot.ownerId);
-    console.log("this is user ``````````````", user);
+    // console.log("this is user ``````````````", user);
     user = user.toJSON();
 
     spot.Owner = user;

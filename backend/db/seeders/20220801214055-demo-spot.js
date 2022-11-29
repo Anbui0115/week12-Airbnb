@@ -21,6 +21,8 @@ module.exports = {
           description:
             "7 Sierra Shores - Steps to Lake Tahoe - Breathtaking Views",
           price: 919,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/8b49998c-569b-498d-8946-820a1a9f8633.jpg?im_w=960",
         },
         {
           ownerId: 2,
@@ -34,6 +36,8 @@ module.exports = {
           description:
             "5BR with Private Dock, Buoy, Playground and Sandy Beach",
           price: 1862,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/f30f1698-6a6a-43aa-a624-8bf60adb29e0.jpg?im_w=960",
         },
         {
           ownerId: 3,
@@ -46,6 +50,8 @@ module.exports = {
           name: "Lake Tahoe in Marla Bay",
           description: "Unbelievable Views of Lake Tahoe",
           price: 1200,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/prohost-api/Hosting-623943401509054565/original/1c03bfbc-09f5-42b5-9879-8b96f3ff41da.jpeg?im_w=960",
         },
         {
           ownerId: 4,
@@ -59,6 +65,8 @@ module.exports = {
           description:
             "Dreamy Lakeside Retreat w/ Shared Pools, Hot Tubs & Beach Access!",
           price: 570,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/619ab404-7a6c-4425-a79c-9459b1c00b1b.jpg?im_w=960",
         },
         {
           ownerId: 5,
@@ -71,6 +79,8 @@ module.exports = {
           name: "Heavenly Village",
           description: "Walk to The Shops at Heavenly Village!",
           price: 950,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45944904/original/edf846cb-9e54-49a6-9f37-d26d996e39c7.png?im_w=960",
         },
         {
           ownerId: 1,
@@ -83,6 +93,8 @@ module.exports = {
           name: "Rockhaven",
           description: "Meeks Bay with breathtaking view",
           price: 800,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45944904/original/6358438b-9c8c-4169-b4f5-cf94d38a0a03.jpeg?im_w=720",
         },
         {
           ownerId: 2,
@@ -96,6 +108,8 @@ module.exports = {
           description:
             "Groveland Lake House near Yosemite with Hot Tub & Water Views",
           price: 1100,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/efd9b4fd-bd59-43c9-ab1a-c698ed4e70a6.jpg?im_w=720",
         },
         {
           ownerId: 3,
@@ -109,6 +123,8 @@ module.exports = {
           description:
             "VIlladeLago The Lake House, Dock and Buoy is located in a secluded enclave in historic Cave Rock Nevada.",
           price: 1000,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/4a505291-9675-4938-a866-b59731d832ee.jpg?im_w=720",
         },
         {
           ownerId: 4,
@@ -122,6 +138,8 @@ module.exports = {
           description:
             "Charming Elk Point Country Club vacation rental: Stunning Lake Views!",
           price: 900,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45944904/original/dedc1efb-72a7-40a3-b94f-0bed51823a11.png?im_w=1200",
         },
         {
           ownerId: 5,
@@ -135,6 +153,8 @@ module.exports = {
           description:
             "Tahoe Beach Club is a private lakefront community on Tahoe East Shore. Stylish 3 Bed / 4 Bath | Residence 205 ",
           price: 1190,
+          previewImage:
+            "https://a0.muscache.com/im/pictures/monet/Luxury-24231595/original/de6f45e3-232f-403a-a848-d9bec0e28eb1?im_w=1200",
         },
       ],
       {}

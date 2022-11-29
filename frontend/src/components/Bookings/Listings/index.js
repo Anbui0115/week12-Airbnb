@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./Listing.css";
 
 function Listing({ booking }) {
+  // console.log("booking!!!!!!!!!!!!", booking);
   const history = useHistory();
   const { name, previewImage, city, state, price } = booking.Spot;
   const { firstName, lastName } = booking.Spot.Owner;
@@ -53,13 +54,13 @@ function Listing({ booking }) {
         </div>
         <div className="booking-information-container">
           <div className="booking-location">
-            <span>Where:</span>
+            <span>Location:</span>
             <span>
               {city}, {state}
             </span>
           </div>
           <div className="booking-location">
-            <span>When:</span>
+            <span>Date:</span>
             <span>
               {startDate} - {endDate}
             </span>
