@@ -46,7 +46,7 @@ function Listing({ booking }) {
         <div className="spot-name-container">
           <span>{name}</span>
           <span>
-            Spot hosted by{" "}
+            Spot hosted by
             <span className="user-name">
               {firstName} {lastName}
             </span>

@@ -6,7 +6,7 @@ import { deleteASpotThunk, spotDetailsThunk } from "../../store/spots";
 import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
 import { cleanUpReviewsState, getReviewsBySpotId } from "../../store/reviews";
-// import EditSpotForm from "../EditASpot";
+import CreateBookingForm from "../Bookings/CreateBooking";
 import "./SpotDetail.css";
 
 function GetSpotDetails() {
@@ -19,7 +19,7 @@ function GetSpotDetails() {
   const spotsObj = useSelector((state) => state.spots);
   const spot = spotsObj[spotId];
   const sessionUser = useSelector((state) => state.session.user);
-
+  const bookings = useSelector((state) => state.bookings?.orderedBookingList);
 
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
@@ -34,8 +34,6 @@ function GetSpotDetails() {
     return null;
   }
 
-
-  
   let images;
   //need to conditionally render
   if (spot.Images) {
@@ -51,19 +49,12 @@ function GetSpotDetails() {
     dispatch(deleteASpotThunk(spotId));
     history.push(`/`);
   };
-  // const createAReview = (e) => {
-  //   e.preventDefault();
-  //   history.push(`/spots/${spot.id}/create-review`);
-  // };
+
   const editYourSpot = (e) => {
     e.preventDefault();
     history.push(`/spots/${spotId}/edit`);
   };
-  // const deleteThisSpot = (spotId) => {
-  //   // e.preventDefault()
-  //   dispatch(spotId);
-  //   dispatch(spotDetailsThunk(spotId));
-  // };
+
   return (
     { images } && { spot } && (
       <div className="spot-details-outer-container">
@@ -107,21 +98,10 @@ function GetSpotDetails() {
             Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
           </p>
         </div> */}
-
+          <div>
+            <CreateBookingForm spot={spot} bookings={bookings} />
+          </div>
           <GetReviewsBySpotId />
-
-          {/* <button
-          hidden={sessionUser?.id !== spot.ownerId}
-          onClick={(e) => onClickDelete(e, spot.id)}
-        >
-          Delete your spot
-        </button>
-        <button
-          hidden={sessionUser?.id !== spot.ownerId}
-          onClick={editYourSpot}
-        >
-          Edit your spot
-        </button> */}
         </div>
       </div>
     )

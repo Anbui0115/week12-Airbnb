@@ -18,7 +18,7 @@ function SpotsByOwner() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const spotsByOwner = spotsArray.filter(
-    (spot) => spot?.ownerId === sessionUser.id
+    (spot) => spot?.ownerId === sessionUser?.id
   );
 
   useEffect(() => {

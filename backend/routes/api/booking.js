@@ -19,10 +19,6 @@ const validateBooking = [
     .exists({ checkFalsy: true })
     .isDate()
     .notEmpty()
-    // .custom((value)=>{
-
-    // }
-    // )
     .withMessage(
       "startDate cannot be empty. Cannot be greater than endDate. Format is YYYY-MM-DD"
     ),
@@ -57,7 +53,7 @@ router.get("/auth/:spotId", requireAuth, async (req, res) => {
     });
   }
 
-  if (spot.onwerId === req.user.id) {
+  if (spot.ownerId === req.user.id) {
     allBookings = await Booking.findAll({
       include: {
         model: User,
@@ -84,29 +80,13 @@ router.get("/auth", requireAuth, async (req, res) => {
     },
     include: {
       model: Spot,
-      // attributes: [
-      //   "id",
-      //   "ownerId",
-      //   "address",
-      //   "city",
-      //   "state",
-      //   "country",
-      //   "lat",
-      //   "lng",
-      //   "name",
-      //   "price",
-      //   // "previewImage",
-      // ],
     },
   });
-  // const img = await Image.findOne({
-  //   where: userId,
-  // });
-  // console.log("-----------img", img);
+
   let result = [];
 
   for (let booking of bookings) {
-    console.log("this is booking ``````````````", booking);
+    // console.log("this is booking ``````````````", booking);
     let resultBooking = { ...booking.toJSON() };
     let spot = resultBooking.Spot;
     // console.log("this is spot ``````````````", spot);
@@ -118,6 +98,7 @@ router.get("/auth", requireAuth, async (req, res) => {
     result.push(resultBooking);
   }
   result = result.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
+  //result is an array
   res.json({ Bookings: result });
 });
 //---------Create a Booking-------

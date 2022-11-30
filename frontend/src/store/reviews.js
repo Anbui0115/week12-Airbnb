@@ -7,7 +7,7 @@ const GET_REVIEWS_OF_SPOT = "reviews/:spotId";
 const CREATE_REVIEW = "reviews/create";
 const EDIT_REVIEW = "reviews/reviewId/edit";
 const DELETE_REVIEW = "reviews/reviewId/delete";
-const CLEAN_UP_REVIEW = "clean-up-review";
+const LOG_OUT_REVIEW = "reviews/logoutReviews";
 //ActionCreators:
 const getReviewsCurrentUser = (reviews) => {
   return {
@@ -17,7 +17,7 @@ const getReviewsCurrentUser = (reviews) => {
 };
 export const cleanUpReviewsState = () => {
   return {
-    type: CLEAN_UP_REVIEW,
+    type: LOG_OUT_REVIEW,
   };
 };
 const getReviewsOfSpot = (payload) => {
@@ -101,7 +101,9 @@ export const deleteAReview = (reviewId, spotId) => async (dispatch) => {
   }
   return response;
 };
-
+export const logoutReviewsThunk = () => async (dispatch) => {
+  dispatch(cleanUpReviewsState());
+};
 //initialState
 const initialState = {};
 
@@ -140,9 +142,9 @@ const reviewsReducer = (state = initialState, action) => {
       delete newState[action.reviewId];
       return newState;
     }
-    case CLEAN_UP_REVIEW: {
-      // console.log("STATE", state);
-      return {};
+    case LOG_OUT_REVIEW: {
+      const newState = null;
+      return newState;
     }
     default:
       return state;

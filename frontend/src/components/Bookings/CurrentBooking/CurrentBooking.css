@@ -1,0 +1,143 @@
+.current-booking {
+  box-shadow: 0 0 5px grey;
+  width: 54em;
+  min-width: 54em;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7em;
+  box-sizing: border-box;
+  padding: 1.5em;
+  border-radius: .7em;
+  height: fit-content;
+}
+
+.booking.heading {
+  margin-top: 0;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.confirmation-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 5em;
+  height: fit-content;
+  padding: 1em;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.confirmation-header > span {
+  font-size: 1.2rem;
+
+  font-weight: 600;
+}
+
+.confirmation-header > span > u {
+  text-transform: capitalize;
+}
+
+.confirmation-container {
+  display: flex;
+  align-items: center;
+  gap: 3em;
+  width: 100%;
+  height: fit-content;
+}
+
+.confirmation-right-container {
+  font-size: 1.1rem;
+  width: 60%;
+  max-width: 60%;
+}
+
+.booking-spot-img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border-radius: .7em;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.confirmation-description {
+  text-align: center;
+  padding: 1em;
+}
+.confirmation-booking {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.confirmation-left-itinerary {
+  text-align: start;
+  font-size: 1.2rem;
+}
+.confirmation-right-itinerary {
+  text-align: end;
+  font-size: 1.2rem;
+}
+
+.confirmation-left-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  max-width: 40%;
+  align-items: center;
+  text-align: center;
+}
+
+.confirmation-button {
+  background: linear-gradient(0.25turn, #E61E4D, #D70666);
+  color: white;
+  border: none;
+  height: 2.6em;
+  border-radius: .5em;
+  min-width: 16em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1em;
+}
+
+.confirmation-button:active {
+  transform: scale(.97);
+}
+
+.confirmation-middle-container {
+  height: 25em;
+  max-height: 100%;
+  border-right: .1px solid rgb(196, 196, 196);
+}
+
+.confirmation-booking.info {
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+.confirmation-right-itinerary >span,
+.confirmation-left-itinerary  > span {
+  display: flex;
+  flex-direction: column;
+  font-size: .9rem;
+  color: rgb(81, 80, 80);
+  font-weight: 400;
+}
+
+.confirmation-address-container {
+  border-bottom: .1px solid rgb(196, 196, 196);
+}
+
+.date {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.start.date {
+  color: rgb(0, 123, 0);
+}
+.end.date {
+  color: rgb(199, 0, 0);
+}

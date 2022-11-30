@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllUserBookingsThunk } from "../../../store/bookings";
+import { getAllBookingsForCurrentUserThunk } from "../../../store/bookings";
 import Listing from "../Listings";
 import "./AllBookings.css";
 
@@ -9,21 +9,21 @@ function UserBookings() {
   const bookingsArr = bookings?.orderedBookingList;
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    const getUserBookings = async () => {
-      try {
-        if (bookings === null || bookingsArr === undefined) {
-          await dispatch(getAllUserBookingsThunk());
-        } else if (bookingsArr?.length && bookingsArr[0]?.Spot === undefined) {
-          await dispatch(getAllUserBookingsThunk());
-        } else {
-          await dispatch(getAllUserBookingsThunk());
-        }
-      } catch (err) {
-        const errors = await err.json();
-        if (errors.message) setIsLoaded(true);
+  const getUserBookings = async () => {
+    try {
+      if (bookings === null || bookingsArr === undefined) {
+        await dispatch(getAllBookingsForCurrentUserThunk());
+      } else if (bookingsArr?.length && bookingsArr[0]?.Spot === undefined) {
+        await dispatch(getAllBookingsForCurrentUserThunk());
+      } else {
+        await dispatch(getAllBookingsForCurrentUserThunk());
       }
-    };
+    } catch (err) {
+      const errors = await err.json();
+      if (errors.message) setIsLoaded(true);
+    }
+  };
+  useEffect(() => {
     getUserBookings();
     setIsLoaded(true);
   }, [dispatch]);
@@ -32,7 +32,7 @@ function UserBookings() {
     isLoaded && (
       <div className="table-outer-container">
         {bookings?.orderedBookingList.length === 0 && (
-          <div>Looks like you currently don't have any bookings</div>
+          <div>You don't have any bookings at the moment</div>
         )}
         {bookingsArr?.[0]?.Spot && bookingsArr?.length > 0 && (
           <div className="table-inner-container">

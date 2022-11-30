@@ -7,20 +7,17 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllSpots from "./components/GetAllSpots";
 import GetSpotDetails from "./components/SpotDetails";
-// import CreateASpot from "./components/CreateSpot";
 import EditASpot from "./components/EditASpot";
 import SpotsByOwner from "./components/SpotByOwner";
-// import DeleteASpot from './components/DeleteSpot'
 import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
 import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
 import CreateReview from "./components/CreateReview";
-// import DemoUser from "./components/DemoUser";
-// import CreateSpotForm from "./components/CreateSpot/createSpotForm";
+
 import UserBookings from "./components/Bookings/AllBookings"
+import CurrentBooking from "./components/Bookings/CurrentBooking"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  // const spots = useSelector((state) => state.spots);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -63,6 +60,9 @@ function App() {
           </Route>
           <Route exact path="/bookings">
             <UserBookings />
+          </Route>
+          <Route exact path="/bookings/:bookingId">
+            <CurrentBooking />
           </Route>
         </Switch>
       )}

@@ -1,0 +1,5 @@
+form.update-booking-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

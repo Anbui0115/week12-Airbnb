@@ -1,5 +1,5 @@
 import {
-  cleanUpReviewsState,
+  logoutReviewsThunk,
   getReviewsCurrentUserThunk,
 } from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,7 @@ function GetReviewsCurrentUser() {
     return () => {
       // console.log("cleaning up review");
       // console.log("reviews-------", reviews);
-      dispatch(cleanUpReviewsState());
+      dispatch(logoutReviewsThunk());
     };
   }, [dispatch]);
 
