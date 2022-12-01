@@ -2,9 +2,9 @@ import { useHistory } from "react-router-dom";
 import { format, formatDistanceToNow, intlFormatDistance } from "date-fns";
 //npm install date-fns --save in frontend
 import { useState } from "react";
-import "./Listing.css";
+import "./EachBooking.css";
 
-function Listing({ booking }) {
+function EachBooking({ booking }) {
   // console.log("booking!!!!!!!!!!!!", booking);
   const history = useHistory();
   const { name, previewImage, city, state, price } = booking.Spot;
@@ -45,12 +45,12 @@ function Listing({ booking }) {
       <div className="booking-content-container">
         <div className="spot-name-container">
           <span>{name}</span>
-          <span>
+          {/* <span>
             Spot hosted by
             <span className="user-name">
-              {firstName} {lastName}
+               {firstName} {lastName}
             </span>
-          </span>
+          </span> */}
         </div>
         <div className="booking-information-container">
           <div className="booking-location">
@@ -69,9 +69,15 @@ function Listing({ booking }) {
             <span>Total: </span>
             <span>{formatter.format(total)}</span>
           </div>
+          <div>
+            Spot hosted by
+             <span className="user-name">
+               {firstName} {lastName}
+            </span>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-export default Listing;
+export default EachBooking;

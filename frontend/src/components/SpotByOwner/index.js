@@ -81,6 +81,9 @@ function SpotsByOwner() {
                   </div>
                 </div>
               ))}
+              {spotsByOwner.length < 1 && (
+                <div>You currently don't have any listings</div>
+              )}
             </div>
           </div>
         </div>

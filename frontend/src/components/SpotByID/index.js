@@ -7,9 +7,9 @@ import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
 import { cleanUpReviewsState, getReviewsBySpotId } from "../../store/reviews";
 import CreateBookingForm from "../Bookings/CreateBooking";
-import "./SpotDetail.css";
+import "./SpotById.css";
 
-function GetSpotDetails() {
+function SpotById() {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ function GetSpotDetails() {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
     return () => {
-      dispatch(cleanUpReviewsState());
+      // dispatch(cleanUpReviewsState()); we need review to load the page
       dispatch(cleanUpAllSpots());
     };
   }, [dispatch, spotId]);
@@ -107,4 +107,4 @@ function GetSpotDetails() {
     )
   );
 }
-export default GetSpotDetails;
+export default SpotById;

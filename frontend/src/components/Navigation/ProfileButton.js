@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import profileButton from "./profileButton.png";
 import { Redirect, useHistory } from "react-router-dom";
@@ -75,7 +75,12 @@ function ProfileButton({ user }) {
           >
             Your Reviews
           </div>
-
+          <div
+            onClick={() => history.push("/bookings")}
+            className="your-listing"
+          >
+            Your Bookings
+          </div>
           <div className="profile-log-out" onClick={logout}>
             Log Out
           </div>

@@ -18,7 +18,7 @@ function GetReviewsCurrentUser() {
   spotId = Number(spotId);
   const reviews = useSelector((state) => Object.values(state.reviews));
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionUserReviews = reviews.filter(
+  const sessionUserReviews = reviews?.filter(
     (review) => review?.userId === sessionUser?.id
   );
 
@@ -64,6 +64,9 @@ function GetReviewsCurrentUser() {
                   </div>
                 </div>
               ))}
+              {sessionUserReviews.length < 1 && (
+                <div>You currently don't have any listings</div>
+              )}
             </div>
           </div>
         </div>

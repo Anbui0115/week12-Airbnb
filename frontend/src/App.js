@@ -6,15 +6,15 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllSpots from "./components/GetAllSpots";
-import GetSpotDetails from "./components/SpotDetails";
+import SpotById from "./components/SpotByID";
 import EditASpot from "./components/EditASpot";
 import SpotsByOwner from "./components/SpotByOwner";
 import GetReviewsCurrentUser from "./components/GetReviewCurrentUser";
 import GetReviewsBySpotId from "./components/GetReviewsBySpotId";
 import CreateReview from "./components/CreateReview";
 
-import UserBookings from "./components/Bookings/AllBookings"
-import CurrentBooking from "./components/Bookings/CurrentBooking"
+import UserBookings from "./components/Bookings/UserBookings";
+import BookingById from "./components/Bookings/BookingById";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +41,7 @@ function App() {
             <SpotsByOwner />
           </Route>
           <Route exact path="/spots/:spotId">
-            <GetSpotDetails />
+            <SpotById />
           </Route>
           <Route exact path="/spots/:spotId/edit">
             <EditASpot />
@@ -62,7 +62,7 @@ function App() {
             <UserBookings />
           </Route>
           <Route exact path="/bookings/:bookingId">
-            <CurrentBooking />
+            <BookingById />
           </Route>
         </Switch>
       )}
