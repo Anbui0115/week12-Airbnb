@@ -96,7 +96,8 @@ function LoginForm() {
           </ul> */}
         </div>
       </div>
-      <button
+      <div className="login_modal_buttons">
+        <button
         className="login-button"
         type="submit"
         disabled={submitted && errors.length > 0}
@@ -106,6 +107,8 @@ function LoginForm() {
       <button onClick={demoUser} className="login-button">
         Demo User
       </button>
+      </div>
+
     </form>
   );
 }

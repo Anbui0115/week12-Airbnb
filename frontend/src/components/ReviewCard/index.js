@@ -43,15 +43,6 @@ const ReviewCard = ({ review }) => {
 
         <div className="spotDetails-review-star">&#9733; {review.stars}</div>
         <div className="spotDetails-review-info">{review.review}</div>
-
-        {/* {sessionUser && (
-          <button
-            hidden={sessionUser.id !== review.User.firstName}
-            onClick={(e) => deleteYourReview(e, review.id)}
-          >
-            Delete your review
-          </button>
-        )} */}
       </div>
     </div>
   );

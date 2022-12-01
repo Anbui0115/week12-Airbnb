@@ -189,7 +189,7 @@ function CreateBookingForm({ spot, bookings }) {
           </button>
         ) : (
           <button onClick={showLogin} className="submit-button booking">
-            Login to reserve a date
+            Login to make a reservation
           </button>
         )}
         <p className="no-charge">You won't be charged yet</p>

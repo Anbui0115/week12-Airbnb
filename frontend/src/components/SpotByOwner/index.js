@@ -62,7 +62,7 @@ function SpotsByOwner() {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="owner-buttons-access">
                     <button className="onwer-edit-button">
                       <NavLink
                         to={`/spots/${spot.id}/edit`}
@@ -76,7 +76,7 @@ function SpotsByOwner() {
                       className="onwer-delete-button"
                       onClick={(e) => onClickDelete(e, spot.id)}
                     >
-                      Delete your spot
+                      Delete Spot
                     </button>
                   </div>
                 </div>

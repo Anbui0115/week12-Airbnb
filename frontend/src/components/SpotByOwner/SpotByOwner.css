@@ -92,8 +92,12 @@
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
     sans-serif;
 }
+.owner-buttons-access {
+  display: flex;
+  justify-content: space-between;
+}
 .onwer-edit-button {
-  width: 420px;
+  /* width: 420px;
   border: none;
   background-color: rgb(227, 28, 95);
   color: white;
@@ -104,10 +108,25 @@
 
   cursor: pointer;
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
+  background: linear-gradient(0.25turn, #e61e4d, #d70666);
+  border-radius: 0.5em;
+  min-width: 16em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1em;
+  border: none;
+  background-color: transparent;
+  box-shadow: 1px 1px rgb(128, 128, 128, 0.7);
+  margin: 10px 10px;
+  /* background-color: rgb(227, 28, 95); */
+  color: white;
+  width: 200px;
+  height: 45px;
+  font-size: 15pt;
 }
 .onwer-delete-button {
-  width: 420px;
+  /* width: 420px;
   border: none;
   margin: auto;
   background-color: rgb(227, 28, 95);
@@ -117,5 +136,21 @@
   font-size: 15pt;
   cursor: pointer;
   font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
+  background: linear-gradient(0.25turn, #e61e4d, #d70666);
+  border-radius: 0.5em;
+  min-width: 16em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1em;
+  border: none;
+  background-color: transparent;
+  box-shadow: 1px 1px rgb(128, 128, 128, 0.7);
+  margin: 10px 10px;
+  /* background-color: rgb(227, 28, 95); */
+  color: white;
+  width: 200px;
+
+  height: 45px;
+  font-size: 15pt;
 }

@@ -111,86 +111,88 @@ function BookingById() {
   return (
     isLoaded &&
     spot && (
-        <div className="current-booking">
-          <div className="confirmation-header">
-            <h1 className="booking heading">
-              {changeable
-                ? "Your reservation is confirmed!"
-                : "We hope you enjoyed your stay!"}
-            </h1>
-            {changeable && (
-              <span>
-                You're going to{" "}
-                <u>
-                  {spot.city}, {spot.state}
-                </u>
-                !
-              </span>
-            )}
-          </div>
-          <div className="confirmation-container">
-            <div className="confirmation-right-container">
-              {spot && (
-                <img className="booking-spot-img" src={spot.previewImage} />
+      <div className="booking-outer-container">
+        <div className="booking-inner-container ">
+          <div className="current-booking">
+            <div className="confirmation-header">
+              <h1 className="booking heading">
+                {changeable
+                  ? "Your reservation is confirmed!"
+                  : "We hope you enjoyed your stay!"}
+              </h1>
+              {changeable && (
+                <span>
+                  You're going to{" "}
+                  <u>
+                    {spot.city}, {spot.state}
+                  </u>
+                  !
+                </span>
               )}
-              <div className="confirmation-description">
-                <div>{spot.name}</div>
-                <div>{spot.description}</div>
-                <div>
-                  {spot.city}, {spot.state}
-                </div>
-              </div>
-              <div className="confirmation-booking info">
-                <div className="confirmation-left-itinerary">
-                  <h3 className="start date">Start Date</h3>
-                  <span>{startDate}</span>
-                  <span>Check-in time is 4PM - 9PM</span>
-                </div>
-                <div className="confirmation-right-itinerary">
-                  <h3 className="end date">End Date</h3>
-                  <span>{endDate}</span>
-                  <span>Check out time is 11AM</span>
-                </div>
-              </div>
             </div>
-            <div className="confirmation-middle-container"></div>
-            <div className="confirmation-left-container">
-              <div className="confirmation-address-container">
-                <h3>Address</h3>
-                <p>
-                  {spot.address}, {spot.city}, {spot.state}, {spot.country}
-                </p>
+            <div className="confirmation-container">
+              <div className="confirmation-inner-container">
+                {spot && (
+                  <img className="booking-spot-img" src={spot.previewImage} />
+                )}
+                <div className="booked-spot-description">
+                  <div className="booked-spot-name">{spot.name}</div>
+                  <div className="booked-spot-details">{spot.description}</div>
+                  <div className="booked-spot-details">
+                    {spot.city}, {spot.state}
+                  </div>
+                  <div className="confirmation-address-container">
+                    <h3>Address</h3>
+                    <p>
+                      {spot.address}, {spot.city}, {spot.state}, {spot.country}
+                    </p>
+                  </div>
+                  <div className="confirmation-total-amount">
+                    <h3>Amount</h3>
+                    <p>{formatter.format(total)}</p>
+                  </div>
+                </div>
+                <div className="confirmation-booking-info">
+                  <div className="confirmation-left">
+                    <h3 className="start date">Start Date</h3>
+                    <span>{startDate}</span>
+                    <span>Check-in time is 4PM - 9PM</span>
+                  </div>
+                  <div className="confirmation-right">
+                    <h3 className="end date">End Date</h3>
+                    <span>{endDate}</span>
+                    <span>Check out time is 11AM</span>
+                  </div>
+                </div>
               </div>
-              <div className="confirmation-total-amount">
-                <h3>Amount</h3>
-                <p>{formatter.format(total)}</p>
-              </div>
-
-            {booking.userId === sessionUser.id && changeable && (
               <div>
-                {/* <button onClick={() => setShowUpdate(true)}>Change Reservaion</button> */}
-                <button
-                  className="confirmation-button"
-                  onClick={() => setShowDelete(true)}
-                >
-                  Cancel Reservaion
-                </button>
-                {/* {showUpdate && (
+                {booking.userId === sessionUser.id && changeable && (
+                  <div>
+                    {/* <button onClick={() => setShowUpdate(true)}>Change Reservaion</button> */}
+                    <button
+                      className="cancel-booking-button"
+                      onClick={() => setShowDelete(true)}
+                    >
+                      Cancel Reservaion
+                    </button>
+                    {/* {showUpdate && (
               <Modal onClose={() => setShowUpdate(false)}>
                 <UpdateBookingForm booking={booking} setShowUpdate={setShowUpdate} />
               </Modal>
             )} */}
-                {showDelete && (
-                  <Modal onClose={() => setShowDelete(false)}>
-                    <DeleteBooking
-                      setDeleted={setDeleted}
-                      booking={booking}
-                      setShowDelete={setShowDelete}
-                    />
-                  </Modal>
+                    {showDelete && (
+                      <Modal onClose={() => setShowDelete(false)}>
+                        <DeleteBooking
+                          setDeleted={setDeleted}
+                          booking={booking}
+                          setShowDelete={setShowDelete}
+                        />
+                      </Modal>
+                    )}
+                  </div>
                 )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

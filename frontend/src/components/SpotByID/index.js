@@ -17,8 +17,8 @@ function SpotById() {
   spotId = Number(spotId);
 
   const spotsObj = useSelector((state) => state.spots);
-  const spot = spotsObj[spotId];
-  const sessionUser = useSelector((state) => state.session.user);
+  const spot = spotsObj?.[spotId];
+  // const sessionUser = useSelector((state) => state.session.user);
   const bookings = useSelector((state) => state.bookings?.orderedBookingList);
 
   useEffect(() => {

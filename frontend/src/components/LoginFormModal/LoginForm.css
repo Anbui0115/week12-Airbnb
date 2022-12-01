@@ -161,24 +161,29 @@
 /* .text {
   align-self: center;
 } */
-.login-button {
+.login_modal_buttons {
+  /* border: 1px solid forestgreen; */
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-top: 20px;
   display: flex;
-  flex-direction: row;
-  /* border: 1px solid black; */
-  border: none;
-  background-color: rgb(227, 28, 95);
+  flex-direction: column;
+}
+.login-button {
   color: white;
   justify-content: center;
-  /* margin top | right | bottom | left */
-  margin: 8px 20px 0px 18px;
-  border-radius: 6px;
+  align-items: center;
+  background: linear-gradient(0.25turn, #e61e4d, #d70666);
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  box-shadow: 1px 1px rgb(128, 128, 128, 0.7);
+  color: white;
+  width: 100%;
   height: 45px;
   font-size: 15pt;
-  align-items: center;
-  cursor: pointer;
-  /* width: 100%; */
-  font-family: Circular, -apple-system, "system-ui", Roboto, "Helvetica Neue",
-    sans-serif;
+  margin-bottom: 10px;
 }
 @media (min-width: 744px) {
   .login-form {
