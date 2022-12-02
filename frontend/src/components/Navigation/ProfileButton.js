@@ -80,6 +80,7 @@ function ProfileButton({ user }) {
             className="your-listing"
           >
             Your Bookings
+            
           </div>
           <div className="profile-log-out" onClick={logout}>
             Log Out
