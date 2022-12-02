@@ -19,10 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       url: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          isUrl: true,
+        },
       },
       previewImage: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: true,
       },
       spotId: {
         type: DataTypes.INTEGER,
@@ -39,10 +44,36 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         // references: { model: "Users" },
       },
+      ////////////////////////////////////////
+      createdAt: {
+        type: DataTypes.DATE,
+        get() {
+          const date = new Date(this.dataValues.createdAt);
+          return `${date.toISOString().split("T")[0]} ${date.toLocaleTimeString(
+            [],
+            { timeStyle: "medium", hour12: false }
+          )}`;
+        },
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        get() {
+          const date = new Date(this.dataValues.updatedAt);
+          return `${date.toISOString().split("T")[0]} ${date.toLocaleTimeString(
+            [],
+            { timeStyle: "medium", hour12: false }
+          )}`;
+        },
+      },
     },
     {
       sequelize,
       modelName: "Image",
+      scopes: {
+        reviews: {
+          attributes: ["id", "spotId", "userId", "url"],
+        },
+      },
     }
   );
   return Image;

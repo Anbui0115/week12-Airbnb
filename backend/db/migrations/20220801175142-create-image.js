@@ -15,6 +15,7 @@ module.exports = {
       previewImage: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: true,
       },
       spotId: {
         type: Sequelize.INTEGER,
