@@ -5,7 +5,8 @@
 ![airbnb-database-schema](../assets/airbnb_dbdiagram.png)
 
 ## API Documentation
-
+heroku run npm run sequelize db:migrate
+heroku run npm run sequelize db:seed:all
 ## USER AUTHENTICATION/AUTHORIZATION
 
 ### All endpoints that require authentication
