@@ -34,15 +34,15 @@ function SpotById() {
     return null;
   }
 
-  let images;
-  //need to conditionally render
-  if (spot.Images) {
-    images = spot.Images.map((image) => (
-      <div className="spot-img">
-        <img src={image.url} />
-      </div>
-    ));
-  }
+  // let images;
+  // //need to conditionally render
+  // if (spot.Images) {
+  //   images = spot.Images.map((image) => (
+  //     <div className="spot-img">
+  //       <img src={image.url} />
+  //     </div>
+  //   ));
+  // }
 
   const onClickDelete = (e, spotId) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ function SpotById() {
   };
 
   return (
-    { images } && { spot } && (
+     { spot } && (
       <div className="spot-details-outer-container">
         <div className="spot-details-inner-container">
           <div className="spot-name-container">
@@ -79,10 +79,82 @@ function SpotById() {
           </div>
 
           <br />
-          <div className="spot-image-container ">
+          {/* <div className="spot-image-container ">
             <div className="spot-img">{images}</div>
-          </div>
+          </div> */}
+          {/* ------------------------------------------------------- */}
+          <div className="spot-img-container">
+            <div className="spot-img-grid">
+              <div className="spot-first-image">
+                {spot?.Images && (
+                  <img
+                    className="spot-image"
+                    src={spot?.Images[0]?.url || ""}
+                    onError={(e) =>
+                      (e.target.src =
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+                    }
+                  />
+                )}
+              </div>
+              <div className="spot-preview-images">
+                <div className="preview-containers">
+                  <div className="spot-preview-image">
+                    {spot?.Images && (
+                      <img
+                        className="preview-images"
+                        src={spot?.Images[1]?.url || ""}
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+                        }
+                      />
+                    )}
+                  </div>
+                  <div className="spot-preview-image">
+                    {spot?.Images && (
+                      <img
+                        className="preview-images"
+                        src={spot?.Images[3]?.url || ""}
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+                        }
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="preview-containers">
+                  <div className="spot-preview-image round-top-right">
+                    {spot?.Images && (
+                      <img
+                        className="preview-images round-top-right"
+                        src={spot?.Images[2]?.url || ""}
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+                        }
+                      />
+                    )}
+                  </div>
 
+                  <div className="spot-preview-image round-bottom-right">
+                    {spot?.Images && (
+                      <img
+                        className="preview-images round-bottom-right"
+                        src={spot?.Images[4]?.url || ""}
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+                        }
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{/* ------------------------------------- */}
           <div className="spot-description-container">
             {/* <div className="hosted-by">
               Hosted by {spot && spot.Owner.firstName}
