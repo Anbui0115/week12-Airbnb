@@ -123,10 +123,7 @@ function CreateBookingForm({ spot, bookings }) {
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    maximumFractionDigits: 0,
   });
 
   return (
@@ -145,8 +142,7 @@ function CreateBookingForm({ spot, bookings }) {
           <div className="booking-rating-wrapper">
             <i className="fa-solid fa-star"></i>
             <span>
-              {" "}
-              {rating} ·{" "}
+              {rating} ·
               <u>
                 {numReviews} {numReviews === 1 ? "review" : "reviews"}
               </u>
@@ -227,7 +223,6 @@ function CreateBookingForm({ spot, bookings }) {
             <span>{formatter.format(total)}</span>
           </div>
         </div>
-        {/* <p className="booking-description">{sessionUser ? "You won't be charged yet" : "Please log in to reserve a date"}</p> */}
       </form>
     </div>
   );
