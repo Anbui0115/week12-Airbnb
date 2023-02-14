@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanUpAllSpots, editASpotThunk } from "../../store/spots";
+import { cleanUpAllSpots } from "../../store/spots";
 import { deleteASpotThunk, spotDetailsThunk } from "../../store/spots";
-import { NavLink } from "react-router-dom";
 import GetReviewsBySpotId from "../GetReviewsBySpotId";
-import { cleanUpReviewsState, getReviewsBySpotId } from "../../store/reviews";
+import {  getReviewsBySpotId } from "../../store/reviews";
 import CreateBookingForm from "../Bookings/CreateBooking";
 import "./SpotById.css";
 
@@ -18,14 +17,12 @@ function SpotById() {
 
   const spotsObj = useSelector((state) => state.spots);
   const spot = spotsObj?.[spotId];
-  // const sessionUser = useSelector((state) => state.session.user);
   const bookings = useSelector((state) => state.bookings?.orderedBookingList);
 
   useEffect(() => {
     dispatch(spotDetailsThunk(spotId));
     dispatch(getReviewsBySpotId(spotId));
     return () => {
-      // dispatch(cleanUpReviewsState()); we need review to load the page
       dispatch(cleanUpAllSpots());
     };
   }, [dispatch, spotId]);
@@ -33,16 +30,6 @@ function SpotById() {
   if (!spot) {
     return null;
   }
-
-  // let images;
-  // //need to conditionally render
-  // if (spot.Images) {
-  //   images = spot.Images.map((image) => (
-  //     <div className="spot-img">
-  //       <img src={image.url} />
-  //     </div>
-  //   ));
-  // }
 
   const onClickDelete = (e, spotId) => {
     e.preventDefault();
@@ -62,10 +49,9 @@ function SpotById() {
           <div className="spot-name-container">
             <div className="spot-name-text">{spot.name}</div>
           </div>
-          {/* <span>&#9733; {spot.avgStarRating} </span> */}
 
           <div className="spot-detail-sub-bar ">
-            {spot.avgStarRating === "0.0" ? null : ( // <span className="spot-rating">No Reviews</span>
+            {spot.avgStarRating === "0.0" ? null : (
               <span className="spot-rating">
                 &#9733; {spot.avgStarRating} .{" "}
               </span>
@@ -79,10 +65,7 @@ function SpotById() {
           </div>
 
           <br />
-          {/* <div className="spot-image-container ">
-            <div className="spot-img">{images}</div>
-          </div> */}
-          {/* ------------------------------------------------------- */}
+
           <div className="spot-img-container">
             <div className="spot-img-grid">
               <div className="spot-first-image">
@@ -156,20 +139,13 @@ function SpotById() {
           </div>
 {/* ------------------------------------- */}
           <div className="spot-description-container">
-            {/* <div className="hosted-by">
-              Hosted by {spot && spot.Owner.firstName}
-            </div> */}
             <p className="spot-description-text">{spot.description}</p>
           </div>
           <div className="spot-price-container">
             <p className="spot-price-text">${spot.price}</p>
             <span>per night</span>
           </div>
-          {/* <div className="hosted-by-container ">
-          <p className="hosted-by-text">
-            Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
-          </p>
-        </div> */}
+
           <div>
             <CreateBookingForm spot={spot} bookings={bookings} />
           </div>
