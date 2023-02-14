@@ -32,6 +32,7 @@ and just check if the current user left a review and save a true or false in a v
 Then we can conditionally render the Leave a review button off of that.
 */
 /* heroku command
+heroku login
 git push heroku main
 heroku run npm run sequelize db:migrate
 heroku run npm run sequelize db:seed:all
