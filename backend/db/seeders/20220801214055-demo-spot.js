@@ -149,12 +149,12 @@ module.exports = {
           country: "USA",
           lat: 37.7645358,
           lng: -122.4730327,
-          name: "Tahoe Beach Club",
+          name: "Tahoe Home in Sunset Mag",
           description:
-            "Tahoe Beach Club is a private lakefront community on Tahoe East Shore. Stylish 3 Bed / 4 Bath | Residence 205 ",
+            "Our cozy modern cabin on the beautiful West Shore of Lake Tahoe. Walk to Sugar Pine public beach, coffee shops, restaurants and markets! ",
           price: 1190,
           previewImage:
-            "https://a0.muscache.com/im/pictures/monet/Luxury-24231595/original/de6f45e3-232f-403a-a848-d9bec0e28eb1?im_w=1200",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-47870127/original/239c7f2f-470f-424c-9574-c4b212ca4350.jpeg?im_w=720",
         },
       ],
       {}
