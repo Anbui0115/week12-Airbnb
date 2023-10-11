@@ -23,6 +23,7 @@ AnBnB is a full-stack-application clone of Airbnb deployed on heroku. The App us
 - Express
 - Sequelize
 - PostgresSQL
+- Node.js
 
 ## Features:
 
