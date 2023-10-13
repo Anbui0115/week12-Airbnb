@@ -15,9 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "sequelize": "^6.33.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Anbui0115/week12-Airbnb.git"
